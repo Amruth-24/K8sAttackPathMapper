@@ -1,0 +1,6 @@
+@echo off
+echo [*] Building GuardV2 Docker Image...
+docker build -t guardv2 .
+echo [*] Running Analysis...
+docker run -it --rm -v "%USERPROFILE%\.kube:/root/.kube" -v "%cd%:/app" --network host guardv2
+pause

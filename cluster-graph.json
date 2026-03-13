@@ -1,0 +1,4088 @@
+{
+  "nodes": [
+    {
+      "id": "External:cluster:Internet",
+      "type": "External",
+      "name": "Internet",
+      "namespace": null,
+      "risk_score": 0.0,
+      "meta": {
+        "entry_point": true
+      }
+    },
+    {
+      "id": "Service:big-monolith:hunger-check-service",
+      "type": "Service",
+      "name": "hunger-check-service",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:default:build-code-service",
+      "type": "Service",
+      "name": "build-code-service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:default:health-check-service",
+      "type": "Service",
+      "name": "health-check-service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:default:internal-proxy-api-service",
+      "type": "Service",
+      "name": "internal-proxy-api-service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:default:internal-proxy-info-app-service",
+      "type": "Service",
+      "name": "internal-proxy-info-app-service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "NodePort"
+      }
+    },
+    {
+      "id": "Service:default:kubernetes",
+      "type": "Service",
+      "name": "kubernetes",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:default:kubernetes-goat-home-service",
+      "type": "Service",
+      "name": "kubernetes-goat-home-service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:default:metadata-db",
+      "type": "Service",
+      "name": "metadata-db",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:default:poor-registry-service",
+      "type": "Service",
+      "name": "poor-registry-service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:default:system-monitor-service",
+      "type": "Service",
+      "name": "system-monitor-service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:kube-system:kube-dns",
+      "type": "Service",
+      "name": "kube-dns",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Service:secure-middleware:cache-store-service",
+      "type": "Service",
+      "name": "cache-store-service",
+      "namespace": "secure-middleware",
+      "risk_score": 0.0,
+      "meta": {
+        "type": "ClusterIP"
+      }
+    },
+    {
+      "id": "Pod:big-monolith:hunger-check-deployment-5488f8b86c-6sj45",
+      "type": "Pod",
+      "name": "hunger-check-deployment-5488f8b86c-6sj45",
+      "namespace": "big-monolith",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-hunger-check"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "ServiceAccount:big-monolith:big-monolith-sa",
+      "type": "ServiceAccount",
+      "name": "big-monolith-sa",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Pod:default:batch-check-job-5tkr7",
+      "type": "Pod",
+      "name": "batch-check-job-5tkr7",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-batch-check"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "ServiceAccount:default:default",
+      "type": "ServiceAccount",
+      "name": "default",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Pod:default:build-code-deployment-84fb858df9-xw8c4",
+      "type": "Pod",
+      "name": "build-code-deployment-84fb858df9-xw8c4",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-build-code"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:health-check-deployment-b7f74cdc8-hz66g",
+      "type": "Pod",
+      "name": "health-check-deployment-b7f74cdc8-hz66g",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-health-check"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:hidden-in-layers-hftpb",
+      "type": "Pod",
+      "name": "hidden-in-layers-hftpb",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-hidden-in-layers"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:internal-proxy-deployment-c59c45d94-p7q59",
+      "type": "Pod",
+      "name": "internal-proxy-deployment-c59c45d94-p7q59",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-internal-api",
+          "madhuakula/k8s-goat-info-app"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "type": "Pod",
+      "name": "kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-home"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:metadata-db-6fbb8cd6d7-8qctp",
+      "type": "Pod",
+      "name": "metadata-db-6fbb8cd6d7-8qctp",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-metadata-db:latest"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:poor-registry-deployment-7b75fbd7-c2bfr",
+      "type": "Pod",
+      "name": "poor-registry-deployment-7b75fbd7-c2bfr",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-poor-registry"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:system-monitor-deployment-866f697c75-9lwps",
+      "type": "Pod",
+      "name": "system-monitor-deployment-866f697c75-9lwps",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-system-monitor"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:kube-system:coredns-7d764666f9-k4jps",
+      "type": "Pod",
+      "name": "coredns-7d764666f9-k4jps",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "registry.k8s.io/coredns/coredns:v1.13.1"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "ServiceAccount:kube-system:coredns",
+      "type": "ServiceAccount",
+      "name": "coredns",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Pod:kube-system:coredns-7d764666f9-vk66g",
+      "type": "Pod",
+      "name": "coredns-7d764666f9-vk66g",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "registry.k8s.io/coredns/coredns:v1.13.1"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:kube-system:etcd-kubernetes-goat-cluster-control-plane",
+      "type": "Pod",
+      "name": "etcd-kubernetes-goat-cluster-control-plane",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "registry.k8s.io/etcd:3.6.6-0"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "ServiceAccount:kube-system:default",
+      "type": "ServiceAccount",
+      "name": "default",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Pod:kube-system:kindnet-mfrjm",
+      "type": "Pod",
+      "name": "kindnet-mfrjm",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "docker.io/kindest/kindnetd:v20251212-v0.29.0-alpha-105-g20ccfc88"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "ServiceAccount:kube-system:kindnet",
+      "type": "ServiceAccount",
+      "name": "kindnet",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Pod:kube-system:kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "type": "Pod",
+      "name": "kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "registry.k8s.io/kube-apiserver:v1.35.0"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:kube-system:kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "type": "Pod",
+      "name": "kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "registry.k8s.io/kube-controller-manager:v1.35.0"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:kube-system:kube-proxy-97q47",
+      "type": "Pod",
+      "name": "kube-proxy-97q47",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "registry.k8s.io/kube-proxy:v1.35.0"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "ServiceAccount:kube-system:kube-proxy",
+      "type": "ServiceAccount",
+      "name": "kube-proxy",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Pod:kube-system:kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "type": "Pod",
+      "name": "kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "registry.k8s.io/kube-scheduler:v1.35.0"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:local-path-storage:local-path-provisioner-67b8995b4b-52vjb",
+      "type": "Pod",
+      "name": "local-path-provisioner-67b8995b4b-52vjb",
+      "namespace": "local-path-storage",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "docker.io/kindest/local-path-provisioner:v20251212-v0.29.0-alpha-105-g20ccfc88"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "ServiceAccount:local-path-storage:local-path-provisioner-service-account",
+      "type": "ServiceAccount",
+      "name": "local-path-provisioner-service-account",
+      "namespace": "local-path-storage",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Pod:secure-middleware:cache-store-deployment-8bf8d695b-jggt6",
+      "type": "Pod",
+      "name": "cache-store-deployment-8bf8d695b-jggt6",
+      "namespace": "secure-middleware",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-cache-store"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "ServiceAccount:secure-middleware:default",
+      "type": "ServiceAccount",
+      "name": "default",
+      "namespace": "secure-middleware",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Secret:big-monolith:vaultapikey",
+      "type": "Secret",
+      "name": "vaultapikey",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": false
+      }
+    },
+    {
+      "id": "Secret:big-monolith:webhookapikey",
+      "type": "Secret",
+      "name": "webhookapikey",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": false
+      }
+    },
+    {
+      "id": "Secret:default:goatvault",
+      "type": "Secret",
+      "name": "goatvault",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": false
+      }
+    },
+    {
+      "id": "Secret:default:sh.helm.release.v1.metadata-db.v1",
+      "type": "Secret",
+      "name": "sh.helm.release.v1.metadata-db.v1",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": true
+      }
+    },
+    {
+      "id": "Secret:kube-system:bootstrap-token-abcdef",
+      "type": "Secret",
+      "name": "bootstrap-token-abcdef",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": true
+      }
+    },
+    {
+      "id": "Role:big-monolith:secret-reader",
+      "type": "Role",
+      "name": "secret-reader",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "type": "Vulnerability",
+      "name": "Full Cluster Admin (Wildcard)",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": true
+      }
+    },
+    {
+      "id": "Role:kube-public:kubeadm:bootstrap-signer-clusterinfo",
+      "type": "Role",
+      "name": "kubeadm:bootstrap-signer-clusterinfo",
+      "namespace": "kube-public",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-public:system:controller:bootstrap-signer",
+      "type": "Role",
+      "name": "system:controller:bootstrap-signer",
+      "namespace": "kube-public",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:bootstrap-signer",
+      "type": "ServiceAccount",
+      "name": "bootstrap-signer",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:kube-proxy",
+      "type": "Role",
+      "name": "kube-proxy",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:kubeadm:kubelet-config",
+      "type": "Role",
+      "name": "kubeadm:kubelet-config",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:kubeadm:nodes-kubeadm-config",
+      "type": "Role",
+      "name": "kubeadm:nodes-kubeadm-config",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:extension-apiserver-authentication-reader",
+      "type": "Role",
+      "name": "extension-apiserver-authentication-reader",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:system::leader-locking-kube-controller-manager",
+      "type": "Role",
+      "name": "system::leader-locking-kube-controller-manager",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:kube-controller-manager",
+      "type": "ServiceAccount",
+      "name": "kube-controller-manager",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:leader-election-controller",
+      "type": "ServiceAccount",
+      "name": "leader-election-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:system::leader-locking-kube-scheduler",
+      "type": "Role",
+      "name": "system::leader-locking-kube-scheduler",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:kube-scheduler",
+      "type": "ServiceAccount",
+      "name": "kube-scheduler",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:system:controller:bootstrap-signer",
+      "type": "Role",
+      "name": "system:controller:bootstrap-signer",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:system:controller:cloud-provider",
+      "type": "Role",
+      "name": "system:controller:cloud-provider",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:cloud-provider",
+      "type": "ServiceAccount",
+      "name": "cloud-provider",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:kube-system:system:controller:token-cleaner",
+      "type": "Role",
+      "name": "system:controller:token-cleaner",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:token-cleaner",
+      "type": "ServiceAccount",
+      "name": "token-cleaner",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Role:local-path-storage:local-path-provisioner-role",
+      "type": "Role",
+      "name": "local-path-provisioner-role",
+      "namespace": "local-path-storage",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:cluster-admin",
+      "type": "ClusterRole",
+      "name": "cluster-admin",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:kindnet",
+      "type": "ClusterRole",
+      "name": "kindnet",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:kubeadm:get-nodes",
+      "type": "ClusterRole",
+      "name": "kubeadm:get-nodes",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Vulnerability:cluster:Full Node Access",
+      "type": "Vulnerability",
+      "name": "Full Node Access",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": true
+      }
+    },
+    {
+      "id": "ClusterRole:cluster:system:node-bootstrapper",
+      "type": "ClusterRole",
+      "name": "system:node-bootstrapper",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:certificates.k8s.io:certificatesigningrequests:nodeclient",
+      "type": "ClusterRole",
+      "name": "system:certificates.k8s.io:certificatesigningrequests:nodeclient",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:certificates.k8s.io:certificatesigningrequests:selfnodeclient",
+      "type": "ClusterRole",
+      "name": "system:certificates.k8s.io:certificatesigningrequests:selfnodeclient",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:node-proxier",
+      "type": "ClusterRole",
+      "name": "system:node-proxier",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:local-path-provisioner-role",
+      "type": "ClusterRole",
+      "name": "local-path-provisioner-role",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:superadmin",
+      "type": "ServiceAccount",
+      "name": "superadmin",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:basic-user",
+      "type": "ClusterRole",
+      "name": "system:basic-user",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:attachdetach-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:attachdetach-controller",
+      "type": "ServiceAccount",
+      "name": "attachdetach-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:certificate-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:certificate-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:certificate-controller",
+      "type": "ServiceAccount",
+      "name": "certificate-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:clusterrole-aggregation-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:clusterrole-aggregation-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:clusterrole-aggregation-controller",
+      "type": "ServiceAccount",
+      "name": "clusterrole-aggregation-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:cronjob-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:cronjob-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:cronjob-controller",
+      "type": "ServiceAccount",
+      "name": "cronjob-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:daemon-set-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:daemon-set-controller",
+      "type": "ServiceAccount",
+      "name": "daemon-set-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:deployment-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:deployment-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:deployment-controller",
+      "type": "ServiceAccount",
+      "name": "deployment-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:disruption-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:disruption-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:disruption-controller",
+      "type": "ServiceAccount",
+      "name": "disruption-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:endpoint-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:endpoint-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:endpoint-controller",
+      "type": "ServiceAccount",
+      "name": "endpoint-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:endpointslice-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:endpointslice-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:endpointslice-controller",
+      "type": "ServiceAccount",
+      "name": "endpointslice-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:endpointslicemirroring-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:endpointslicemirroring-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:endpointslicemirroring-controller",
+      "type": "ServiceAccount",
+      "name": "endpointslicemirroring-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:ephemeral-volume-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:ephemeral-volume-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:ephemeral-volume-controller",
+      "type": "ServiceAccount",
+      "name": "ephemeral-volume-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:expand-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:expand-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:expand-controller",
+      "type": "ServiceAccount",
+      "name": "expand-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:generic-garbage-collector",
+      "type": "ClusterRole",
+      "name": "system:controller:generic-garbage-collector",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:generic-garbage-collector",
+      "type": "ServiceAccount",
+      "name": "generic-garbage-collector",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "type": "ClusterRole",
+      "name": "system:controller:horizontal-pod-autoscaler",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:horizontal-pod-autoscaler",
+      "type": "ServiceAccount",
+      "name": "horizontal-pod-autoscaler",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:job-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:job-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:job-controller",
+      "type": "ServiceAccount",
+      "name": "job-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:legacy-service-account-token-cleaner",
+      "type": "ClusterRole",
+      "name": "system:controller:legacy-service-account-token-cleaner",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:legacy-service-account-token-cleaner",
+      "type": "ServiceAccount",
+      "name": "legacy-service-account-token-cleaner",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Vulnerability:cluster:Full Control of Secrets",
+      "type": "Vulnerability",
+      "name": "Full Control of Secrets",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": false
+      }
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:namespace-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:namespace-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:namespace-controller",
+      "type": "ServiceAccount",
+      "name": "namespace-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:node-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:node-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:node-controller",
+      "type": "ServiceAccount",
+      "name": "node-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "type": "ClusterRole",
+      "name": "system:controller:persistent-volume-binder",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:persistent-volume-binder",
+      "type": "ServiceAccount",
+      "name": "persistent-volume-binder",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:pod-garbage-collector",
+      "type": "ClusterRole",
+      "name": "system:controller:pod-garbage-collector",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:pod-garbage-collector",
+      "type": "ServiceAccount",
+      "name": "pod-garbage-collector",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:pv-protection-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:pv-protection-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:pv-protection-controller",
+      "type": "ServiceAccount",
+      "name": "pv-protection-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:pvc-protection-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:pvc-protection-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:pvc-protection-controller",
+      "type": "ServiceAccount",
+      "name": "pvc-protection-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:replicaset-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:replicaset-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:replicaset-controller",
+      "type": "ServiceAccount",
+      "name": "replicaset-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:replication-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:replication-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:replication-controller",
+      "type": "ServiceAccount",
+      "name": "replication-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:resource-claim-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:resource-claim-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:resource-claim-controller",
+      "type": "ServiceAccount",
+      "name": "resource-claim-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:resourcequota-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:resourcequota-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:resourcequota-controller",
+      "type": "ServiceAccount",
+      "name": "resourcequota-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:root-ca-cert-publisher",
+      "type": "ClusterRole",
+      "name": "system:controller:root-ca-cert-publisher",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:root-ca-cert-publisher",
+      "type": "ServiceAccount",
+      "name": "root-ca-cert-publisher",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:route-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:route-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:route-controller",
+      "type": "ServiceAccount",
+      "name": "route-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:selinux-warning-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:selinux-warning-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:selinux-warning-controller",
+      "type": "ServiceAccount",
+      "name": "selinux-warning-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:service-account-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:service-account-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:service-account-controller",
+      "type": "ServiceAccount",
+      "name": "service-account-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:service-cidrs-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:service-cidrs-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:service-cidrs-controller",
+      "type": "ServiceAccount",
+      "name": "service-cidrs-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:service-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:service-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:service-controller",
+      "type": "ServiceAccount",
+      "name": "service-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:statefulset-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:statefulset-controller",
+      "type": "ServiceAccount",
+      "name": "statefulset-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:ttl-after-finished-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:ttl-after-finished-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:ttl-after-finished-controller",
+      "type": "ServiceAccount",
+      "name": "ttl-after-finished-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:ttl-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:ttl-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:ttl-controller",
+      "type": "ServiceAccount",
+      "name": "ttl-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:validatingadmissionpolicy-status-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:validatingadmissionpolicy-status-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:validatingadmissionpolicy-status-controller",
+      "type": "ServiceAccount",
+      "name": "validatingadmissionpolicy-status-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:controller:volumeattributesclass-protection-controller",
+      "type": "ClusterRole",
+      "name": "system:controller:volumeattributesclass-protection-controller",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:volumeattributesclass-protection-controller",
+      "type": "ServiceAccount",
+      "name": "volumeattributesclass-protection-controller",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:coredns",
+      "type": "ClusterRole",
+      "name": "system:coredns",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:discovery",
+      "type": "ClusterRole",
+      "name": "system:discovery",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:kube-controller-manager",
+      "type": "ClusterRole",
+      "name": "system:kube-controller-manager",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "Vulnerability:cluster:Mint Arbitrary SA Tokens",
+      "type": "Vulnerability",
+      "name": "Mint Arbitrary SA Tokens",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": false
+      }
+    },
+    {
+      "id": "ClusterRole:cluster:system:kube-dns",
+      "type": "ClusterRole",
+      "name": "system:kube-dns",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ServiceAccount:kube-system:kube-dns",
+      "type": "ServiceAccount",
+      "name": "kube-dns",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:kube-scheduler",
+      "type": "ClusterRole",
+      "name": "system:kube-scheduler",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:monitoring",
+      "type": "ClusterRole",
+      "name": "system:monitoring",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:node",
+      "type": "ClusterRole",
+      "name": "system:node",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:public-info-viewer",
+      "type": "ClusterRole",
+      "name": "system:public-info-viewer",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:service-account-issuer-discovery",
+      "type": "ClusterRole",
+      "name": "system:service-account-issuer-discovery",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    },
+    {
+      "id": "ClusterRole:cluster:system:volume-scheduler",
+      "type": "ClusterRole",
+      "name": "system:volume-scheduler",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "meta": {}
+    }
+  ],
+  "edges": [
+    {
+      "source": "Service:big-monolith:hunger-check-service",
+      "target": "Pod:big-monolith:hunger-check-deployment-5488f8b86c-6sj45",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:default:build-code-service",
+      "target": "Pod:default:build-code-deployment-84fb858df9-xw8c4",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:default:health-check-service",
+      "target": "Pod:default:health-check-deployment-b7f74cdc8-hz66g",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:default:internal-proxy-api-service",
+      "target": "Pod:default:internal-proxy-deployment-c59c45d94-p7q59",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "External:cluster:Internet",
+      "target": "Service:default:internal-proxy-info-app-service",
+      "relation": "internet-exposed",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:default:internal-proxy-info-app-service",
+      "target": "Pod:default:internal-proxy-deployment-c59c45d94-p7q59",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:default:kubernetes-goat-home-service",
+      "target": "Pod:default:kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:default:metadata-db",
+      "target": "Pod:default:metadata-db-6fbb8cd6d7-8qctp",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:default:poor-registry-service",
+      "target": "Pod:default:poor-registry-deployment-7b75fbd7-c2bfr",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:default:system-monitor-service",
+      "target": "Pod:default:system-monitor-deployment-866f697c75-9lwps",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:kube-system:kube-dns",
+      "target": "Pod:kube-system:coredns-7d764666f9-k4jps",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:kube-system:kube-dns",
+      "target": "Pod:kube-system:coredns-7d764666f9-vk66g",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Service:secure-middleware:cache-store-service",
+      "target": "Pod:secure-middleware:cache-store-deployment-8bf8d695b-jggt6",
+      "relation": "routes-traffic",
+      "weight": 1.0,
+      "risk_score": 0.0
+    },
+    {
+      "source": "Pod:big-monolith:hunger-check-deployment-5488f8b86c-6sj45",
+      "target": "ServiceAccount:big-monolith:big-monolith-sa",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-5tkr7",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:build-code-deployment-84fb858df9-xw8c4",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:health-check-deployment-b7f74cdc8-hz66g",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-hftpb",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:internal-proxy-deployment-c59c45d94-p7q59",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:metadata-db-6fbb8cd6d7-8qctp",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:poor-registry-deployment-7b75fbd7-c2bfr",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:system-monitor-deployment-866f697c75-9lwps",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:kube-system:coredns-7d764666f9-k4jps",
+      "target": "ServiceAccount:kube-system:coredns",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:kube-system:coredns-7d764666f9-vk66g",
+      "target": "ServiceAccount:kube-system:coredns",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:kube-system:etcd-kubernetes-goat-cluster-control-plane",
+      "target": "ServiceAccount:kube-system:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:kube-system:kindnet-mfrjm",
+      "target": "ServiceAccount:kube-system:kindnet",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:kube-system:kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "target": "ServiceAccount:kube-system:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:kube-system:kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "target": "ServiceAccount:kube-system:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:kube-system:kube-proxy-97q47",
+      "target": "ServiceAccount:kube-system:kube-proxy",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:kube-system:kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "target": "ServiceAccount:kube-system:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:local-path-storage:local-path-provisioner-67b8995b4b-52vjb",
+      "target": "ServiceAccount:local-path-storage:local-path-provisioner-service-account",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:secure-middleware:cache-store-deployment-8bf8d695b-jggt6",
+      "target": "ServiceAccount:secure-middleware:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "ServiceAccount:big-monolith:big-monolith-sa",
+      "target": "Role:big-monolith:secret-reader",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Role:big-monolith:secret-reader",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-public:kubeadm:bootstrap-signer-clusterinfo",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:bootstrap-signer",
+      "target": "Role:kube-public:system:controller:bootstrap-signer",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Role:kube-public:system:controller:bootstrap-signer",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-public:system:controller:bootstrap-signer",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-public:system:controller:bootstrap-signer",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-system:kube-proxy",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-system:kubeadm:kubelet-config",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-system:kubeadm:nodes-kubeadm-config",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-system:extension-apiserver-authentication-reader",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:kube-controller-manager",
+      "target": "Role:kube-system:system::leader-locking-kube-controller-manager",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:leader-election-controller",
+      "target": "Role:kube-system:system::leader-locking-kube-controller-manager",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Role:kube-system:system::leader-locking-kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-system:system::leader-locking-kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:kube-scheduler",
+      "target": "Role:kube-system:system::leader-locking-kube-scheduler",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Role:kube-system:system::leader-locking-kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "Role:kube-system:system::leader-locking-kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:bootstrap-signer",
+      "target": "Role:kube-system:system:controller:bootstrap-signer",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Role:kube-system:system:controller:bootstrap-signer",
+      "target": "Secret:kube-system:bootstrap-token-abcdef",
+      "relation": "Full Control of Secrets",
+      "weight": 2.0,
+      "risk_score": 8.5
+    },
+    {
+      "source": "ServiceAccount:kube-system:cloud-provider",
+      "target": "Role:kube-system:system:controller:cloud-provider",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Role:kube-system:system:controller:cloud-provider",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:token-cleaner",
+      "target": "Role:kube-system:system:controller:token-cleaner",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Role:kube-system:system:controller:token-cleaner",
+      "target": "Secret:kube-system:bootstrap-token-abcdef",
+      "relation": "Full Control of Secrets",
+      "weight": 2.0,
+      "risk_score": 8.5
+    },
+    {
+      "source": "Role:kube-system:system:controller:token-cleaner",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:local-path-storage:local-path-provisioner-service-account",
+      "target": "Role:local-path-storage:local-path-provisioner-role",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Role:local-path-storage:local-path-provisioner-role",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:cluster-admin",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:kindnet",
+      "target": "ClusterRole:cluster:kindnet",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:kindnet",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:kindnet",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:kindnet",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:cluster-admin",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:kubeadm:get-nodes",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-bootstrapper",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:certificates.k8s.io:certificatesigningrequests:nodeclient",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:certificates.k8s.io:certificatesigningrequests:selfnodeclient",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:kube-proxy",
+      "target": "ClusterRole:cluster:system:node-proxier",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:local-path-storage:local-path-provisioner-service-account",
+      "target": "ClusterRole:cluster:local-path-provisioner-role",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:local-path-provisioner-role",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:local-path-provisioner-role",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:local-path-provisioner-role",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:local-path-provisioner-role",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:superadmin",
+      "target": "ClusterRole:cluster:cluster-admin",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:cluster-admin",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:basic-user",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:basic-user",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:attachdetach-controller",
+      "target": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:attachdetach-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:certificate-controller",
+      "target": "ClusterRole:cluster:system:controller:certificate-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:certificate-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:certificate-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:certificate-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:certificate-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:certificate-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:certificate-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:clusterrole-aggregation-controller",
+      "target": "ClusterRole:cluster:system:controller:clusterrole-aggregation-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:clusterrole-aggregation-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:cronjob-controller",
+      "target": "ClusterRole:cluster:system:controller:cronjob-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:cronjob-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:cronjob-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:cronjob-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:cronjob-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:cronjob-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:cronjob-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:daemon-set-controller",
+      "target": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:daemon-set-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:deployment-controller",
+      "target": "ClusterRole:cluster:system:controller:deployment-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:deployment-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:deployment-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:deployment-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:deployment-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:deployment-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:deployment-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:disruption-controller",
+      "target": "ClusterRole:cluster:system:controller:disruption-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:disruption-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:endpoint-controller",
+      "target": "ClusterRole:cluster:system:controller:endpoint-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpoint-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpoint-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpoint-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpoint-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:endpointslice-controller",
+      "target": "ClusterRole:cluster:system:controller:endpointslice-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslice-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslice-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslice-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslice-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:endpointslicemirroring-controller",
+      "target": "ClusterRole:cluster:system:controller:endpointslicemirroring-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslicemirroring-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslicemirroring-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslicemirroring-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslicemirroring-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:endpointslicemirroring-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:ephemeral-volume-controller",
+      "target": "ClusterRole:cluster:system:controller:ephemeral-volume-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:ephemeral-volume-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:ephemeral-volume-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:ephemeral-volume-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:ephemeral-volume-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:expand-controller",
+      "target": "ClusterRole:cluster:system:controller:expand-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:expand-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:expand-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:expand-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:expand-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:expand-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:generic-garbage-collector",
+      "target": "ClusterRole:cluster:system:controller:generic-garbage-collector",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:generic-garbage-collector",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:generic-garbage-collector",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:horizontal-pod-autoscaler",
+      "target": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:horizontal-pod-autoscaler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:job-controller",
+      "target": "ClusterRole:cluster:system:controller:job-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:job-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:job-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:job-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:job-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:job-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:legacy-service-account-token-cleaner",
+      "target": "ClusterRole:cluster:system:controller:legacy-service-account-token-cleaner",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:legacy-service-account-token-cleaner",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:legacy-service-account-token-cleaner",
+      "target": "Vulnerability:cluster:Full Control of Secrets",
+      "relation": "can-exploit",
+      "weight": 2.0,
+      "risk_score": 8.5
+    },
+    {
+      "source": "ServiceAccount:kube-system:namespace-controller",
+      "target": "ClusterRole:cluster:system:controller:namespace-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:namespace-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:namespace-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:namespace-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:node-controller",
+      "target": "ClusterRole:cluster:system:controller:node-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:node-controller",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:node-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:node-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:node-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:node-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:persistent-volume-binder",
+      "target": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:persistent-volume-binder",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:pod-garbage-collector",
+      "target": "ClusterRole:cluster:system:controller:pod-garbage-collector",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:pod-garbage-collector",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:pod-garbage-collector",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:pod-garbage-collector",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:pv-protection-controller",
+      "target": "ClusterRole:cluster:system:controller:pv-protection-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:pv-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:pv-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:pvc-protection-controller",
+      "target": "ClusterRole:cluster:system:controller:pvc-protection-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:pvc-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:pvc-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:pvc-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:replicaset-controller",
+      "target": "ClusterRole:cluster:system:controller:replicaset-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replicaset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replicaset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replicaset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replicaset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replicaset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:replication-controller",
+      "target": "ClusterRole:cluster:system:controller:replication-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replication-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replication-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replication-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replication-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:replication-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:resource-claim-controller",
+      "target": "ClusterRole:cluster:system:controller:resource-claim-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resource-claim-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resource-claim-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resource-claim-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resource-claim-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resource-claim-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resource-claim-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:resourcequota-controller",
+      "target": "ClusterRole:cluster:system:controller:resourcequota-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resourcequota-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resourcequota-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:resourcequota-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:root-ca-cert-publisher",
+      "target": "ClusterRole:cluster:system:controller:root-ca-cert-publisher",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:root-ca-cert-publisher",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:root-ca-cert-publisher",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:route-controller",
+      "target": "ClusterRole:cluster:system:controller:route-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:route-controller",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:route-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:route-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:selinux-warning-controller",
+      "target": "ClusterRole:cluster:system:controller:selinux-warning-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:selinux-warning-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:selinux-warning-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:selinux-warning-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:selinux-warning-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:selinux-warning-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:service-account-controller",
+      "target": "ClusterRole:cluster:system:controller:service-account-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-account-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-account-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:service-cidrs-controller",
+      "target": "ClusterRole:cluster:system:controller:service-cidrs-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-cidrs-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-cidrs-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-cidrs-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-cidrs-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-cidrs-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:service-controller",
+      "target": "ClusterRole:cluster:system:controller:service-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-controller",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:service-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:statefulset-controller",
+      "target": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:statefulset-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:ttl-after-finished-controller",
+      "target": "ClusterRole:cluster:system:controller:ttl-after-finished-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:ttl-after-finished-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:ttl-after-finished-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:ttl-controller",
+      "target": "ClusterRole:cluster:system:controller:ttl-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:ttl-controller",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:ttl-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:validatingadmissionpolicy-status-controller",
+      "target": "ClusterRole:cluster:system:controller:validatingadmissionpolicy-status-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:validatingadmissionpolicy-status-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:validatingadmissionpolicy-status-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:validatingadmissionpolicy-status-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:volumeattributesclass-protection-controller",
+      "target": "ClusterRole:cluster:system:controller:volumeattributesclass-protection-controller",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:volumeattributesclass-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:volumeattributesclass-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:volumeattributesclass-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:controller:volumeattributesclass-protection-controller",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ServiceAccount:kube-system:coredns",
+      "target": "ClusterRole:cluster:system:coredns",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:coredns",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:coredns",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Control of Secrets",
+      "relation": "can-exploit",
+      "weight": 2.0,
+      "risk_score": 8.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Secret:big-monolith:vaultapikey",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Secret:big-monolith:webhookapikey",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Secret:default:goatvault",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Secret:default:sh.helm.release.v1.metadata-db.v1",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Secret:kube-system:bootstrap-token-abcdef",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-controller-manager",
+      "target": "Vulnerability:cluster:Mint Arbitrary SA Tokens",
+      "relation": "can-exploit",
+      "weight": 2.0,
+      "risk_score": 8.5
+    },
+    {
+      "source": "ServiceAccount:kube-system:kube-dns",
+      "target": "ClusterRole:cluster:system:kube-dns",
+      "relation": "bound-to",
+      "weight": 1.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-dns",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:kube-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:monitoring",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Secret:big-monolith:vaultapikey",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Secret:big-monolith:webhookapikey",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Secret:default:goatvault",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Secret:default:sh.helm.release.v1.metadata-db.v1",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Secret:kube-system:bootstrap-token-abcdef",
+      "relation": "Full Cluster Admin (Wildcard)",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Mint Arbitrary SA Tokens",
+      "relation": "can-exploit",
+      "weight": 2.0,
+      "risk_score": 8.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Node Access",
+      "relation": "can-exploit",
+      "weight": 1.5,
+      "risk_score": 9.5
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:node-proxier",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:volume-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:volume-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    },
+    {
+      "source": "ClusterRole:cluster:system:volume-scheduler",
+      "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
+      "relation": "can-exploit",
+      "weight": 1.0,
+      "risk_score": 10.0
+    }
+  ]
+}
