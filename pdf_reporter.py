@@ -13,7 +13,7 @@ def export_full_pdf_report(all_paths, graph_ref, filename="Full_Security_Audit.p
     doc = SimpleDocTemplate(full_path, pagesize=letter)
 
     """Generates a multi-page PDF audit for all detected attack paths."""
-    doc = SimpleDocTemplate(filename, pagesize=letter)
+    # doc = SimpleDocTemplate(filename, pagesize=letter)
     styles = getSampleStyleSheet()
     story = []
 
