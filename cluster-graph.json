@@ -173,6 +173,58 @@
       "meta": {}
     },
     {
+      "id": "Pod:default:batch-check-job-8d72s",
+      "type": "Pod",
+      "name": "batch-check-job-8d72s",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-batch-check"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:batch-check-job-ds77m",
+      "type": "Pod",
+      "name": "batch-check-job-ds77m",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-batch-check"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:batch-check-job-jjf6z",
+      "type": "Pod",
+      "name": "batch-check-job-jjf6z",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-batch-check"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:batch-check-job-w4zsv",
+      "type": "Pod",
+      "name": "batch-check-job-w4zsv",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-batch-check"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
       "id": "Pod:default:build-code-deployment-84fb858df9-xw8c4",
       "type": "Pod",
       "name": "build-code-deployment-84fb858df9-xw8c4",
@@ -199,9 +251,61 @@
       }
     },
     {
+      "id": "Pod:default:hidden-in-layers-2588j",
+      "type": "Pod",
+      "name": "hidden-in-layers-2588j",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-hidden-in-layers"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:hidden-in-layers-9qw2g",
+      "type": "Pod",
+      "name": "hidden-in-layers-9qw2g",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-hidden-in-layers"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
       "id": "Pod:default:hidden-in-layers-hftpb",
       "type": "Pod",
       "name": "hidden-in-layers-hftpb",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-hidden-in-layers"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:hidden-in-layers-r8582",
+      "type": "Pod",
+      "name": "hidden-in-layers-r8582",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-hidden-in-layers"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:hidden-in-layers-s4qkl",
+      "type": "Pod",
+      "name": "hidden-in-layers-s4qkl",
       "namespace": "default",
       "risk_score": 1.0,
       "meta": {
@@ -456,6 +560,16 @@
       "meta": {}
     },
     {
+      "id": "External:cloud:Cloud-Metadata-API",
+      "type": "External",
+      "name": "Cloud-Metadata-API",
+      "namespace": "cloud",
+      "risk_score": 0.0,
+      "meta": {
+        "crown_jewel": true
+      }
+    },
+    {
       "id": "Secret:big-monolith:vaultapikey",
       "type": "Secret",
       "name": "vaultapikey",
@@ -490,16 +604,6 @@
       "type": "Secret",
       "name": "sh.helm.release.v1.metadata-db.v1",
       "namespace": "default",
-      "risk_score": 0.0,
-      "meta": {
-        "crown_jewel": true
-      }
-    },
-    {
-      "id": "Secret:kube-system:bootstrap-token-abcdef",
-      "type": "Secret",
-      "name": "bootstrap-token-abcdef",
-      "namespace": "kube-system",
       "risk_score": 0.0,
       "meta": {
         "crown_jewel": true
@@ -1565,6 +1669,34 @@
       "risk_score": 1.0
     },
     {
+      "source": "Pod:default:batch-check-job-8d72s",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-ds77m",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-jjf6z",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-w4zsv",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
       "source": "Pod:default:build-code-deployment-84fb858df9-xw8c4",
       "target": "ServiceAccount:default:default",
       "relation": "runs-as-sa",
@@ -1579,7 +1711,35 @@
       "risk_score": 1.0
     },
     {
+      "source": "Pod:default:hidden-in-layers-2588j",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-9qw2g",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
       "source": "Pod:default:hidden-in-layers-hftpb",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-r8582",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-s4qkl",
       "target": "ServiceAccount:default:default",
       "relation": "runs-as-sa",
       "weight": 1.0,
@@ -1689,6 +1849,258 @@
       "relation": "runs-as-sa",
       "weight": 1.0,
       "risk_score": 1.0
+    },
+    {
+      "source": "Pod:big-monolith:hunger-check-deployment-5488f8b86c-6sj45",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-5tkr7",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-8d72s",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-ds77m",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-jjf6z",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:batch-check-job-w4zsv",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:build-code-deployment-84fb858df9-xw8c4",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:health-check-deployment-b7f74cdc8-hz66g",
+      "target": "Node:cluster:kubernetes-goat-cluster-control-plane",
+      "relation": "container-escape",
+      "weight": 0.5,
+      "risk_score": 9.0
+    },
+    {
+      "source": "Pod:default:health-check-deployment-b7f74cdc8-hz66g",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-2588j",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-9qw2g",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-hftpb",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-r8582",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-s4qkl",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:internal-proxy-deployment-c59c45d94-p7q59",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:metadata-db-6fbb8cd6d7-8qctp",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:poor-registry-deployment-7b75fbd7-c2bfr",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:system-monitor-deployment-866f697c75-9lwps",
+      "target": "Node:cluster:kubernetes-goat-cluster-control-plane",
+      "relation": "container-escape",
+      "weight": 0.5,
+      "risk_score": 9.0
+    },
+    {
+      "source": "Pod:default:system-monitor-deployment-866f697c75-9lwps",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:kube-system:coredns-7d764666f9-k4jps",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:kube-system:coredns-7d764666f9-vk66g",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:kube-system:etcd-kubernetes-goat-cluster-control-plane",
+      "target": "Node:cluster:kubernetes-goat-cluster-control-plane",
+      "relation": "container-escape",
+      "weight": 0.5,
+      "risk_score": 9.0
+    },
+    {
+      "source": "Pod:kube-system:etcd-kubernetes-goat-cluster-control-plane",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:kube-system:kindnet-mfrjm",
+      "target": "Node:cluster:kubernetes-goat-cluster-control-plane",
+      "relation": "container-escape",
+      "weight": 0.5,
+      "risk_score": 9.0
+    },
+    {
+      "source": "Pod:kube-system:kindnet-mfrjm",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:kube-system:kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "target": "Node:cluster:kubernetes-goat-cluster-control-plane",
+      "relation": "container-escape",
+      "weight": 0.5,
+      "risk_score": 9.0
+    },
+    {
+      "source": "Pod:kube-system:kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:kube-system:kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "target": "Node:cluster:kubernetes-goat-cluster-control-plane",
+      "relation": "container-escape",
+      "weight": 0.5,
+      "risk_score": 9.0
+    },
+    {
+      "source": "Pod:kube-system:kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:kube-system:kube-proxy-97q47",
+      "target": "Node:cluster:kubernetes-goat-cluster-control-plane",
+      "relation": "container-escape",
+      "weight": 0.5,
+      "risk_score": 9.0
+    },
+    {
+      "source": "Pod:kube-system:kube-proxy-97q47",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:kube-system:kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "target": "Node:cluster:kubernetes-goat-cluster-control-plane",
+      "relation": "container-escape",
+      "weight": 0.5,
+      "risk_score": 9.0
+    },
+    {
+      "source": "Pod:kube-system:kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:local-path-storage:local-path-provisioner-67b8995b4b-52vjb",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:secure-middleware:cache-store-deployment-8bf8d695b-jggt6",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
     },
     {
       "source": "ServiceAccount:big-monolith:big-monolith-sa",
@@ -1824,13 +2236,6 @@
       "risk_score": 5.0
     },
     {
-      "source": "Role:kube-system:system:controller:bootstrap-signer",
-      "target": "Secret:kube-system:bootstrap-token-abcdef",
-      "relation": "Full Control of Secrets",
-      "weight": 2.0,
-      "risk_score": 8.5
-    },
-    {
       "source": "ServiceAccount:kube-system:cloud-provider",
       "target": "Role:kube-system:system:controller:cloud-provider",
       "relation": "bound-to",
@@ -1850,13 +2255,6 @@
       "relation": "bound-to",
       "weight": 1.0,
       "risk_score": 5.0
-    },
-    {
-      "source": "Role:kube-system:system:controller:token-cleaner",
-      "target": "Secret:kube-system:bootstrap-token-abcdef",
-      "relation": "Full Control of Secrets",
-      "weight": 2.0,
-      "risk_score": 8.5
     },
     {
       "source": "Role:kube-system:system:controller:token-cleaner",
@@ -3589,13 +3987,6 @@
     },
     {
       "source": "ClusterRole:cluster:system:kube-controller-manager",
-      "target": "Secret:kube-system:bootstrap-token-abcdef",
-      "relation": "Full Cluster Admin (Wildcard)",
-      "weight": 1.0,
-      "risk_score": 10.0
-    },
-    {
-      "source": "ClusterRole:cluster:system:kube-controller-manager",
       "target": "Vulnerability:cluster:Full Cluster Admin (Wildcard)",
       "relation": "can-exploit",
       "weight": 1.0,
@@ -3926,13 +4317,6 @@
     {
       "source": "ClusterRole:cluster:system:node",
       "target": "Secret:default:sh.helm.release.v1.metadata-db.v1",
-      "relation": "Full Cluster Admin (Wildcard)",
-      "weight": 1.0,
-      "risk_score": 10.0
-    },
-    {
-      "source": "ClusterRole:cluster:system:node",
-      "target": "Secret:kube-system:bootstrap-token-abcdef",
       "relation": "Full Cluster Admin (Wildcard)",
       "weight": 1.0,
       "risk_score": 10.0

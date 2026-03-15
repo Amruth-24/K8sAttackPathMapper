@@ -16,6 +16,20 @@ MOCK_CVE_LIST = [
     {"keyword": "log4j", "cve": "CVE-2021-44228", "cvss": 10.0, "desc": "Log4Shell"}
 ]
 
+
+REMEDIATION_MAP = {
+    "container-escape": "Critical: Container has privileged access or sensitive host mounts. Implement Pod Security Admissions (PSA) using the 'restricted' profile to block privileged containers.",
+    "potential-ssrf": "Network Risk: Pod can reach Cloud Metadata API (169.254.169.254). Deploy a NetworkPolicy to restrict egress traffic to the metadata service.",
+    "can-exec": "Lateral Movement: Identity allows 'exec' into other pods. Restrict the 'pods/exec' and 'pods/attach' verbs. Audit for users who do not strictly require shell access.",
+    "can-impersonate": "Privilege Escalation: Identity can impersonate other ServiceAccounts. Remove 'impersonate' permissions from non-admin roles.",
+    "wildcard-rbac": "RBAC Hygiene: Role uses '*' wildcards. Replace with specific resources and verbs to follow the Principle of Least Privilege.",
+    "secret-reader": "Information Disclosure: Role allows reading all secrets in the namespace. Use a Secret Store CSI driver or HashiCorp Vault to prevent secrets from being stored as plain K8s objects.",
+    "node-admin": "Full Takeover: Attacker has reached the Node level. Ensure the Kubelet is configured with '--anonymous-auth=false' and 'NodeRestriction' admission controller is enabled.",
+    "default-remediation": "Generic: Review the bound Role/ClusterRole and remove unnecessary verbs/resources to limit the blast radius.",
+    "can-exploit": "Critical RBAC Violation: The identity has wildcard ('*') permissions. Replace the '*' verb/resource with specific access (e.g., 'get' on 'pods') to enforce Least Privilege.",
+    "runs-as-sa": "Pod Security: This pod is automatically mounting a high-privilege ServiceAccount token. If the pod doesn't need to talk to the K8s API, set 'automountServiceAccountToken: false'.",
+}
+
 # Risk Matrix Format: (resource, verb): {"risk_score": X, "difficulty_weight": Y, "desc": "Z"}
 RISK_MATRIX = {
     # =========================================================================

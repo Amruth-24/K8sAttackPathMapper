@@ -1,77 +1,96 @@
-# pdf_reporter.py
-
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.colors import red, darkblue, black
+from reportlab.lib import colors
+import os
+from config import REMEDIATION_MAP
 
-def export_pdf_report(worst_path, blast, cycles, critical_res, filename="Kill_Chain_Report.pdf"):
-    """Generates a professional PDF report from the graph analysis."""
+def export_full_pdf_report(all_paths, graph_ref, filename="Full_Security_Audit.pdf"):
+
+    report_dir = os.getenv('REPORT_PATH', '.') 
+    full_path = os.path.join(report_dir, filename)
+
+    doc = SimpleDocTemplate(full_path, pagesize=letter)
+
+    """Generates a multi-page PDF audit for all detected attack paths."""
     doc = SimpleDocTemplate(filename, pagesize=letter)
     styles = getSampleStyleSheet()
     story = []
 
-    # Custom Styles
+    # Custom Styles / Safety check for SubTitle
     title_style = styles['Title']
-    title_style.textColor = darkblue
-    heading_style = styles['Heading2']
+    title_style.textColor = colors.darkblue
+    subtitle_style = styles.get('Subtitle', styles.get('Heading2', styles['Normal']))
+    h2_style = styles['Heading2']
+    h3_style = styles['Heading3']
     normal_style = styles['Normal']
-    alert_style = styles['Normal']
-    alert_style.textColor = red
+    
+    # 1. Title Page
+    story.append(Paragraph("Kubernetes Cluster Security Audit", title_style))
+    story.append(Paragraph("Automated Attack Path & Risk Analysis Report", subtitle_style))
+    story.append(Spacer(1, 30))
 
-    # Title
-    story.append(Paragraph("Kubernetes Attack Path: Kill Chain Report", title_style))
-    story.append(Spacer(1, 12))
+    # 2. Executive Summary
+    story.append(Paragraph("1. Executive Summary", h2_style))
+    total_paths = len(all_paths)
+    
+    # FIX: Use total_risk_score and .get() for safety
+    critical_paths = len([p for p in all_paths if p.get('total_risk_score', 0) >= 15])
+    highest_risk = all_paths[0].get('total_risk_score', 0) if all_paths else 0
 
-    # 1. Attack Path Section
-    story.append(Paragraph("1. Critical Attack Path", heading_style))
-    if worst_path:
-        severity = "CRITICAL" if worst_path['total_risk_score'] >= 15 else "HIGH" if worst_path['total_risk_score'] >= 8 else "MEDIUM"
-        story.append(Paragraph(f"<b>Status:</b> <font color='red'>VULNERABLE ({severity})</font>", normal_style))
-        story.append(Paragraph(f"<b>Entry Point:</b> {worst_path['source']}", normal_style))
-        story.append(Paragraph(f"<b>Target:</b> {worst_path['target']}", normal_style))
-        story.append(Paragraph(f"<b>Total Hops:</b> {worst_path['total_hops']} | <b>Path Risk Score:</b> {worst_path['total_risk_score']}", normal_style))
-        story.append(Spacer(1, 12))
+    summary_data = [
+        ["Metric", "Value"],
+        ["Total Exploitable Paths Found", str(total_paths)],
+        ["Critical Severity Paths", str(critical_paths)],
+        ["Highest Path Risk Score", f"{highest_risk}/20"],
+        ["Cluster Status", "VULNERABLE" if total_paths > 0 else "SECURE"]
+    ]
+    
+    summary_table = Table(summary_data, colWidths=[200, 100])
+    summary_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (1, 0), colors.darkblue),
+        ('TEXTCOLOR', (0, 0), (1, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+    ]))
+    story.append(summary_table)
+    story.append(Spacer(1, 20))
+
+    # 3. Detailed Path Analysis
+    story.append(Paragraph("2. Detailed Kill Chain Analysis", h2_style))
+    for idx, p_data in enumerate(all_paths[:10]):
+        score = p_data.get('total_risk_score', 0)
+        severity = "CRITICAL" if score >= 15 else "HIGH" if score >= 8 else "MEDIUM"
+        story.append(Paragraph(f"Path #{idx+1}: {severity} (Score: {score})", h3_style))
         
-        story.append(Paragraph("<b>Kill Chain Steps:</b>", normal_style))
-        path = worst_path["path"]
-        story.append(Paragraph(f"Start: {path[0]}", normal_style))
+        path_text = ""
+        path = p_data['path']
+        for i in range(len(path) - 1):
+            u, v = path[i], path[i+1]
+            rel = graph_ref.G[u][v].get('relation', 'access')
+            path_text += f"<b>{u}</b><br/>&nbsp;&nbsp;↓ <i>[{rel}]</i><br/>"
+        path_text += f"<b>{path[-1]}</b>"
         
-        # We extract edge data using the graph reference passed from the builder
-        graph_ref = worst_path.get('graph_ref')
+        story.append(Paragraph(path_text, normal_style))
+        story.append(Spacer(1, 15))
+
+    story.append(PageBreak())
+
+    # 4. Remediation Roadmap
+    story.append(Paragraph("3. Remediation Roadmap", h2_style))
+    detected_vulnerabilities = set()
+    for p_data in all_paths:
+        path = p_data['path']
         for u, v in zip(path[:-1], path[1:]):
-            edge_data = graph_ref.G[u][v] 
-            cve_info = f" (CVE: {graph_ref.G.nodes[u].get('cve')})" if graph_ref.G.nodes[u].get('cve') else ""
-            story.append(Paragraph(f"&nbsp;&nbsp;→ <i>[{edge_data.get('relation')}]</i> {v}{cve_info}", normal_style))
-    else:
-        story.append(Paragraph("<b>Status:</b> SECURE. No attack paths detected.", normal_style))
+            rel = graph_ref.G[u][v].get('relation')
+            if rel in REMEDIATION_MAP:
+                detected_vulnerabilities.add(rel)
 
-    story.append(Spacer(1, 20))
+    for vuln_type in detected_vulnerabilities:
+        advice = REMEDIATION_MAP[vuln_type]
+        story.append(Paragraph(f"• <b>{vuln_type.replace('-', ' ').title()}:</b> {advice}", normal_style))
+        story.append(Spacer(1, 8))
 
-    # 2. Blast Radius Section
-    story.append(Paragraph("2. Blast Radius Analysis", heading_style))
-    blast_source = worst_path["source"] if worst_path else "Entry Point"
-    if "error" not in blast:
-        story.append(Paragraph(f"If <b>{blast_source}</b> is compromised, the attacker can reach <b>{blast['total_reachable']}</b> other resources within {blast['max_hops_checked']} hops.", normal_style))
-
-    story.append(Spacer(1, 20))
-
-    # 3. Cycles Section
-    story.append(Paragraph("3. Circular Dependencies", heading_style))
-    if cycles:
-        story.append(Paragraph(f"Detected {len(cycles)} privilege loops:", alert_style))
-        for c in cycles:
-            story.append(Paragraph(f"&nbsp;&nbsp;• {' <-> '.join(c)}", normal_style))
-    else:
-        story.append(Paragraph("No circular privilege loops detected.", normal_style))
-
-    story.append(Spacer(1, 20))
-
-    # 4. Remediation Section
-    story.append(Paragraph("4. Critical Node Remediation", heading_style))
-    recommendation = critical_res.get('recommendation', critical_res.get('message'))
-    story.append(Paragraph(f"<b>Recommendation:</b> {recommendation}", normal_style))
-
-    # Build the PDF
     doc.build(story)
-    print(f"[+] PDF Report successfully exported to: {filename}")
+    print(f"[+] Multi-page Security Audit exported to: {full_path}")

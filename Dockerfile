@@ -1,24 +1,23 @@
-# Use Python 3.10 as mandated by the prompt
 FROM python:3.10-slim
 
-# Install system dependencies and kubectl
-RUN apt-get update && apt-get install -y \
-    curl \
-    && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
-    && chmod +x kubectl \
-    && mv kubectl /usr/local/bin/ \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# 1. Install kubectl
+RUN apt-get update && apt-get install -y curl && \
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
+    chmod +x kubectl && mv kubectl /usr/local/bin/
 
-# Set working directory
 WORKDIR /app
 
-# Copy requirements first to leverage Docker cache
+# 2. Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application
+# 3. Copy ALL code into the image (Making it self-contained)
 COPY . .
 
-# Set the entry point to your dashboard orchestrator
+# 4. Create a directory for reports (This will be our mount point)
+RUN mkdir /app/reports
+
+# Set environment variable to tell the script where to save the PDF
+ENV REPORT_PATH=/app/reports
+
 ENTRYPOINT ["python", "cli_dashboard.py"]

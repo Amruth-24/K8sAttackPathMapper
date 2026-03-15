@@ -1,5 +1,8 @@
 #!/bin/bash
-echo "[*] Building GuardV2 Docker Image..."
-docker build -t guardv2 .
-echo "[*] Running Analysis..."
-docker run -it --rm -v ~/.kube:/root/.kube -v "${PWD}:/app" --network host guardv2
+rm -f Full_Security_Audit.pdf
+echo "[*] Launching shadowtracerv1 Analysis..."
+docker run -it --rm \
+  -v ~/.kube:/root/.kube \
+  -v "$(pwd):/app/reports" \
+  --network host \
+  shadowtracerv1

@@ -142,6 +142,29 @@ class UnifiedK8sCollector:
             sa_node = self.add_node("ServiceAccount", sa_name, ns)
             self.add_edge(pod_node["id"], sa_node["id"], "runs-as-sa", weight=1.0, risk_score=pod_risk)
 
+        # New Step: Deep Pod Inspection for Escapes & Lateral Movement
+        for pod in self.snapshot.get("pods", {}).get("items", []):
+            p_name = pod["metadata"]["name"]
+            p_ns = pod["metadata"]["namespace"]
+            p_id = self.node_id("Pod", p_name, p_ns)
+            
+            spec = pod.get("spec", {})
+            containers = spec.get("containers", [])
+            
+            # 1. Check for Privileged Escapes (Pod -> Node)
+            is_privileged = any(c.get("securityContext", {}).get("privileged", False) for c in containers)
+            has_host_mount = any(v.get("hostPath") for v in spec.get("volumes", []))
+            
+            if is_privileged or has_host_mount:
+                node_name = spec.get("nodeName")
+                if node_name:
+                    node_id = self.node_id("Node", node_name, "cluster")
+                    self.add_edge(p_id, node_id, "container-escape", weight=0.5, risk_score=9.0)
+
+            # 2. Generic Metadata SSRF (Standard in Cloud K8s)
+            metadata_node = self.add_node("External", "Cloud-Metadata-API", "cloud", {"crown_jewel": True})
+            self.add_edge(p_id, metadata_node["id"], "potential-ssrf", weight=2.0, risk_score=5.0)
+
         # 4. Map Crown Jewel Secrets
         secrets_cache = {}
         for s in self.snapshot.get("secrets", {}).get("items", []):
