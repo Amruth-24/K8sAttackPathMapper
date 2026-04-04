@@ -238,7 +238,7 @@ def find_all_attack_paths(graph, sources, crown_jewels, cutoff=8):
             try:
                 p = nx.dijkstra_path(graph.G, source=src, target=tgt, weight="weight")
                 risk = sum(
-                    graph.G[u][v].get("cvss") or graph.G[u][v].get("risk_score", 0)
+                    graph.G[u][v].get("weight",0)
                     for u, v in zip(p[:-1], p[1:])
                 )
                 all_paths.append({
@@ -376,7 +376,8 @@ def generate_report(graph, blast_radius_node=None):
     print("[ SECTION 4 — CRITICAL NODE ANALYSIS ]")
     print("  Computing... (removing each node and recounting paths)\n")
 
-    all_sources = list(set(p["source"] for p in all_paths) | set(entry_points))
+    all_pods     = [n for n, d in G.nodes(data=True) if d.get('type') == 'Pod']
+    all_sources = list(set(p["source"] for p in all_paths) | set(entry_points) | set(all_pods))
     critical_res = graph.identify_critical_node(all_sources, crown_jewels)
 
     baseline_count = critical_res.get("total_paths", len(all_paths))
@@ -413,7 +414,7 @@ def generate_report(graph, blast_radius_node=None):
     print()
 
     # ══════════════════════════════════════════════════════════════
-    # RICH DASHBOARD + PDF
+    # RICH DASHBOARD + PDF + INTERACTIVE GRAPH VISUALIZER
     # ══════════════════════════════════════════════════════════════
     blast_for_dashboard = {"total_reachable": len(total_blast_nodes), "max_hops_checked": 3}
 
@@ -421,6 +422,21 @@ def generate_report(graph, blast_radius_node=None):
     display_rich_dashboard(worst_path, blast_for_dashboard, cycles, critical_res, graph)
 
     export_full_pdf_report(all_paths, graph)
+
+    # Bonus Task 1 — Interactive HTML Attack Graph
+    try:
+        from graph_visualizer import export_html_visualizer
+        html_path = export_html_visualizer(
+            all_paths    = all_paths,
+            cycles       = cycles,
+            critical_res = critical_res,
+            graph_ref    = graph,
+            blast_sources= blast_sources if blast_sources else entry_points,
+        )
+        print(f"\n[+] Interactive graph visualizer: {html_path}")
+        print(f"    Open in any browser — no server required.\n")
+    except Exception as e:
+        print(f"[!] Graph visualizer export failed: {e}")
 
 
 # ══════════════════════════════════════════════════════════════════
