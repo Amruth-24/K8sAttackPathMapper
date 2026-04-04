@@ -3,9 +3,9 @@ import networkx as nx
 import argparse
 from pdf_reporter import export_full_pdf_report
 
+
 class AttackPathGraph:
     def __init__(self):
-        # Initialize the Directed Graph
         self.G = nx.DiGraph()
 
     def load_from_json(self, filepath):
@@ -13,31 +13,31 @@ class AttackPathGraph:
         try:
             with open(filepath, 'r') as file:
                 data = json.load(file)
-                
-            # 1. Load Nodes
+
             for node in data.get("nodes", []):
-                node_id = node.pop("id") # Extract ID to use as the NetworkX node key
-                self.G.add_node(node_id, **node) # Load the rest as attributes
-                
-            # 2. Load Edges
+                node_copy = dict(node)          # FIX: don't mutate the original dict
+                node_id = node_copy.pop("id")
+                self.G.add_node(node_id, **node_copy)
+
             for edge in data.get("edges", []):
-                source = edge.pop("source")
-                target = edge.pop("target")
-                self.G.add_edge(source, target, **edge)
-                
-            print(f"[*] Graph loaded successfully: {self.G.number_of_nodes()} Nodes, {self.G.number_of_edges()} Edges.")
+                edge_copy = dict(edge)          # FIX: don't mutate the original dict
+                source = edge_copy.pop("source")
+                target = edge_copy.pop("target")
+                self.G.add_edge(source, target, **edge_copy)
+
+            print(f"[*] Graph loaded: {self.G.number_of_nodes()} Nodes, {self.G.number_of_edges()} Edges.")
             return True
         except Exception as e:
             print(f"[!] Error loading graph: {e}")
             return False
 
     def get_entry_points(self):
-        """Dynamically finds nodes tagged as public entry points."""
-        return [n for n, attr in self.G.nodes(data=True) if attr.get("meta", {}).get("entry_point") == True]
+        return [n for n, attr in self.G.nodes(data=True)
+                if attr.get("meta", {}).get("entry_point") is True]
 
     def get_crown_jewels(self):
-        """Dynamically finds nodes tagged as crown jewels."""
-        return [n for n, attr in self.G.nodes(data=True) if attr.get("meta", {}).get("crown_jewel") == True]
+        return [n for n, attr in self.G.nodes(data=True)
+                if attr.get("meta", {}).get("crown_jewel") is True]
 
     # ==========================================
     # CORE ALGORITHMS
@@ -48,8 +48,13 @@ class AttackPathGraph:
         if source_node not in self.G or target_node not in self.G:
             return {"error": "Source or target not found."}
         try:
-            attack_path = nx.dijkstra_path(self.G, source=source_node, target=target_node, weight='weight')
-            total_risk = sum(self.G[u][v].get('risk_score', 0) for u, v in zip(attack_path[:-1], attack_path[1:]))
+            attack_path = nx.dijkstra_path(
+                self.G, source=source_node, target=target_node, weight='weight'
+            )
+            total_risk = sum(
+                self.G[u][v].get('risk_score', 0)
+                for u, v in zip(attack_path[:-1], attack_path[1:])
+            )
             return {
                 "path": attack_path,
                 "total_hops": len(attack_path) - 1,
@@ -62,193 +67,243 @@ class AttackPathGraph:
         """Algorithm 1: Blast Radius via BFS."""
         if source_node not in self.G:
             return {"error": "Source not found."}
-        reachable = nx.single_source_shortest_path_length(self.G, source=source_node, cutoff=max_hops)
-        danger_zone = [n for n in reachable.keys() if n != source_node]
+        reachable = nx.single_source_shortest_path_length(
+            self.G, source=source_node, cutoff=max_hops
+        )
+        danger_zone = [n for n in reachable if n != source_node]
         return {
             "total_reachable": len(danger_zone),
+            "nodes": danger_zone,
             "max_hops_checked": max_hops
         }
 
     def detect_cycles(self):
         """Algorithm 3: Circular Permission Detection via DFS."""
         cycles = list(nx.simple_cycles(self.G))
-        formatted_cycles = [c for c in cycles if len(c) > 1]
-        return formatted_cycles
+        return [c for c in cycles if len(c) > 1]
 
-    # Update this method inside the AttackPathGraph class in graph_builder.py
+    # ==========================================
+    # TASK 4: CRITICAL NODE ANALYSIS (FIXED)
+    # ==========================================
 
-    def identify_critical_node(self, source, target):
-        """Identifies the bottleneck node and provides dynamic remediation."""
-        try:
-            # Get the path we are analyzing
-            path_res = self.get_shortest_path(source, target)
-            if "error" in path_res:
-                return {"message": "No path to analyze."}
+    def identify_critical_node(self, sources, crown_jewels, cutoff=8):
+        """
+        Task 4: For each candidate node, temporarily remove it from the graph,
+        recount source-to-crown-jewel paths, and return the node whose removal
+        eliminates the most attack paths.
 
-            path = path_res["path"]
-            
-            # Usually, the 'bottleneck' is the node right before the target 
-            # or the ServiceAccount that bridges the Pod to the Cluster
-            # For this logic, we'll analyze the 'highest risk' edge in the path
-            best_advice = "Generic: Review RBAC permissions."
-            bottleneck_node = None
-            max_edge_risk = -1
+        This is correct betweenness-style analysis on attack paths specifically,
+        as required by the problem statement.
+        """
+        if not sources or not crown_jewels:
+            return {"message": "No sources or crown jewels to analyse.", "recommendation": "Cluster appears secure."}
 
-            for i in range(len(path) - 1):
-                u, v = path[i], path[i+1]
-                edge_data = self.G[u][v]
-                rel = edge_data.get('relation', 'default-remediation')
-                
-                # Check our map for specific advice
-                if edge_data.get('risk_score', 0) > max_edge_risk:
-                    max_edge_risk = edge_data.get('risk_score')
-                    bottleneck_node = u
-                    from config import REMEDIATION_MAP
-                    best_advice = REMEDIATION_MAP.get(rel, REMEDIATION_MAP["default-remediation"])
+        # Step 1: Enumerate all baseline attack paths
+        def _count_paths(graph):
+            path_set = set()
+            for src in sources:
+                for tgt in crown_jewels:
+                    if src not in graph or tgt not in graph:
+                        continue
+                    try:
+                        for path in nx.all_simple_paths(graph, source=src, target=tgt, cutoff=cutoff):
+                            path_set.add(tuple(path))
+                    except (nx.NetworkXNoPath, nx.NodeNotFound):
+                        pass
+            return path_set
 
+        baseline_paths = _count_paths(self.G)
+        baseline_count = len(baseline_paths)
+
+        if baseline_count == 0:
+            return {"message": "No attack paths to analyse.", "recommendation": "Cluster appears secure."}
+
+        # Step 2: For each intermediate node, measure impact of removal
+        # We exclude source and target nodes themselves (can't patch the internet or the DB)
+        excluded = set(sources) | set(crown_jewels)
+        candidates = [n for n in self.G.nodes() if n not in excluded]
+
+        best_node = None
+        max_reduction = 0
+        best_reduction_detail = {}
+
+        for node in candidates:
+            G_temp = self.G.copy()
+            G_temp.remove_node(node)
+            remaining_paths = _count_paths(G_temp)
+            reduction = baseline_count - len(remaining_paths)
+
+            if reduction > max_reduction:
+                max_reduction = reduction
+                best_node = node
+                best_reduction_detail = {
+                    "paths_eliminated": reduction,
+                    "paths_remaining": len(remaining_paths),
+                }
+
+        if best_node is None:
             return {
-                "node": bottleneck_node,
-                "recommendation": best_advice
+                "message": "No single node removal significantly reduces attack paths.",
+                "recommendation": "Apply defence-in-depth: harden multiple nodes simultaneously.",
             }
-        except Exception as e:
-            return {"message": f"Remediation analysis failed: {str(e)}"}
+
+        node_data = self.G.nodes[best_node]
+        node_type = node_data.get('type', 'unknown')
+
+        from config import REMEDIATION_MAP
+        # Pick remediation hint based on node type or fall back to default
+        hint_key = {
+            "ServiceAccount": "runs-as-sa",
+            "Role": "wildcard-rbac",
+            "ClusterRole": "wildcard-rbac",
+            "Node": "node-admin",
+            "Secret": "secret-reader",
+        }.get(node_type, "default-remediation")
+        hint = REMEDIATION_MAP.get(hint_key, REMEDIATION_MAP["default-remediation"])
+
+        recommendation = (
+            f"Recommendation: Remove or restrict '{best_node}' "
+            f"({node_type}) to eliminate {max_reduction} of {baseline_count} attack paths. "
+            f"— {hint}"
+        )
+
+        return {
+            "node": best_node,
+            "node_type": node_type,
+            "paths_eliminated": max_reduction,
+            "total_paths": baseline_count,
+            "recommendation": recommendation,
+        }
+
 
 # ==========================================
 # CLI REPORT GENERATOR
 # ==========================================
 
-import networkx as nx
+def find_all_attack_paths(graph, sources, crown_jewels, cutoff=8):
+    """Enumerates all attack paths from any source to any crown jewel."""
+    all_paths = []
+    for source in sources:
+        for target in crown_jewels:
+            try:
+                for p in nx.all_simple_paths(graph.G, source=source, target=target, cutoff=cutoff):
+                    risk = sum(graph.G[u][v].get('risk_score', 0) for u, v in zip(p[:-1], p[1:]))
+                    all_paths.append({
+                        "source": source,
+                        "target": target,
+                        "path": p,
+                        "total_risk_score": round(risk, 2),
+                        "total_hops": len(p) - 1,
+                    })
+            except (nx.NetworkXNoPath, nx.NodeNotFound):
+                continue
+    return all_paths
 
-def generate_report(graph):
+
+def generate_report(graph, blast_radius_node=None):
     entry_points = graph.get_entry_points()
     crown_jewels = graph.get_crown_jewels()
 
     if not crown_jewels:
-        print("[!] No crown jewels or critical vulnerabilities found in the cluster.")
+        print("[!] No crown jewels found in the cluster graph.")
         return
 
-    all_detected_paths = []
-    
-    def find_all_paths(sources):
-        paths_found = []
-        for source in sources:
-            for target in crown_jewels:
-                try:
-                    # Cutoff 6 is usually enough for K8s Goat, increase to 8 if needed
-                    paths = nx.all_simple_paths(graph.G, source=source, target=target, cutoff=8)
-                    for p in paths:
-                        risk = sum(graph.G[u][v].get('risk_score', 0) for u, v in zip(p[:-1], p[1:]))
-                        paths_found.append({
-                            "source": source,
-                            "target": target,
-                            "path": p,
-                            "total_risk_score": risk, # FIX: Renamed from total_risk
-                            "total_hops": len(p) - 1
-                        })
-                except (nx.NetworkXNoPath, nx.NodeNotFound):
-                    continue
-        return paths_found
+    # ---- Collect all paths ----
+    all_detected_paths = find_all_attack_paths(graph, entry_points, crown_jewels)
 
-    # ==========================================
-    # PHASE 1 & 2: Search ALL Entry Points
-    # ==========================================
-    # Search from Internet
-    all_detected_paths.extend(find_all_paths(entry_points))
-    
-    # ALWAYS check internal Pods (Assumed Breach) to find lateral movement
-    print("[*] Performing 'Assumed Breach' scan for internal lateral movement...")
+    # Assumed Breach: also scan from every Pod
+    print("[*] Running 'Assumed Breach' lateral movement scan...")
     all_pods = [n for n, d in graph.G.nodes(data=True) if d.get('type') == 'Pod']
-    all_detected_paths.extend(find_all_paths(all_pods))
+    all_detected_paths += find_all_attack_paths(graph, all_pods, crown_jewels)
 
-    # Remove duplicate paths (in case a Pod is reached both by Internet and internal scan)
-    unique_paths = { tuple(p['path']): p for p in all_detected_paths }.values()
-    all_detected_paths = sorted(unique_paths, key=lambda x: x['total_risk_score'], reverse=True)
+    # Deduplicate and sort by risk (descending)
+    unique = {tuple(p['path']): p for p in all_detected_paths}
+    all_detected_paths = sorted(unique.values(), key=lambda x: x['total_risk_score'], reverse=True)
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("KILL CHAIN LIST".center(60))
-    print("="*60 + "\n")
+    print("=" * 60 + "\n")
+
+    worst_path = None
+    critical_res = {"message": "Cluster is currently secure."}
 
     if not all_detected_paths:
-        print("✅ SECURE: No paths detected from any entry point or internal Pod to any crown jewel.")
-        critical_res = {"message": "No paths to break."}
-        worst_path = None
+        print("✅ SECURE: No exploitable paths found.")
     else:
-        # We still identify the 'worst_path' for the Dashboard and Blast Radius
         worst_path = all_detected_paths[0]
-        
-        # Display the Top 5 Paths in the CLI
+
         for idx, p_data in enumerate(all_detected_paths[:5]):
-            # FIX: Use total_risk_score to match the find_all_paths function
-            score = p_data.get('total_risk_score', 0)
+            score = p_data['total_risk_score']
             severity = "CRITICAL" if score >= 15 else "HIGH" if score >= 8 else "MEDIUM"
-            
             print(f"[Path #{idx+1}] {severity} (Risk: {score})")
             print(f"  Entry: {p_data['source']}")
-            
-            path = p_data['path']
-            for u, v in zip(path[:-1], path[1:]):
-                edge_data = graph.G[u][v]
-                print(f"    → [{edge_data.get('relation')}] {v}")
+            for u, v in zip(p_data['path'][:-1], p_data['path'][1:]):
+                print(f"    → [{graph.G[u][v].get('relation', '?')}] {v}")
             print("-" * 30)
-    # ==========================================
-    # ANALYTICS & REMEDIATION
-    # ==========================================
-    
-    # Blast Radius (Using the source of the worst path)
-    blast_source = worst_path["source"] if worst_path else (entry_points[0] if entry_points else "Internet")
-    blast = graph.get_blast_radius(blast_source)
-    if "error" not in blast:
-        print(f"\n✓ Blast Radius of {blast_source}: {blast['total_reachable']} resources within {blast['max_hops_checked']} hops")
 
-    # Cycles
+    # ---- Blast Radius ----
+    if blast_radius_node and blast_radius_node not in graph.G:
+        print(f"\n[!] Node '{blast_radius_node}' not found. Falling back to default.")
+        blast_radius_node = None
+
+    blast_source = (
+        blast_radius_node
+        or (worst_path["source"] if worst_path else None)
+        or (entry_points[0] if entry_points else None)
+    )
+    blast = {"total_reachable": 0, "max_hops_checked": 3}
+    if blast_source:
+        blast = graph.get_blast_radius(blast_source)
+        if "error" not in blast:
+            print(f"\n✓ Blast Radius of '{blast_source}': {blast['total_reachable']} resources within {blast['max_hops_checked']} hops")
+
+    # ---- Cycle Detection ----
     cycles = graph.detect_cycles()
-    if cycles:
-        print(f"✓ Cycles Detected: {len(cycles)}")
-    else:
-        print("✓ Cycles Detected: 0")
+    print(f"✓ Cycles Detected: {len(cycles)}")
 
-    # Dynamic Remediation for Top Paths
-    print("\n" + "="*60)
+    # ---- Task 4: Critical Node (FIXED) ----
+    print("\n" + "=" * 60)
+    print("CRITICAL NODE ANALYSIS (Task 4)".center(60))
+    print("=" * 60)
+    all_sources = entry_points + all_pods
+    critical_res = graph.identify_critical_node(all_sources, crown_jewels)
+    print(critical_res.get("recommendation") or critical_res.get("message"))
+    if "paths_eliminated" in critical_res:
+        print(f"  Impact: removes {critical_res['paths_eliminated']} of {critical_res['total_paths']} attack paths")
+
+    # ---- Remediations ----
+    print("\n" + "=" * 60)
     print("TOP REMEDIATIONS".center(60))
-    print("="*60)
-    
+    print("=" * 60)
     if all_detected_paths:
-        seen_advice = set()
-        # Analyze the top 3 unique paths for the most impactful remediation
-        for p_data in all_detected_paths[:3]:
-            res = graph.identify_critical_node(p_data['source'], p_data['target'])
-            advice = res.get('recommendation')
-            if advice and advice not in seen_advice:
-                print(f"• [For {p_data['target']}]: {advice}")
-                seen_advice.add(advice)
-        # Store for exports
-        critical_res = {"recommendation": list(seen_advice)[0] if seen_advice else "General Hardening Required"}
+        seen = set()
+        from config import REMEDIATION_MAP
+        for p_data in all_detected_paths[:5]:
+            for u, v in zip(p_data['path'][:-1], p_data['path'][1:]):
+                rel = graph.G[u][v].get('relation', '')
+                if rel in REMEDIATION_MAP and rel not in seen:
+                    print(f"• [{rel}]: {REMEDIATION_MAP[rel]}")
+                    seen.add(rel)
+        if not seen:
+            print("• Apply general RBAC hardening and Pod Security Admission policies.")
     else:
-        print("No critical nodes to remediate.")
-        critical_res = {"message": "Cluster is currently secure."}
+        print("No remediations required.")
+    print("=" * 60 + "\n")
 
-    print("="*60 + "\n")
-
-    # ==========================================
-    # EXPORTS (Dashboard & PDF)
-    # ==========================================
-    
-    # 1. CLI UI (Still uses worst_path for the primary visual)
+    # ---- Exports ----
     from cli_ui_components import display_rich_dashboard
     display_rich_dashboard(worst_path, blast, cycles, critical_res, graph)
 
-    # 2. PDF Report (Using the new full audit exporter)
-    from pdf_reporter import export_full_pdf_report
-    if all_detected_paths:
-        # Pass the graph reference into the dict for PDF parsing
-        for p in all_detected_paths: p['graph_ref'] = graph
-        export_full_pdf_report(all_detected_paths, graph)
+    # FIX: pass graph separately to PDF — don't store it inside path dicts
+    export_full_pdf_report(all_detected_paths, graph)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Kubernetes Attack Path Visualizer - Graph Engine")
-    parser.add_argument("-i", "--input", default="cluster-graph.json", help="Path to the cluster-graph.json file")
+    parser.add_argument("-i", "--input", default="cluster-graph.json")
+    parser.add_argument("-b", "--blast-node", default=None)
     args = parser.parse_args()
 
     ag = AttackPathGraph()
     if ag.load_from_json(args.input):
-        generate_report(ag)
+        generate_report(ag, blast_radius_node=args.blast_node)

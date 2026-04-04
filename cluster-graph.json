@@ -173,6 +173,19 @@
       "meta": {}
     },
     {
+      "id": "Pod:default:batch-check-job-6w98p",
+      "type": "Pod",
+      "name": "batch-check-job-6w98p",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-batch-check"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
       "id": "Pod:default:batch-check-job-8d72s",
       "type": "Pod",
       "name": "batch-check-job-8d72s",
@@ -267,6 +280,19 @@
       "id": "Pod:default:hidden-in-layers-2588j",
       "type": "Pod",
       "name": "hidden-in-layers-2588j",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "meta": {
+        "images": [
+          "madhuakula/k8s-goat-hidden-in-layers"
+        ],
+        "vulnerabilities": []
+      }
+    },
+    {
+      "id": "Pod:default:hidden-in-layers-4zm7r",
+      "type": "Pod",
+      "name": "hidden-in-layers-4zm7r",
       "namespace": "default",
       "risk_score": 1.0,
       "meta": {
@@ -1695,6 +1721,13 @@
       "risk_score": 1.0
     },
     {
+      "source": "Pod:default:batch-check-job-6w98p",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
       "source": "Pod:default:batch-check-job-8d72s",
       "target": "ServiceAccount:default:default",
       "relation": "runs-as-sa",
@@ -1745,6 +1778,13 @@
     },
     {
       "source": "Pod:default:hidden-in-layers-2588j",
+      "target": "ServiceAccount:default:default",
+      "relation": "runs-as-sa",
+      "weight": 1.0,
+      "risk_score": 1.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-4zm7r",
       "target": "ServiceAccount:default:default",
       "relation": "runs-as-sa",
       "weight": 1.0,
@@ -1905,6 +1945,13 @@
       "risk_score": 5.0
     },
     {
+      "source": "Pod:default:batch-check-job-6w98p",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
       "source": "Pod:default:batch-check-job-8d72s",
       "target": "External:cloud:Cloud-Metadata-API",
       "relation": "potential-ssrf",
@@ -1962,6 +2009,13 @@
     },
     {
       "source": "Pod:default:hidden-in-layers-2588j",
+      "target": "External:cloud:Cloud-Metadata-API",
+      "relation": "potential-ssrf",
+      "weight": 2.0,
+      "risk_score": 5.0
+    },
+    {
+      "source": "Pod:default:hidden-in-layers-4zm7r",
       "target": "External:cloud:Cloud-Metadata-API",
       "relation": "potential-ssrf",
       "weight": 2.0,
