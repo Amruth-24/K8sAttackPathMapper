@@ -25,12 +25,13 @@ def fmt_node(node_id, G):
 def fmt_cve(node_id, G):
     """Return '  [CVE: X, CVSS Y]' if node has recorded vulnerabilities."""
     data = G.nodes.get(node_id, {})
-    # vulnerabilities may be stored inside meta or at top level
-    vulns = data.get("meta", {}).get("vulnerabilities") or data.get("vulnerabilities", [])
-    if not vulns:
-        return ""
-    top = max(vulns, key=lambda v: v.get("cvss", 0))
-    return f"  [CVE: {top['cve']}, CVSS {top['cvss']}]"
+    # cves is a list of CVE-id strings; use node risk_score as the score
+    cves = data.get("cves", [])
+    if cves:
+        cve_id = cves[0]
+        score  = data.get("risk_score", 0)
+        return f"  [CVE: {cve_id}, CVSS {score}]"
+    return ""
 
 
 def severity_label(score):
@@ -71,6 +72,9 @@ class AttackPathGraph:
                 nid = nc.pop("id")
                 self.G.add_node(nid, **nc)
             for edge in data.get("edges", []):
+                # Skip edges that don't have source and target (e.g., comment objects)
+                if "source" not in edge or "target" not in edge:
+                    continue
                 ec = dict(edge)
                 src = ec.pop("source")
                 tgt = ec.pop("target")
@@ -83,11 +87,11 @@ class AttackPathGraph:
 
     def get_entry_points(self):
         return [n for n, a in self.G.nodes(data=True)
-                if a.get("meta", {}).get("entry_point") is True]
+                if a.get("is_source") is True]
 
     def get_crown_jewels(self):
         return [n for n, a in self.G.nodes(data=True)
-                if a.get("meta", {}).get("crown_jewel") is True]
+                if a.get("is_sink") is True]
 
     # ── Algorithm 1: BFS Blast Radius ──────────────────────────────
     def get_blast_radius(self, source_node, max_hops=3):
@@ -117,7 +121,7 @@ class AttackPathGraph:
                 self.G, source=source_node, target=target_node, weight="weight"
             )
             risk = sum(
-                self.G[u][v].get("risk_score", 0)
+                self.G[u][v].get("cvss") or self.G[u][v].get("risk_score", 0)
                 for u, v in zip(path[:-1], path[1:])
             )
             return {"path": path, "total_hops": len(path) - 1,
@@ -216,7 +220,7 @@ def find_all_attack_paths(graph, sources, crown_jewels, cutoff=8):
             try:
                 for p in nx.all_simple_paths(graph.G, source=src, target=tgt, cutoff=cutoff):
                     risk = sum(
-                        graph.G[u][v].get("risk_score", 0)
+                        graph.G[u][v].get("cvss") or graph.G[u][v].get("risk_score", 0)
                         for u, v in zip(p[:-1], p[1:])
                     )
                     all_paths.append({
@@ -287,7 +291,7 @@ def generate_report(graph, blast_radius_node=None):
             print(f"  {THIN}")
 
             for u, v in zip(path[:-1], path[1:]):
-                rel       = G[u][v].get("relation", "?")
+                rel       = G[u][v].get("relationship", G[u][v].get("relation", "?"))
                 cve_note  = fmt_cve(u, G)
                 u_label   = fmt_node(u, G)
                 v_label   = fmt_node(v, G)
