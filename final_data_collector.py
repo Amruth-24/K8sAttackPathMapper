@@ -6,7 +6,8 @@ import shlex
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Import all configurations and threat intel from our separate module
-from config import RESOURCE_TYPES, CROWN_JEWEL_KEYWORDS, MOCK_CVE_LIST, evaluate_permission
+from config import RESOURCE_TYPES, CROWN_JEWEL_KEYWORDS, evaluate_permission
+from cve_scorer import fetch_live_cves
 
 class UnifiedK8sCollector:
     def __init__(self):
@@ -64,20 +65,7 @@ class UnifiedK8sCollector:
             "risk_score": risk_score
         })
 
-    def detect_mock_cves(self, image_name):
-        """Scans an image name against the mock CVE list from config."""
-        found_cves = []
-        max_cvss = 1.0 
-        for mock_cve in MOCK_CVE_LIST:
-            if mock_cve["keyword"] in image_name.lower():
-                found_cves.append({
-                    "cve": mock_cve["cve"], 
-                    "cvss": mock_cve["cvss"],
-                    "desc": mock_cve["desc"]
-                })
-                if mock_cve["cvss"] > max_cvss:
-                    max_cvss = mock_cve["cvss"]
-        return found_cves, max_cvss
+    
 
     def process_cluster_data(self):
         """The main pipeline combining Nodes and Edges."""
@@ -128,7 +116,7 @@ class UnifiedK8sCollector:
             pod_cves = []
             pod_risk = 1.0
             for img in images:
-                cves, cvss_score = self.detect_mock_cves(img)
+                cves, cvss_score = fetch_live_cves(img)
                 pod_cves.extend(cves)
                 if cvss_score > pod_risk:
                     pod_risk = cvss_score
@@ -158,9 +146,10 @@ class UnifiedK8sCollector:
             if is_privileged or has_host_mount:
                 node_name = spec.get("nodeName")
                 if node_name:
-                    node_id = self.node_id("Node", node_name, "cluster")
-                    self.add_edge(p_id, node_id, "container-escape", weight=0.5, risk_score=9.0)
-
+                    # add_node MUST be called first to register it
+                    k8s_node = self.add_node("Node", node_name, "cluster")
+                    self.add_edge(p_id, k8s_node["id"], "container-escape", weight=0.5, risk_score=9.0)
+            
             # 2. Generic Metadata SSRF (Standard in Cloud K8s)
             metadata_node = self.add_node("External", "Cloud-Metadata-API", "cloud", {"crown_jewel": True})
             self.add_edge(p_id, metadata_node["id"], "potential-ssrf", weight=2.0, risk_score=5.0)
@@ -210,7 +199,7 @@ class UnifiedK8sCollector:
                     if "secrets" in resources and any(v in verbs for v in ["get", "list", "*"]):
                         target_secrets = [s for (sns, sname), s in secrets_cache.items() if sns == role_ns or role_ns == "cluster"]
                         for sec in target_secrets:
-                            self.add_edge(role_node["id"], sec["id"], risk_data["desc"], risk_data["difficulty_weight"], risk_data["risk_score"])
+                            self.add_edge(role_node["id"], sec["id"], "secret-access", risk_data["difficulty_weight"], risk_data["risk_score"])
                     else:
                         # GENERIC FIX: Any vulnerability >= 9.0 is automatically a Crown Jewel (e.g., Cluster Takeover)
                         is_critical = risk_data["risk_score"] >= 9.0

@@ -102,7 +102,7 @@ def export_full_pdf_report(all_paths, graph_ref, filename="Full_Security_Audit.p
     ))
     story.append(Spacer(1, 0.15 * inch))
 
-    for idx, p_data in enumerate(all_paths[:10]):
+    for idx, p_data in enumerate(all_paths[:]):
         score = p_data.get('total_risk_score', 0)
         hops = p_data.get('total_hops', 0)
         severity = "CRITICAL" if score >= 15 else "HIGH" if score >= 8 else "MEDIUM"

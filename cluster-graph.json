@@ -438,12 +438,58 @@
       "type": "Pod",
       "name": "coredns-7d764666f9-k4jps",
       "namespace": "kube-system",
-      "risk_score": 1.0,
+      "risk_score": 7.7,
       "meta": {
         "images": [
           "registry.k8s.io/coredns/coredns:v1.13.1"
         ],
-        "vulnerabilities": []
+        "vulnerabilities": [
+          {
+            "cve": "CVE-2026-26017",
+            "cvss": 7.7,
+            "desc": "CoreDNS is a DNS server that chains plugins. Prior to version 1.14.2, a logical vulnerability in CoreDNS allows DNS acce"
+          },
+          {
+            "cve": "CVE-2023-30464",
+            "cvss": 7.5,
+            "desc": "CoreDNS through 1.10.1 enables attackers to achieve DNS cache poisoning and inject fake responses via a birthday attack."
+          },
+          {
+            "cve": "CVE-2025-47950",
+            "cvss": 7.5,
+            "desc": "CoreDNS is a DNS server that chains plugins. In versions prior to 1.12.2, a Denial of Service (DoS) vulnerability exists"
+          },
+          {
+            "cve": "CVE-2025-68151",
+            "cvss": 7.5,
+            "desc": "CoreDNS is a DNS server that chains plugins. Prior to version 1.14.0, multiple CoreDNS server implementations (gRPC, HTT"
+          },
+          {
+            "cve": "CVE-2026-26018",
+            "cvss": 7.5,
+            "desc": "CoreDNS is a DNS server that chains plugins. Prior to version 1.14.2, a denial of service vulnerability exists in CoreDN"
+          },
+          {
+            "cve": "CVE-2025-58063",
+            "cvss": 7.1,
+            "desc": "CoreDNS is a DNS server that chains plugins. Starting in version 1.2.0 and prior to version 1.12.4, the CoreDNS etcd plu"
+          },
+          {
+            "cve": "CVE-2022-2837",
+            "cvss": 6.1,
+            "desc": "A flaw was found in coreDNS. This flaw allows a malicious user to redirect traffic intended for external top-level domai"
+          },
+          {
+            "cve": "CVE-2024-0874",
+            "cvss": 5.3,
+            "desc": "A flaw was found in coredns. This issue could lead to invalid cache entries returning due to incorrectly implemented cac"
+          },
+          {
+            "cve": "CVE-2022-2835",
+            "cvss": 4.4,
+            "desc": "A flaw was found in coreDNS. This flaw allows a malicious user to reroute internal calls to some internal services that "
+          }
+        ]
       }
     },
     {
@@ -459,12 +505,58 @@
       "type": "Pod",
       "name": "coredns-7d764666f9-vk66g",
       "namespace": "kube-system",
-      "risk_score": 1.0,
+      "risk_score": 7.7,
       "meta": {
         "images": [
           "registry.k8s.io/coredns/coredns:v1.13.1"
         ],
-        "vulnerabilities": []
+        "vulnerabilities": [
+          {
+            "cve": "CVE-2026-26017",
+            "cvss": 7.7,
+            "desc": "CoreDNS is a DNS server that chains plugins. Prior to version 1.14.2, a logical vulnerability in CoreDNS allows DNS acce"
+          },
+          {
+            "cve": "CVE-2023-30464",
+            "cvss": 7.5,
+            "desc": "CoreDNS through 1.10.1 enables attackers to achieve DNS cache poisoning and inject fake responses via a birthday attack."
+          },
+          {
+            "cve": "CVE-2025-47950",
+            "cvss": 7.5,
+            "desc": "CoreDNS is a DNS server that chains plugins. In versions prior to 1.12.2, a Denial of Service (DoS) vulnerability exists"
+          },
+          {
+            "cve": "CVE-2025-68151",
+            "cvss": 7.5,
+            "desc": "CoreDNS is a DNS server that chains plugins. Prior to version 1.14.0, multiple CoreDNS server implementations (gRPC, HTT"
+          },
+          {
+            "cve": "CVE-2026-26018",
+            "cvss": 7.5,
+            "desc": "CoreDNS is a DNS server that chains plugins. Prior to version 1.14.2, a denial of service vulnerability exists in CoreDN"
+          },
+          {
+            "cve": "CVE-2025-58063",
+            "cvss": 7.1,
+            "desc": "CoreDNS is a DNS server that chains plugins. Starting in version 1.2.0 and prior to version 1.12.4, the CoreDNS etcd plu"
+          },
+          {
+            "cve": "CVE-2022-2837",
+            "cvss": 6.1,
+            "desc": "A flaw was found in coreDNS. This flaw allows a malicious user to redirect traffic intended for external top-level domai"
+          },
+          {
+            "cve": "CVE-2024-0874",
+            "cvss": 5.3,
+            "desc": "A flaw was found in coredns. This issue could lead to invalid cache entries returning due to incorrectly implemented cac"
+          },
+          {
+            "cve": "CVE-2022-2835",
+            "cvss": 4.4,
+            "desc": "A flaw was found in coreDNS. This flaw allows a malicious user to reroute internal calls to some internal services that "
+          }
+        ]
       }
     },
     {
@@ -472,12 +564,78 @@
       "type": "Pod",
       "name": "etcd-kubernetes-goat-cluster-control-plane",
       "namespace": "kube-system",
-      "risk_score": 1.0,
+      "risk_score": 9.8,
       "meta": {
         "images": [
           "registry.k8s.io/etcd:3.6.6-0"
         ],
-        "vulnerabilities": []
+        "vulnerabilities": [
+          {
+            "cve": "CVE-2021-28235",
+            "cvss": 9.8,
+            "desc": "Authentication vulnerability found in Etcd-io v.3.4.10 allows remote attackers to escalate privileges via the debug func"
+          },
+          {
+            "cve": "CVE-2018-1085",
+            "cvss": 9.0,
+            "desc": "openshift-ansible before versions 3.9.23, 3.7.46 deploys a misconfigured etcd file that causes the SSL client certificat"
+          },
+          {
+            "cve": "CVE-2018-1098",
+            "cvss": 8.8,
+            "desc": "A cross-site request forgery flaw was found in etcd 3.3.1 and earlier. An attacker can set up a website that tries to se"
+          },
+          {
+            "cve": "CVE-2019-3779",
+            "cvss": 8.8,
+            "desc": "Cloud Foundry Container Runtime, versions prior to 0.29.0, deploys Kubernetes clusters utilize the same CA (Certificate "
+          },
+          {
+            "cve": "CVE-2018-16886",
+            "cvss": 8.1,
+            "desc": "etcd versions 3.2.x before 3.2.26 and 3.3.x before 3.3.11 are vulnerable to an improper authentication issue when role-b"
+          },
+          {
+            "cve": "CVE-2020-15114",
+            "cvss": 7.7,
+            "desc": "In etcd before versions 3.3.23 and 3.4.10, the etcd gateway is a simple TCP proxy to allow for basic service discovery a"
+          },
+          {
+            "cve": "CVE-2019-3786",
+            "cvss": 7.1,
+            "desc": "Cloud Foundry BOSH Backup and Restore CLI, all versions prior to 1.5.0, does not check the authenticity of backup script"
+          },
+          {
+            "cve": "CVE-2020-15112",
+            "cvss": 6.5,
+            "desc": "In etcd before versions 3.3.23 and 3.4.10, it is possible to have an entry index greater then the number of entries in t"
+          },
+          {
+            "cve": "CVE-2015-5305",
+            "cvss": 6.4,
+            "desc": "Directory traversal vulnerability in Kubernetes, as used in Red Hat OpenShift Enterprise 3.0, allows attackers to write "
+          },
+          {
+            "cve": "CVE-2020-15115",
+            "cvss": 5.8,
+            "desc": "etcd before versions 3.3.23 and 3.4.10 does not perform any password length validation, which allows for very short pass"
+          },
+          {
+            "cve": "CVE-2020-15113",
+            "cvss": 5.7,
+            "desc": "In etcd before versions 3.3.23 and 3.4.10, certain directory paths are created (etcd data directory and the directory pa"
+          },
+          {
+            "cve": "CVE-2018-1099",
+            "cvss": 5.5,
+            "desc": "DNS rebinding vulnerability found in etcd 3.3.1 and earlier. An attacker can control his DNS records to direct to localh"
+          },
+          {
+            "cve": "CVE-2023-0296",
+            "cvss": 5.3,
+            "desc": "The Birthday attack against 64-bit block ciphers flaw (CVE-2016-2183) was reported for the health checks port (9979) on "
+          }
+        ]
       }
     },
     {
@@ -514,12 +672,63 @@
       "type": "Pod",
       "name": "kube-apiserver-kubernetes-goat-cluster-control-plane",
       "namespace": "kube-system",
-      "risk_score": 1.0,
+      "risk_score": 9.8,
       "meta": {
         "images": [
           "registry.k8s.io/kube-apiserver:v1.35.0"
         ],
-        "vulnerabilities": []
+        "vulnerabilities": [
+          {
+            "cve": "CVE-2018-1002105",
+            "cvss": 9.8,
+            "desc": "In all Kubernetes versions prior to v1.10.11, v1.11.5, and v1.12.3, incorrect handling of error responses to proxied upg"
+          },
+          {
+            "cve": "CVE-2019-11247",
+            "cvss": 8.1,
+            "desc": "The Kubernetes kube-apiserver mistakenly allows access to a cluster-scoped custom resource if the request is made as if "
+          },
+          {
+            "cve": "CVE-2023-1260",
+            "cvss": 8.0,
+            "desc": "An authentication bypass vulnerability was discovered in kube-apiserver. This issue could allow a remote, authenticated "
+          },
+          {
+            "cve": "CVE-2022-3294",
+            "cvss": 6.6,
+            "desc": "Users may have access to secure endpoints in the control plane network. Kubernetes clusters are only affected if an untr"
+          },
+          {
+            "cve": "CVE-2019-11250",
+            "cvss": 6.5,
+            "desc": "The Kubernetes client-go library logs request headers at verbosity levels of 7 or higher. This can disclose credentials "
+          },
+          {
+            "cve": "CVE-2019-11254",
+            "cvss": 6.5,
+            "desc": "The Kubernetes API Server component in versions 1.1-1.14, and versions prior to 1.15.10, 1.16.7 and 1.17.3 allows an aut"
+          },
+          {
+            "cve": "CVE-2021-25735",
+            "cvss": 6.5,
+            "desc": "A security issue was discovered in kube-apiserver that could allow node updates to bypass a Validating Admission Webhook"
+          },
+          {
+            "cve": "CVE-2020-8559",
+            "cvss": 6.4,
+            "desc": "The Kubernetes kube-apiserver in versions v1.6-v1.15, and versions prior to v1.16.13, v1.17.9 and v1.18.6 are vulnerable"
+          },
+          {
+            "cve": "CVE-2022-3172",
+            "cvss": 5.1,
+            "desc": "A security issue was discovered in kube-apiserver that allows an \naggregated API server to redirect client traffic to an"
+          },
+          {
+            "cve": "CVE-2020-8561",
+            "cvss": 4.1,
+            "desc": "A security issue was discovered in Kubernetes where actors that control the responses of MutatingWebhookConfiguration or"
+          }
+        ]
       }
     },
     {
@@ -527,12 +736,28 @@
       "type": "Pod",
       "name": "kube-controller-manager-kubernetes-goat-cluster-control-plane",
       "namespace": "kube-system",
-      "risk_score": 1.0,
+      "risk_score": 7.7,
       "meta": {
         "images": [
           "registry.k8s.io/kube-controller-manager:v1.35.0"
         ],
-        "vulnerabilities": []
+        "vulnerabilities": [
+          {
+            "cve": "CVE-2024-0793",
+            "cvss": 7.7,
+            "desc": "A flaw was found in kube-controller-manager. This issue occurs when the initial application of a HPA config YAML lacking"
+          },
+          {
+            "cve": "CVE-2020-8555",
+            "cvss": 6.3,
+            "desc": "The Kubernetes kube-controller-manager in versions v1.0-1.14, versions prior to v1.15.12, v1.16.9, v1.17.5, and version "
+          },
+          {
+            "cve": "CVE-2025-13281",
+            "cvss": 5.8,
+            "desc": "A half-blind Server Side Request Forgery (SSRF) vulnerability exists in kube-controller-manager when using the in-tree P"
+          }
+        ]
       }
     },
     {
@@ -540,12 +765,23 @@
       "type": "Pod",
       "name": "kube-proxy-97q47",
       "namespace": "kube-system",
-      "risk_score": 1.0,
+      "risk_score": 5.8,
       "meta": {
         "images": [
           "registry.k8s.io/kube-proxy:v1.35.0"
         ],
-        "vulnerabilities": []
+        "vulnerabilities": [
+          {
+            "cve": "CVE-2021-25736",
+            "cvss": 5.8,
+            "desc": "Kube-proxy\n on Windows can unintentionally forward traffic to local processes \nlistening on the same port (\u201cspec.ports[*"
+          },
+          {
+            "cve": "CVE-2020-8558",
+            "cvss": 5.4,
+            "desc": "The Kubelet and kube-proxy components in versions 1.1.0-1.16.10, 1.17.0-1.17.6, and 1.18.0-1.18.3 were found to contain "
+          }
+        ]
       }
     },
     {
@@ -1865,21 +2101,21 @@
       "target": "ServiceAccount:kube-system:coredns",
       "relation": "runs-as-sa",
       "weight": 1.0,
-      "risk_score": 1.0
+      "risk_score": 7.7
     },
     {
       "source": "Pod:kube-system:coredns-7d764666f9-vk66g",
       "target": "ServiceAccount:kube-system:coredns",
       "relation": "runs-as-sa",
       "weight": 1.0,
-      "risk_score": 1.0
+      "risk_score": 7.7
     },
     {
       "source": "Pod:kube-system:etcd-kubernetes-goat-cluster-control-plane",
       "target": "ServiceAccount:kube-system:default",
       "relation": "runs-as-sa",
       "weight": 1.0,
-      "risk_score": 1.0
+      "risk_score": 9.8
     },
     {
       "source": "Pod:kube-system:kindnet-mfrjm",
@@ -1893,21 +2129,21 @@
       "target": "ServiceAccount:kube-system:default",
       "relation": "runs-as-sa",
       "weight": 1.0,
-      "risk_score": 1.0
+      "risk_score": 9.8
     },
     {
       "source": "Pod:kube-system:kube-controller-manager-kubernetes-goat-cluster-control-plane",
       "target": "ServiceAccount:kube-system:default",
       "relation": "runs-as-sa",
       "weight": 1.0,
-      "risk_score": 1.0
+      "risk_score": 7.7
     },
     {
       "source": "Pod:kube-system:kube-proxy-97q47",
       "target": "ServiceAccount:kube-system:kube-proxy",
       "relation": "runs-as-sa",
       "weight": 1.0,
-      "risk_score": 1.0
+      "risk_score": 5.8
     },
     {
       "source": "Pod:kube-system:kube-scheduler-kubernetes-goat-cluster-control-plane",

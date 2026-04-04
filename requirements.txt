@@ -1,3 +1,5 @@
 networkx
 reportlab
 rich
+requests
+dotenv

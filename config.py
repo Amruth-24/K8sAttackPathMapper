@@ -7,15 +7,10 @@ RESOURCE_TYPES = [
     "ingresses" 
 ]
 
-CROWN_JEWEL_KEYWORDS = ["db", "database", "password", "token", "credential", "secret", "admin"]
-
-MOCK_CVE_LIST = [
-    {"keyword": "nginx", "cve": "CVE-2024-1234", "cvss": 8.1, "desc": "Nginx off-by-one error"},
-    {"keyword": "redis", "cve": "CVE-2023-41056", "cvss": 7.5, "desc": "Redis buffer overflow"},
-    {"keyword": "tomcat", "cve": "CVE-2020-1938", "cvss": 9.8, "desc": "Ghostcat vulnerability"},
-    {"keyword": "log4j", "cve": "CVE-2021-44228", "cvss": 10.0, "desc": "Log4Shell"}
+CROWN_JEWEL_KEYWORDS = [
+    "db", "database", "password", "token", "credential",
+    "secret", "admin", "vault", "key", "apikey", "api-key"
 ]
-
 
 REMEDIATION_MAP = {
     "container-escape": "Critical: Container has privileged access or sensitive host mounts. Implement Pod Security Admissions (PSA) using the 'restricted' profile to block privileged containers.",
