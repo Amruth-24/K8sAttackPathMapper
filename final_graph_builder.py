@@ -3,6 +3,7 @@ import networkx as nx
 import argparse
 from datetime import datetime
 from pdf_reporter import export_full_pdf_report
+import os
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -254,6 +255,41 @@ def find_all_attack_paths(graph, sources, crown_jewels, cutoff=8):
 
 
 # ══════════════════════════════════════════════════════════════════
+# TEMPORAL ANALYSIS ENGINE
+# ══════════════════════════════════════════════════════════════════
+
+def perform_temporal_analysis(current_paths, history_file=".shadowtracer_history.json"):
+    """
+    Compares the current attack paths against the previous scan's paths.
+    Returns: (list_of_new_paths, is_first_run_boolean)
+    """
+    # Create unique string signatures for current paths (e.g., "nodeA->nodeB->nodeC")
+    current_signatures = {"->".join(p["path"]): p for p in current_paths}
+    is_first_run = not os.path.exists(history_file)
+
+    prev_signatures = {}
+    if not is_first_run:
+        try:
+            with open(history_file, "r") as f:
+                prev_data = json.load(f)
+            # prev_data is expected to be a list of path lists
+            prev_signatures = {"->".join(p): True for p in prev_data}
+        except Exception as e:
+            print(f"[!] Could not read temporal history: {e}")
+
+    # Identify paths that exist now but didn't exist in the previous run
+    new_paths = [p for sig, p in current_signatures.items() if sig not in prev_signatures]
+
+    # Save the current state for the next run
+    try:
+        with open(history_file, "w") as f:
+            json.dump([p["path"] for p in current_paths], f)
+    except Exception as e:
+        print(f"[!] Warning: Could not save temporal history: {e}")
+
+    return new_paths, is_first_run
+
+# ══════════════════════════════════════════════════════════════════
 # REPORT GENERATOR  —  matches sample-output format exactly
 # ══════════════════════════════════════════════════════════════════
 
@@ -276,6 +312,9 @@ def generate_report(graph, blast_radius_node=None):
     all_paths = sorted(unique.values(), key=lambda x: x["total_risk_score"])
 
     worst_path = all_paths[-1] if all_paths else None
+
+    # Run Temporal Analysis
+    new_paths, is_first_run = perform_temporal_analysis(all_paths)
 
     # ══════════════════════════════════════════════════════════════
     # HEADER
@@ -401,6 +440,35 @@ def generate_report(graph, blast_radius_node=None):
     print()
 
     # ══════════════════════════════════════════════════════════════
+    # SECTION 5 — TEMPORAL ANALYSIS (State-Diffing)
+    # ══════════════════════════════════════════════════════════════
+    print("[ SECTION 5 — TEMPORAL ANALYSIS (State-Diffing Engine) ]")
+    
+    if is_first_run:
+        print("  [i] First run detected. Baseline cluster state recorded.")
+        print("      Future scans will alert on newly discovered attack paths.\n")
+    elif not new_paths:
+        print("  ✅  No new attack paths detected since last scan. Cluster state is stable.\n")
+    else:
+        print(f"  🚨  ALERT: {len(new_paths)} NEW attack path(s) detected since last scan!\n")
+        for idx, p_data in enumerate(new_paths, 1):
+            score = p_data["total_risk_score"]
+            hops  = p_data["total_hops"]
+            sev   = severity_label(score)
+            path  = p_data["path"]
+
+            print(f"  [NEW] Path #{idx}  |  {hops} hops  |  Risk Score: {score}  [{sev}]")
+            print(f"  {THIN}")
+
+            for u, v in zip(path[:-1], path[1:]):
+                rel       = G[u][v].get("relationship", G[u][v].get("relation", "?"))
+                cve_note  = fmt_cve(u, G)
+                u_label   = fmt_node(u, G)
+                v_label   = fmt_node(v, G)
+                print(f"  {u_label}{cve_note}  --[{rel}]-->  {v_label}")
+            print()
+
+    # ══════════════════════════════════════════════════════════════
     # SUMMARY
     # ══════════════════════════════════════════════════════════════
     print(DIVIDER)
@@ -421,7 +489,8 @@ def generate_report(graph, blast_radius_node=None):
     from cli_ui_components import display_rich_dashboard
     display_rich_dashboard(worst_path, blast_for_dashboard, cycles, critical_res, graph)
 
-    export_full_pdf_report(all_paths, graph)
+    # Pass temporal data to the PDF reporter
+    export_full_pdf_report(all_paths, graph, new_paths=new_paths, is_first_run=is_first_run)
 
     # Bonus Task 1 — Interactive HTML Attack Graph
     try:

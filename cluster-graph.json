@@ -1797,6 +1797,26 @@
       "is_source": false,
       "is_sink": false,
       "cves": []
+    },
+    {
+      "id": "rogue-test-pod",
+      "type": "Pod",
+      "name": "rogue-test-pod",
+      "namespace": "default",
+      "risk_score": 9.8,
+      "is_source": false,
+      "is_sink": false,
+      "cves": ["CVE-2024-TEST"]
+    },
+    {
+      "id": "analytics-db",
+      "type": "Database",
+      "name": "analytics-db",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": true,
+      "cves": []
     }
   ],
   "edges": [
@@ -5183,6 +5203,24 @@
       "weight": 1.0,
       "cve": null,
       "cvss": 10.0
+    },
+    
+    {
+      "source": "internet",
+      "target": "rogue-test-pod",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 0.0
+    },
+    {
+      "source": "rogue-test-pod",
+      "target": "analytics-db",
+      "relationship": "can-read",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 0.0
     }
+
   ]
 }

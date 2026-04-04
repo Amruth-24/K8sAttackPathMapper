@@ -815,178 +815,172 @@ svg#graph:active { cursor: grabbing; }
 // ═══════════════════════════════════════════════════════════════
 const DATA = {
   "metadata": {
-    "generated": "2026-04-05 02:01:44",
-    "node_count": 41,
-    "edge_count": 48,
-    "attack_path_count": 18,
-    "cycle_count": 1,
-    "critical_node": "sa-worker",
-    "recommendation": "Remove permission binding 'sa-worker' (ServiceAccount) to eliminate 12 of 33 attack paths.",
-    "total_paths": 33
+    "generated": "2026-04-05 04:39:02",
+    "node_count": 176,
+    "edge_count": 226,
+    "attack_path_count": 4,
+    "cycle_count": 0,
+    "critical_node": "sa-coredns",
+    "recommendation": "Remove permission binding 'coredns' (ServiceAccount) to eliminate 2 of 52 attack paths.",
+    "total_paths": 52
   },
   "nodes": [
     {
       "id": "internet",
-      "name": "internet",
+      "name": "Internet",
       "type": "ExternalActor",
-      "namespace": "external",
-      "risk_score": 10.0,
+      "namespace": "cluster",
+      "risk_score": 0.0,
       "is_source": true,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "user-dev1",
-      "name": "dev-1",
-      "type": "User",
+      "id": "svc-hunger-check-service",
+      "name": "hunger-check-service",
+      "type": "Service",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "svc-build-code-service",
+      "name": "build-code-service",
+      "type": "Service",
       "namespace": "default",
-      "risk_score": 5.0,
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "svc-health-check-service",
+      "name": "health-check-service",
+      "type": "Service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "svc-internal-proxy-api-service",
+      "name": "internal-proxy-api-service",
+      "type": "Service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "svc-internal-proxy-info-app-service",
+      "name": "internal-proxy-info-app-service",
+      "type": "Service",
+      "namespace": "default",
+      "risk_score": 0.0,
       "is_source": true,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "user-dev2",
-      "name": "dev-2",
-      "type": "User",
+      "id": "svc-kubernetes",
+      "name": "kubernetes",
+      "type": "Service",
       "namespace": "default",
-      "risk_score": 5.0,
-      "is_source": true,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "user-cicd",
-      "name": "cicd-bot",
-      "type": "User",
-      "namespace": "ci",
-      "risk_score": 6.0,
-      "is_source": true,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "pod-webfront",
-      "name": "web-frontend",
-      "type": "Pod",
-      "namespace": "default",
-      "risk_score": 7.5,
-      "is_source": false,
-      "is_sink": false,
-      "cves": [
-        "CVE-2024-1234"
-      ]
-    },
-    {
-      "id": "pod-api",
-      "name": "api-server",
-      "type": "Pod",
-      "namespace": "default",
-      "risk_score": 6.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": [
-        "CVE-2023-4567"
-      ]
-    },
-    {
-      "id": "pod-worker",
-      "name": "background-worker",
-      "type": "Pod",
-      "namespace": "default",
-      "risk_score": 4.0,
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "pod-metrics",
-      "name": "metrics-collector",
-      "type": "Pod",
-      "namespace": "monitoring",
-      "risk_score": 3.5,
+      "id": "svc-kubernetes-goat-home-service",
+      "name": "kubernetes-goat-home-service",
+      "type": "Service",
+      "namespace": "default",
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "pod-logger",
-      "name": "log-aggregator",
-      "type": "Pod",
-      "namespace": "logging",
-      "risk_score": 4.0,
+      "id": "svc-metadata-db",
+      "name": "metadata-db",
+      "type": "Service",
+      "namespace": "default",
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
-      "cves": [
-        "CVE-2024-9999"
-      ]
+      "cves": []
     },
     {
-      "id": "pod-admission",
-      "name": "admission-webhook",
-      "type": "Pod",
+      "id": "svc-poor-registry-service",
+      "name": "poor-registry-service",
+      "type": "Service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "svc-system-monitor-service",
+      "name": "system-monitor-service",
+      "type": "Service",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "svc-kube-dns",
+      "name": "kube-dns",
+      "type": "Service",
       "namespace": "kube-system",
-      "risk_score": 8.5,
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "pod-sidecar",
-      "name": "sidecar-proxy",
+      "id": "svc-cache-store-service",
+      "name": "cache-store-service",
+      "type": "Service",
+      "namespace": "secure-middleware",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-hunger-check-deployment-5488f8b86c-6sj45",
+      "name": "hunger-check-deployment-5488f8b86c-6sj45",
+      "type": "Pod",
+      "namespace": "big-monolith",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-big-monolith-sa",
+      "name": "big-monolith-sa",
+      "type": "ServiceAccount",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-batch-check-job-5tkr7",
+      "name": "batch-check-job-5tkr7",
       "type": "Pod",
       "namespace": "default",
-      "risk_score": 5.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "sa-webapp",
-      "name": "sa-webapp",
-      "type": "ServiceAccount",
-      "namespace": "default",
-      "risk_score": 5.5,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "sa-worker",
-      "name": "sa-worker",
-      "type": "ServiceAccount",
-      "namespace": "default",
-      "risk_score": 4.5,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "sa-monitor",
-      "name": "sa-monitor",
-      "type": "ServiceAccount",
-      "namespace": "monitoring",
-      "risk_score": 3.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "sa-cicd",
-      "name": "sa-cicd",
-      "type": "ServiceAccount",
-      "namespace": "ci",
-      "risk_score": 8.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "sa-logger",
-      "name": "sa-logger",
-      "type": "ServiceAccount",
-      "namespace": "logging",
-      "risk_score": 4.0,
+      "risk_score": 1.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
@@ -996,1210 +990,3609 @@ const DATA = {
       "name": "default",
       "type": "ServiceAccount",
       "namespace": "default",
-      "risk_score": 6.0,
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-batch-check-job-6w98p",
+      "name": "batch-check-job-6w98p",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-batch-check-job-8d72s",
+      "name": "batch-check-job-8d72s",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-batch-check-job-ds77m",
+      "name": "batch-check-job-ds77m",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-batch-check-job-hs58c",
+      "name": "batch-check-job-hs58c",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-batch-check-job-jjf6z",
+      "name": "batch-check-job-jjf6z",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-batch-check-job-w4zsv",
+      "name": "batch-check-job-w4zsv",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-build-code-deployment-84fb858df9-xw8c4",
+      "name": "build-code-deployment-84fb858df9-xw8c4",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-health-check-deployment-b7f74cdc8-hz66g",
+      "name": "health-check-deployment-b7f74cdc8-hz66g",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-hidden-in-layers-2588j",
+      "name": "hidden-in-layers-2588j",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-hidden-in-layers-4zm7r",
+      "name": "hidden-in-layers-4zm7r",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-hidden-in-layers-9qw2g",
+      "name": "hidden-in-layers-9qw2g",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-hidden-in-layers-hftpb",
+      "name": "hidden-in-layers-hftpb",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-hidden-in-layers-r8582",
+      "name": "hidden-in-layers-r8582",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-hidden-in-layers-s4qkl",
+      "name": "hidden-in-layers-s4qkl",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-hidden-in-layers-wjbwn",
+      "name": "hidden-in-layers-wjbwn",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-internal-proxy-deployment-c59c45d94-p7q59",
+      "name": "internal-proxy-deployment-c59c45d94-p7q59",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "name": "kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-metadata-db-6fbb8cd6d7-8qctp",
+      "name": "metadata-db-6fbb8cd6d7-8qctp",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-poor-registry-deployment-7b75fbd7-c2bfr",
+      "name": "poor-registry-deployment-7b75fbd7-c2bfr",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-system-monitor-deployment-866f697c75-9lwps",
+      "name": "system-monitor-deployment-866f697c75-9lwps",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-coredns-7d764666f9-k4jps",
+      "name": "coredns-7d764666f9-k4jps",
+      "type": "Pod",
+      "namespace": "kube-system",
+      "risk_score": 7.7,
+      "is_source": false,
+      "is_sink": false,
+      "cves": [
+        "CVE-2026-26017",
+        "CVE-2023-30464",
+        "CVE-2025-47950",
+        "CVE-2025-68151",
+        "CVE-2026-26018",
+        "CVE-2025-58063",
+        "CVE-2022-2837",
+        "CVE-2024-0874",
+        "CVE-2022-2835"
+      ]
+    },
+    {
+      "id": "sa-coredns",
+      "name": "coredns",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-coredns-7d764666f9-vk66g",
+      "name": "coredns-7d764666f9-vk66g",
+      "type": "Pod",
+      "namespace": "kube-system",
+      "risk_score": 7.7,
+      "is_source": false,
+      "is_sink": false,
+      "cves": [
+        "CVE-2026-26017",
+        "CVE-2023-30464",
+        "CVE-2025-47950",
+        "CVE-2025-68151",
+        "CVE-2026-26018",
+        "CVE-2025-58063",
+        "CVE-2022-2837",
+        "CVE-2024-0874",
+        "CVE-2022-2835"
+      ]
+    },
+    {
+      "id": "pod-etcd-kubernetes-goat-cluster-control-plane",
+      "name": "etcd-kubernetes-goat-cluster-control-plane",
+      "type": "Pod",
+      "namespace": "kube-system",
+      "risk_score": 9.8,
+      "is_source": false,
+      "is_sink": false,
+      "cves": [
+        "CVE-2021-28235",
+        "CVE-2018-1085",
+        "CVE-2018-1098",
+        "CVE-2019-3779",
+        "CVE-2018-16886",
+        "CVE-2020-15114",
+        "CVE-2019-3786",
+        "CVE-2020-15112",
+        "CVE-2015-5305",
+        "CVE-2020-15115",
+        "CVE-2020-15113",
+        "CVE-2018-1099",
+        "CVE-2023-0296"
+      ]
+    },
+    {
+      "id": "pod-kindnet-mfrjm",
+      "name": "kindnet-mfrjm",
+      "type": "Pod",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-kindnet",
+      "name": "kindnet",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "name": "kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "type": "Pod",
+      "namespace": "kube-system",
+      "risk_score": 9.8,
+      "is_source": false,
+      "is_sink": false,
+      "cves": [
+        "CVE-2018-1002105",
+        "CVE-2019-11247",
+        "CVE-2023-1260",
+        "CVE-2022-3294",
+        "CVE-2019-11250",
+        "CVE-2019-11254",
+        "CVE-2021-25735",
+        "CVE-2020-8559",
+        "CVE-2022-3172",
+        "CVE-2020-8561"
+      ]
+    },
+    {
+      "id": "pod-kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "name": "kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "type": "Pod",
+      "namespace": "kube-system",
+      "risk_score": 7.7,
+      "is_source": false,
+      "is_sink": false,
+      "cves": [
+        "CVE-2024-0793",
+        "CVE-2020-8555",
+        "CVE-2025-13281"
+      ]
+    },
+    {
+      "id": "pod-kube-proxy-97q47",
+      "name": "kube-proxy-97q47",
+      "type": "Pod",
+      "namespace": "kube-system",
+      "risk_score": 5.8,
+      "is_source": false,
+      "is_sink": false,
+      "cves": [
+        "CVE-2021-25736",
+        "CVE-2020-8558"
+      ]
+    },
+    {
+      "id": "sa-kube-proxy",
+      "name": "kube-proxy",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "name": "kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "type": "Pod",
+      "namespace": "kube-system",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-local-path-provisioner-67b8995b4b-52vjb",
+      "name": "local-path-provisioner-67b8995b4b-52vjb",
+      "type": "Pod",
+      "namespace": "local-path-storage",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-local-path-provisioner-service-account",
+      "name": "local-path-provisioner-service-account",
+      "type": "ServiceAccount",
+      "namespace": "local-path-storage",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "pod-cache-store-deployment-8bf8d695b-jggt6",
+      "name": "cache-store-deployment-8bf8d695b-jggt6",
+      "type": "Pod",
+      "namespace": "secure-middleware",
+      "risk_score": 1.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "ext-cloud-metadata-api",
+      "name": "Cloud-Metadata-API",
+      "type": "ExternalActor",
+      "namespace": "cloud",
+      "risk_score": 0.0,
+      "is_source": true,
+      "is_sink": true,
+      "cves": []
+    },
+    {
+      "id": "node-kubernetes-goat-cluster-control-plane",
+      "name": "kubernetes-goat-cluster-control-plane",
+      "type": "Node",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": true,
+      "cves": []
+    },
+    {
+      "id": "secret-vaultapikey",
+      "name": "vaultapikey",
+      "type": "Secret",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": true,
+      "cves": []
+    },
+    {
+      "id": "secret-webhookapikey",
+      "name": "webhookapikey",
+      "type": "Secret",
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": true,
+      "cves": []
+    },
+    {
+      "id": "secret-goatvault",
+      "name": "goatvault",
+      "type": "Secret",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": true,
+      "cves": []
+    },
+    {
+      "id": "secret-sh-helm-release-v1-metadata-db-v1",
+      "name": "sh.helm.release.v1.metadata-db.v1",
+      "type": "Secret",
+      "namespace": "default",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": true,
       "cves": []
     },
     {
       "id": "role-secret-reader",
       "name": "secret-reader",
       "type": "Role",
-      "namespace": "default",
-      "risk_score": 7.0,
+      "namespace": "big-monolith",
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "role-pod-exec",
-      "name": "pod-exec",
+      "id": "vulnerability-full-cluster-admin-wildcard",
+      "name": "Full Cluster Admin (Wildcard)",
+      "type": "Vulnerability",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": true,
+      "cves": []
+    },
+    {
+      "id": "role-kubeadm-bootstrap-signer-clusterinfo",
+      "name": "kubeadm:bootstrap-signer-clusterinfo",
       "type": "Role",
-      "namespace": "default",
-      "risk_score": 8.5,
+      "namespace": "kube-public",
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "role-node-reader",
-      "name": "node-reader",
+      "id": "role-system-controller-bootstrap-signer",
+      "name": "system:controller:bootstrap-signer",
       "type": "Role",
-      "namespace": "default",
-      "risk_score": 4.0,
+      "namespace": "kube-public",
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "clusterrole-admin",
+      "id": "sa-bootstrap-signer",
+      "name": "bootstrap-signer",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-kube-proxy",
+      "name": "kube-proxy",
+      "type": "Role",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-kubeadm-kubelet-config",
+      "name": "kubeadm:kubelet-config",
+      "type": "Role",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-kubeadm-nodes-kubeadm-config",
+      "name": "kubeadm:nodes-kubeadm-config",
+      "type": "Role",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-extension-apiserver-authentication-reader",
+      "name": "extension-apiserver-authentication-reader",
+      "type": "Role",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-system-leader-locking-kube-controller-manager",
+      "name": "system::leader-locking-kube-controller-manager",
+      "type": "Role",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-kube-controller-manager",
+      "name": "kube-controller-manager",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-leader-election-controller",
+      "name": "leader-election-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-system-leader-locking-kube-scheduler",
+      "name": "system::leader-locking-kube-scheduler",
+      "type": "Role",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-kube-scheduler",
+      "name": "kube-scheduler",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-system-controller-cloud-provider",
+      "name": "system:controller:cloud-provider",
+      "type": "Role",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-cloud-provider",
+      "name": "cloud-provider",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-system-controller-token-cleaner",
+      "name": "system:controller:token-cleaner",
+      "type": "Role",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-token-cleaner",
+      "name": "token-cleaner",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "role-local-path-provisioner-role",
+      "name": "local-path-provisioner-role",
+      "type": "Role",
+      "namespace": "local-path-storage",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-cluster-admin",
       "name": "cluster-admin",
       "type": "ClusterRole",
       "namespace": "cluster",
-      "risk_score": 10.0,
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "clusterrole-view",
-      "name": "cluster-viewer",
+      "id": "clusterrole-kindnet",
+      "name": "kindnet",
       "type": "ClusterRole",
       "namespace": "cluster",
-      "risk_score": 2.0,
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "clusterrole-deploy",
-      "name": "deployer",
+      "id": "clusterrole-kubeadm-get-nodes",
+      "name": "kubeadm:get-nodes",
       "type": "ClusterRole",
       "namespace": "cluster",
-      "risk_score": 7.5,
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "secret-db-creds",
-      "name": "db-credentials",
-      "type": "Secret",
-      "namespace": "default",
-      "risk_score": 9.5,
+      "id": "vulnerability-full-node-access",
+      "name": "Full Node Access",
+      "type": "Vulnerability",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": true,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-node-bootstrapper",
+      "name": "system:node-bootstrapper",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "secret-api-key",
-      "name": "api-key",
-      "type": "Secret",
-      "namespace": "default",
-      "risk_score": 8.0,
+      "id": "clusterrole-system-certificates-k8s-io-certificatesigningrequests-nodeclient",
+      "name": "system:certificates.k8s.io:certificatesigningrequests:nodeclient",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "secret-tls",
-      "name": "tls-cert",
-      "type": "Secret",
-      "namespace": "default",
-      "risk_score": 6.0,
+      "id": "clusterrole-system-certificates-k8s-io-certificatesigningrequests-selfnodeclient",
+      "name": "system:certificates.k8s.io:certificatesigningrequests:selfnodeclient",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "secret-admin-token",
-      "name": "admin-token",
-      "type": "Secret",
+      "id": "clusterrole-system-node-proxier",
+      "name": "system:node-proxier",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-local-path-provisioner-role",
+      "name": "local-path-provisioner-role",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-superadmin",
+      "name": "superadmin",
+      "type": "ServiceAccount",
       "namespace": "kube-system",
-      "risk_score": 10.0,
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": false,
       "cves": []
     },
     {
-      "id": "secret-cicd-token",
-      "name": "cicd-deploy-token",
-      "type": "Secret",
-      "namespace": "ci",
-      "risk_score": 8.5,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "configmap-env",
-      "name": "app-env-config",
-      "type": "ConfigMap",
-      "namespace": "default",
-      "risk_score": 3.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "configmap-dburl",
-      "name": "db-url-config",
-      "type": "ConfigMap",
-      "namespace": "default",
-      "risk_score": 5.5,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "db-production",
-      "name": "production-db",
-      "type": "Database",
-      "namespace": "data",
-      "risk_score": 10.0,
-      "is_source": false,
-      "is_sink": true,
-      "cves": []
-    },
-    {
-      "id": "db-analytics",
-      "name": "analytics-db",
-      "type": "Database",
-      "namespace": "data",
-      "risk_score": 7.0,
-      "is_source": false,
-      "is_sink": true,
-      "cves": []
-    },
-    {
-      "id": "node-worker-1",
-      "name": "worker-node-1",
-      "type": "Node",
+      "id": "clusterrole-system-basic-user",
+      "name": "system:basic-user",
+      "type": "ClusterRole",
       "namespace": "cluster",
-      "risk_score": 9.0,
+      "risk_score": 0.0,
       "is_source": false,
-      "is_sink": true,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-attachdetach-controller",
+      "name": "system:controller:attachdetach-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-attachdetach-controller",
+      "name": "attachdetach-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-certificate-controller",
+      "name": "system:controller:certificate-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-certificate-controller",
+      "name": "certificate-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-clusterrole-aggregation-controller",
+      "name": "system:controller:clusterrole-aggregation-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-clusterrole-aggregation-controller",
+      "name": "clusterrole-aggregation-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-cronjob-controller",
+      "name": "system:controller:cronjob-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-cronjob-controller",
+      "name": "cronjob-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-daemon-set-controller",
+      "name": "system:controller:daemon-set-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-daemon-set-controller",
+      "name": "daemon-set-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-deployment-controller",
+      "name": "system:controller:deployment-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-deployment-controller",
+      "name": "deployment-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-disruption-controller",
+      "name": "system:controller:disruption-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-disruption-controller",
+      "name": "disruption-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-endpoint-controller",
+      "name": "system:controller:endpoint-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-endpoint-controller",
+      "name": "endpoint-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-endpointslice-controller",
+      "name": "system:controller:endpointslice-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-endpointslice-controller",
+      "name": "endpointslice-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-endpointslicemirroring-controller",
+      "name": "system:controller:endpointslicemirroring-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-endpointslicemirroring-controller",
+      "name": "endpointslicemirroring-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-ephemeral-volume-controller",
+      "name": "system:controller:ephemeral-volume-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-ephemeral-volume-controller",
+      "name": "ephemeral-volume-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-expand-controller",
+      "name": "system:controller:expand-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-expand-controller",
+      "name": "expand-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-generic-garbage-collector",
+      "name": "system:controller:generic-garbage-collector",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-generic-garbage-collector",
+      "name": "generic-garbage-collector",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-horizontal-pod-autoscaler",
+      "name": "system:controller:horizontal-pod-autoscaler",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-horizontal-pod-autoscaler",
+      "name": "horizontal-pod-autoscaler",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-job-controller",
+      "name": "system:controller:job-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-job-controller",
+      "name": "job-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-legacy-service-account-token-cleaner",
+      "name": "system:controller:legacy-service-account-token-cleaner",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-legacy-service-account-token-cleaner",
+      "name": "legacy-service-account-token-cleaner",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "vulnerability-full-control-of-secrets",
+      "name": "Full Control of Secrets",
+      "type": "Vulnerability",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-namespace-controller",
+      "name": "system:controller:namespace-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-namespace-controller",
+      "name": "namespace-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-node-controller",
+      "name": "system:controller:node-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-node-controller",
+      "name": "node-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-persistent-volume-binder",
+      "name": "system:controller:persistent-volume-binder",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-persistent-volume-binder",
+      "name": "persistent-volume-binder",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-pod-garbage-collector",
+      "name": "system:controller:pod-garbage-collector",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-pod-garbage-collector",
+      "name": "pod-garbage-collector",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-pv-protection-controller",
+      "name": "system:controller:pv-protection-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-pv-protection-controller",
+      "name": "pv-protection-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-pvc-protection-controller",
+      "name": "system:controller:pvc-protection-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-pvc-protection-controller",
+      "name": "pvc-protection-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-replicaset-controller",
+      "name": "system:controller:replicaset-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-replicaset-controller",
+      "name": "replicaset-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-replication-controller",
+      "name": "system:controller:replication-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-replication-controller",
+      "name": "replication-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-resource-claim-controller",
+      "name": "system:controller:resource-claim-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-resource-claim-controller",
+      "name": "resource-claim-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-resourcequota-controller",
+      "name": "system:controller:resourcequota-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-resourcequota-controller",
+      "name": "resourcequota-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-root-ca-cert-publisher",
+      "name": "system:controller:root-ca-cert-publisher",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-root-ca-cert-publisher",
+      "name": "root-ca-cert-publisher",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-route-controller",
+      "name": "system:controller:route-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-route-controller",
+      "name": "route-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-selinux-warning-controller",
+      "name": "system:controller:selinux-warning-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-selinux-warning-controller",
+      "name": "selinux-warning-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-service-account-controller",
+      "name": "system:controller:service-account-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-service-account-controller",
+      "name": "service-account-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-service-cidrs-controller",
+      "name": "system:controller:service-cidrs-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-service-cidrs-controller",
+      "name": "service-cidrs-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-service-controller",
+      "name": "system:controller:service-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-service-controller",
+      "name": "service-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-statefulset-controller",
+      "name": "system:controller:statefulset-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-statefulset-controller",
+      "name": "statefulset-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-ttl-after-finished-controller",
+      "name": "system:controller:ttl-after-finished-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-ttl-after-finished-controller",
+      "name": "ttl-after-finished-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-ttl-controller",
+      "name": "system:controller:ttl-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-ttl-controller",
+      "name": "ttl-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-validatingadmissionpolicy-status-controller",
+      "name": "system:controller:validatingadmissionpolicy-status-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-validatingadmissionpolicy-status-controller",
+      "name": "validatingadmissionpolicy-status-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-controller-volumeattributesclass-protection-controller",
+      "name": "system:controller:volumeattributesclass-protection-controller",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-volumeattributesclass-protection-controller",
+      "name": "volumeattributesclass-protection-controller",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-coredns",
+      "name": "system:coredns",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-discovery",
+      "name": "system:discovery",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-kube-controller-manager",
+      "name": "system:kube-controller-manager",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "vulnerability-mint-arbitrary-sa-tokens",
+      "name": "Mint Arbitrary SA Tokens",
+      "type": "Vulnerability",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-kube-dns",
+      "name": "system:kube-dns",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "sa-kube-dns",
+      "name": "kube-dns",
+      "type": "ServiceAccount",
+      "namespace": "kube-system",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-kube-scheduler",
+      "name": "system:kube-scheduler",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-monitoring",
+      "name": "system:monitoring",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-node",
+      "name": "system:node",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-public-info-viewer",
+      "name": "system:public-info-viewer",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-service-account-issuer-discovery",
+      "name": "system:service-account-issuer-discovery",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "clusterrole-system-volume-scheduler",
+      "name": "system:volume-scheduler",
+      "type": "ClusterRole",
+      "namespace": "cluster",
+      "risk_score": 0.0,
+      "is_source": false,
+      "is_sink": false,
+      "cves": []
+    },
+    {
+      "id": "rogue-test-pod",
+      "name": "rogue-test-pod",
+      "type": "Pod",
+      "namespace": "default",
+      "risk_score": 9.8,
+      "is_source": false,
+      "is_sink": false,
       "cves": [
-        "CVE-2024-3116"
+        "CVE-2024-TEST"
       ]
     },
     {
-      "id": "node-worker-2",
-      "name": "worker-node-2",
-      "type": "Node",
-      "namespace": "cluster",
-      "risk_score": 9.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "lb-service",
-      "name": "loadbalancer-svc",
-      "type": "Service",
+      "id": "analytics-db",
+      "name": "analytics-db",
+      "type": "Database",
       "namespace": "default",
-      "risk_score": 6.5,
-      "is_source": true,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "svc-internal-api",
-      "name": "internal-api-svc",
-      "type": "Service",
-      "namespace": "default",
-      "risk_score": 5.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "ns-default",
-      "name": "default",
-      "type": "Namespace",
-      "namespace": "cluster",
-      "risk_score": 4.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "ns-kube-system",
-      "name": "kube-system",
-      "type": "Namespace",
-      "namespace": "cluster",
-      "risk_score": 9.0,
+      "risk_score": 0.0,
       "is_source": false,
       "is_sink": true,
-      "cves": []
-    },
-    {
-      "id": "pvc-data",
-      "name": "data-pvc",
-      "type": "PersistentVolume",
-      "namespace": "data",
-      "risk_score": 7.0,
-      "is_source": false,
-      "is_sink": true,
-      "cves": []
-    },
-    {
-      "id": "svc-service-a",
-      "name": "service-a",
-      "type": "Service",
-      "namespace": "default",
-      "risk_score": 5.0,
-      "is_source": false,
-      "is_sink": false,
-      "cves": []
-    },
-    {
-      "id": "svc-service-b",
-      "name": "service-b",
-      "type": "Service",
-      "namespace": "default",
-      "risk_score": 5.0,
-      "is_source": false,
-      "is_sink": false,
       "cves": []
     }
   ],
   "edges": [
     {
       "source": "internet",
-      "target": "lb-service",
+      "target": "svc-internal-proxy-info-app-service",
       "relationship": "reaches",
-      "weight": 2.0,
+      "weight": 1.0,
       "cve": null,
       "cvss": null
     },
     {
       "source": "internet",
-      "target": "pod-webfront",
+      "target": "rogue-test-pod",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 0.0
+    },
+    {
+      "source": "svc-hunger-check-service",
+      "target": "pod-hunger-check-deployment-5488f8b86c-6sj45",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-build-code-service",
+      "target": "pod-build-code-deployment-84fb858df9-xw8c4",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-health-check-service",
+      "target": "pod-health-check-deployment-b7f74cdc8-hz66g",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-internal-proxy-api-service",
+      "target": "pod-internal-proxy-deployment-c59c45d94-p7q59",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-internal-proxy-info-app-service",
+      "target": "pod-internal-proxy-deployment-c59c45d94-p7q59",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-kubernetes-goat-home-service",
+      "target": "pod-kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-metadata-db",
+      "target": "pod-metadata-db-6fbb8cd6d7-8qctp",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-poor-registry-service",
+      "target": "pod-poor-registry-deployment-7b75fbd7-c2bfr",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-system-monitor-service",
+      "target": "pod-system-monitor-deployment-866f697c75-9lwps",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-kube-dns",
+      "target": "pod-coredns-7d764666f9-k4jps",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-kube-dns",
+      "target": "pod-coredns-7d764666f9-vk66g",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "svc-cache-store-service",
+      "target": "pod-cache-store-deployment-8bf8d695b-jggt6",
+      "relationship": "routes-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": null
+    },
+    {
+      "source": "pod-hunger-check-deployment-5488f8b86c-6sj45",
+      "target": "sa-big-monolith-sa",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-hunger-check-deployment-5488f8b86c-6sj45",
+      "target": "ext-cloud-metadata-api",
       "relationship": "reaches",
-      "weight": 4.0,
-      "cve": "CVE-2024-1234",
-      "cvss": 8.1
-    },
-    {
-      "source": "user-dev1",
-      "target": "pod-webfront",
-      "relationship": "can-exec",
-      "weight": 5.0,
-      "cve": "CVE-2024-1234",
-      "cvss": 8.1
-    },
-    {
-      "source": "user-dev1",
-      "target": "pod-worker",
-      "relationship": "can-exec",
-      "weight": 3.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "user-dev2",
-      "target": "pod-logger",
-      "relationship": "can-exec",
-      "weight": 4.0,
-      "cve": "CVE-2024-9999",
-      "cvss": 6.5
-    },
-    {
-      "source": "user-cicd",
-      "target": "sa-cicd",
-      "relationship": "impersonates",
-      "weight": 4.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-webfront",
-      "target": "sa-webapp",
-      "relationship": "uses",
-      "weight": 3.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-webfront",
-      "target": "sa-default",
-      "relationship": "falls-back-to",
-      "weight": 6.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-webfront",
-      "target": "svc-internal-api",
-      "relationship": "calls",
       "weight": 2.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
     },
     {
-      "source": "pod-api",
-      "target": "sa-worker",
-      "relationship": "uses",
-      "weight": 3.5,
-      "cve": "CVE-2023-4567",
-      "cvss": 7.2
-    },
-    {
-      "source": "pod-api",
-      "target": "configmap-dburl",
-      "relationship": "reads",
-      "weight": 2.5,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-api",
-      "target": "secret-api-key",
-      "relationship": "mounts",
-      "weight": 3.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-worker",
-      "target": "sa-worker",
-      "relationship": "uses",
-      "weight": 2.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-metrics",
-      "target": "sa-monitor",
-      "relationship": "uses",
-      "weight": 2.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-logger",
-      "target": "sa-logger",
-      "relationship": "uses",
-      "weight": 3.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-logger",
-      "target": "configmap-env",
-      "relationship": "reads",
-      "weight": 1.5,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-admission",
-      "target": "ns-kube-system",
-      "relationship": "deployed-in",
-      "weight": 3.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "pod-sidecar",
-      "target": "sa-webapp",
-      "relationship": "uses",
-      "weight": 2.5,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "sa-webapp",
+      "source": "sa-big-monolith-sa",
       "target": "role-secret-reader",
       "relationship": "bound-to",
-      "weight": 4.0,
+      "weight": 1.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
     },
     {
-      "source": "sa-webapp",
-      "target": "secret-tls",
-      "relationship": "can-read",
+      "source": "pod-batch-check-job-5tkr7",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-batch-check-job-5tkr7",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
       "weight": 2.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
     },
     {
-      "source": "sa-webapp",
-      "target": "secret-api-key",
-      "relationship": "can-read",
-      "weight": 4.0,
+      "source": "pod-batch-check-job-6w98p",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
       "cve": null,
-      "cvss": null
+      "cvss": 1.0
     },
     {
-      "source": "sa-worker",
-      "target": "role-pod-exec",
-      "relationship": "bound-to",
-      "weight": 5.0,
+      "source": "pod-batch-check-job-6w98p",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
     },
     {
-      "source": "sa-monitor",
-      "target": "clusterrole-view",
-      "relationship": "bound-to",
-      "weight": 1.5,
+      "source": "pod-batch-check-job-8d72s",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
       "cve": null,
-      "cvss": null
+      "cvss": 1.0
     },
     {
-      "source": "sa-cicd",
-      "target": "clusterrole-deploy",
-      "relationship": "bound-to",
-      "weight": 5.0,
+      "source": "pod-batch-check-job-8d72s",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
     },
     {
-      "source": "sa-cicd",
-      "target": "secret-cicd-token",
-      "relationship": "can-read",
-      "weight": 3.0,
+      "source": "pod-batch-check-job-ds77m",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
       "cve": null,
-      "cvss": null
+      "cvss": 1.0
     },
     {
-      "source": "sa-logger",
-      "target": "role-node-reader",
-      "relationship": "bound-to",
-      "weight": 3.5,
+      "source": "pod-batch-check-job-ds77m",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
     },
     {
-      "source": "sa-default",
-      "target": "clusterrole-admin",
-      "relationship": "bound-to",
-      "weight": 8.0,
+      "source": "pod-batch-check-job-hs58c",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
       "cve": null,
-      "cvss": null
+      "cvss": 1.0
     },
     {
-      "source": "sa-default",
-      "target": "secret-db-creds",
-      "relationship": "can-read",
-      "weight": 7.0,
+      "source": "pod-batch-check-job-hs58c",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
     },
     {
-      "source": "role-secret-reader",
-      "target": "secret-db-creds",
-      "relationship": "can-read",
-      "weight": 5.5,
+      "source": "pod-batch-check-job-jjf6z",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
       "cve": null,
-      "cvss": null
+      "cvss": 1.0
     },
     {
-      "source": "role-pod-exec",
-      "target": "node-worker-1",
-      "relationship": "can-exec-on",
-      "weight": 7.0,
-      "cve": "CVE-2024-3116",
+      "source": "pod-batch-check-job-jjf6z",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-batch-check-job-w4zsv",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-batch-check-job-w4zsv",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-build-code-deployment-84fb858df9-xw8c4",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-build-code-deployment-84fb858df9-xw8c4",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-health-check-deployment-b7f74cdc8-hz66g",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-health-check-deployment-b7f74cdc8-hz66g",
+      "target": "node-kubernetes-goat-cluster-control-plane",
+      "relationship": "mounts",
+      "weight": 0.5,
+      "cve": null,
       "cvss": 9.0
     },
     {
-      "source": "role-pod-exec",
-      "target": "node-worker-2",
-      "relationship": "can-exec-on",
-      "weight": 7.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "role-node-reader",
-      "target": "node-worker-1",
-      "relationship": "can-read",
-      "weight": 4.5,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "clusterrole-admin",
-      "target": "secret-admin-token",
-      "relationship": "can-read",
-      "weight": 5.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "clusterrole-admin",
-      "target": "ns-default",
-      "relationship": "admin-over",
-      "weight": 6.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "clusterrole-view",
-      "target": "configmap-env",
-      "relationship": "can-read",
-      "weight": 1.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "clusterrole-deploy",
-      "target": "secret-cicd-token",
-      "relationship": "can-read",
-      "weight": 4.5,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "secret-db-creds",
-      "target": "db-production",
-      "relationship": "grants-access-to",
-      "weight": 6.6,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "secret-api-key",
-      "target": "db-analytics",
-      "relationship": "grants-access-to",
-      "weight": 5.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "secret-admin-token",
-      "target": "ns-kube-system",
-      "relationship": "grants-access-to",
-      "weight": 9.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "secret-cicd-token",
-      "target": "db-production",
-      "relationship": "grants-access-to",
-      "weight": 7.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "configmap-dburl",
-      "target": "db-analytics",
-      "relationship": "exposes-endpoint",
-      "weight": 4.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "node-worker-1",
-      "target": "pvc-data",
-      "relationship": "mounts",
-      "weight": 5.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "node-worker-2",
-      "target": "ns-default",
-      "relationship": "hosts",
-      "weight": 1.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "lb-service",
-      "target": "pod-api",
-      "relationship": "routes-to",
-      "weight": 3.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "lb-service",
-      "target": "pod-webfront",
-      "relationship": "routes-to",
-      "weight": 3.0,
-      "cve": null,
-      "cvss": null
-    },
-    {
-      "source": "svc-internal-api",
-      "target": "pod-api",
-      "relationship": "routes-to",
+      "source": "pod-health-check-deployment-b7f74cdc8-hz66g",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
       "weight": 2.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
     },
     {
-      "source": "svc-service-a",
-      "target": "svc-service-b",
-      "relationship": "admin-grant",
-      "weight": 5.0,
+      "source": "pod-hidden-in-layers-2588j",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
       "cve": null,
-      "cvss": null
+      "cvss": 1.0
     },
     {
-      "source": "svc-service-b",
-      "target": "svc-service-a",
-      "relationship": "admin-grant",
-      "weight": 5.0,
+      "source": "pod-hidden-in-layers-2588j",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
       "cve": null,
-      "cvss": null
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-hidden-in-layers-4zm7r",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-hidden-in-layers-4zm7r",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-hidden-in-layers-9qw2g",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-hidden-in-layers-9qw2g",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-hidden-in-layers-hftpb",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-hidden-in-layers-hftpb",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-hidden-in-layers-r8582",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-hidden-in-layers-r8582",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-hidden-in-layers-s4qkl",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-hidden-in-layers-s4qkl",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-hidden-in-layers-wjbwn",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-hidden-in-layers-wjbwn",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-internal-proxy-deployment-c59c45d94-p7q59",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-internal-proxy-deployment-c59c45d94-p7q59",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-kubernetes-goat-home-deployment-cd46cd955-pxgbk",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-metadata-db-6fbb8cd6d7-8qctp",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-metadata-db-6fbb8cd6d7-8qctp",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-poor-registry-deployment-7b75fbd7-c2bfr",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-poor-registry-deployment-7b75fbd7-c2bfr",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-system-monitor-deployment-866f697c75-9lwps",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-system-monitor-deployment-866f697c75-9lwps",
+      "target": "node-kubernetes-goat-cluster-control-plane",
+      "relationship": "mounts",
+      "weight": 0.5,
+      "cve": null,
+      "cvss": 9.0
+    },
+    {
+      "source": "pod-system-monitor-deployment-866f697c75-9lwps",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-coredns-7d764666f9-k4jps",
+      "target": "sa-coredns",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": "CVE-2026-26017",
+      "cvss": 7.7
+    },
+    {
+      "source": "pod-coredns-7d764666f9-k4jps",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "sa-coredns",
+      "target": "clusterrole-system-coredns",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-coredns-7d764666f9-vk66g",
+      "target": "sa-coredns",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": "CVE-2026-26017",
+      "cvss": 7.7
+    },
+    {
+      "source": "pod-coredns-7d764666f9-vk66g",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-etcd-kubernetes-goat-cluster-control-plane",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": "CVE-2021-28235",
+      "cvss": 9.8
+    },
+    {
+      "source": "pod-etcd-kubernetes-goat-cluster-control-plane",
+      "target": "node-kubernetes-goat-cluster-control-plane",
+      "relationship": "mounts",
+      "weight": 0.5,
+      "cve": null,
+      "cvss": 9.0
+    },
+    {
+      "source": "pod-etcd-kubernetes-goat-cluster-control-plane",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-kindnet-mfrjm",
+      "target": "sa-kindnet",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-kindnet-mfrjm",
+      "target": "node-kubernetes-goat-cluster-control-plane",
+      "relationship": "mounts",
+      "weight": 0.5,
+      "cve": null,
+      "cvss": 9.0
+    },
+    {
+      "source": "pod-kindnet-mfrjm",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "sa-kindnet",
+      "target": "clusterrole-kindnet",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": "CVE-2018-1002105",
+      "cvss": 9.8
+    },
+    {
+      "source": "pod-kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "target": "node-kubernetes-goat-cluster-control-plane",
+      "relationship": "mounts",
+      "weight": 0.5,
+      "cve": null,
+      "cvss": 9.0
+    },
+    {
+      "source": "pod-kube-apiserver-kubernetes-goat-cluster-control-plane",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": "CVE-2024-0793",
+      "cvss": 7.7
+    },
+    {
+      "source": "pod-kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "target": "node-kubernetes-goat-cluster-control-plane",
+      "relationship": "mounts",
+      "weight": 0.5,
+      "cve": null,
+      "cvss": 9.0
+    },
+    {
+      "source": "pod-kube-controller-manager-kubernetes-goat-cluster-control-plane",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-kube-proxy-97q47",
+      "target": "sa-kube-proxy",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": "CVE-2021-25736",
+      "cvss": 5.8
+    },
+    {
+      "source": "pod-kube-proxy-97q47",
+      "target": "node-kubernetes-goat-cluster-control-plane",
+      "relationship": "mounts",
+      "weight": 0.5,
+      "cve": null,
+      "cvss": 9.0
+    },
+    {
+      "source": "pod-kube-proxy-97q47",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "sa-kube-proxy",
+      "target": "clusterrole-system-node-proxier",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "target": "node-kubernetes-goat-cluster-control-plane",
+      "relationship": "mounts",
+      "weight": 0.5,
+      "cve": null,
+      "cvss": 9.0
+    },
+    {
+      "source": "pod-kube-scheduler-kubernetes-goat-cluster-control-plane",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-local-path-provisioner-67b8995b4b-52vjb",
+      "target": "sa-local-path-provisioner-service-account",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-local-path-provisioner-67b8995b4b-52vjb",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "sa-local-path-provisioner-service-account",
+      "target": "role-local-path-provisioner-role",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "sa-local-path-provisioner-service-account",
+      "target": "clusterrole-local-path-provisioner-role",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "pod-cache-store-deployment-8bf8d695b-jggt6",
+      "target": "sa-default",
+      "relationship": "uses",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 1.0
+    },
+    {
+      "source": "pod-cache-store-deployment-8bf8d695b-jggt6",
+      "target": "ext-cloud-metadata-api",
+      "relationship": "reaches",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "role-secret-reader",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "role-kubeadm-bootstrap-signer-clusterinfo",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "role-system-controller-bootstrap-signer",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-bootstrap-signer",
+      "target": "role-system-controller-bootstrap-signer",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "role-kube-proxy",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "role-kubeadm-kubelet-config",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "role-kubeadm-nodes-kubeadm-config",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "role-extension-apiserver-authentication-reader",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "role-system-leader-locking-kube-controller-manager",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-kube-controller-manager",
+      "target": "role-system-leader-locking-kube-controller-manager",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "sa-leader-election-controller",
+      "target": "role-system-leader-locking-kube-controller-manager",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "role-system-leader-locking-kube-scheduler",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-kube-scheduler",
+      "target": "role-system-leader-locking-kube-scheduler",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "role-system-controller-cloud-provider",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-cloud-provider",
+      "target": "role-system-controller-cloud-provider",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "role-system-controller-token-cleaner",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-token-cleaner",
+      "target": "role-system-controller-token-cleaner",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "role-local-path-provisioner-role",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-cluster-admin",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-kindnet",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-kubeadm-get-nodes",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "clusterrole-system-node-bootstrapper",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-certificates-k8s-io-certificatesigningrequests-nodeclient",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-certificates-k8s-io-certificatesigningrequests-selfnodeclient",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-node-proxier",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-node-proxier",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "clusterrole-local-path-provisioner-role",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-superadmin",
+      "target": "clusterrole-cluster-admin",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-basic-user",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-controller-attachdetach-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-controller-attachdetach-controller",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "sa-attachdetach-controller",
+      "target": "clusterrole-system-controller-attachdetach-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-certificate-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-certificate-controller",
+      "target": "clusterrole-system-controller-certificate-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-clusterrole-aggregation-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-clusterrole-aggregation-controller",
+      "target": "clusterrole-system-controller-clusterrole-aggregation-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-cronjob-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-cronjob-controller",
+      "target": "clusterrole-system-controller-cronjob-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-daemon-set-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-controller-daemon-set-controller",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "sa-daemon-set-controller",
+      "target": "clusterrole-system-controller-daemon-set-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-deployment-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-deployment-controller",
+      "target": "clusterrole-system-controller-deployment-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-disruption-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-disruption-controller",
+      "target": "clusterrole-system-controller-disruption-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-endpoint-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-endpoint-controller",
+      "target": "clusterrole-system-controller-endpoint-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-endpointslice-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-endpointslice-controller",
+      "target": "clusterrole-system-controller-endpointslice-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-endpointslicemirroring-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-endpointslicemirroring-controller",
+      "target": "clusterrole-system-controller-endpointslicemirroring-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-ephemeral-volume-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-ephemeral-volume-controller",
+      "target": "clusterrole-system-controller-ephemeral-volume-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-expand-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-expand-controller",
+      "target": "clusterrole-system-controller-expand-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-generic-garbage-collector",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-generic-garbage-collector",
+      "target": "clusterrole-system-controller-generic-garbage-collector",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-horizontal-pod-autoscaler",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-horizontal-pod-autoscaler",
+      "target": "clusterrole-system-controller-horizontal-pod-autoscaler",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-job-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-job-controller",
+      "target": "clusterrole-system-controller-job-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-legacy-service-account-token-cleaner",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-controller-legacy-service-account-token-cleaner",
+      "target": "vulnerability-full-control-of-secrets",
+      "relationship": "can-exec",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 8.5
+    },
+    {
+      "source": "sa-legacy-service-account-token-cleaner",
+      "target": "clusterrole-system-controller-legacy-service-account-token-cleaner",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-namespace-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-namespace-controller",
+      "target": "clusterrole-system-controller-namespace-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-node-controller",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "clusterrole-system-controller-node-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-node-controller",
+      "target": "clusterrole-system-controller-node-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-persistent-volume-binder",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-controller-persistent-volume-binder",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "sa-persistent-volume-binder",
+      "target": "clusterrole-system-controller-persistent-volume-binder",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-pod-garbage-collector",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-controller-pod-garbage-collector",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "sa-pod-garbage-collector",
+      "target": "clusterrole-system-controller-pod-garbage-collector",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-pv-protection-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-pv-protection-controller",
+      "target": "clusterrole-system-controller-pv-protection-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-pvc-protection-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-pvc-protection-controller",
+      "target": "clusterrole-system-controller-pvc-protection-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-replicaset-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-replicaset-controller",
+      "target": "clusterrole-system-controller-replicaset-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-replication-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-replication-controller",
+      "target": "clusterrole-system-controller-replication-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-resource-claim-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-resource-claim-controller",
+      "target": "clusterrole-system-controller-resource-claim-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-resourcequota-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-resourcequota-controller",
+      "target": "clusterrole-system-controller-resourcequota-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-root-ca-cert-publisher",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-root-ca-cert-publisher",
+      "target": "clusterrole-system-controller-root-ca-cert-publisher",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-route-controller",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "clusterrole-system-controller-route-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-route-controller",
+      "target": "clusterrole-system-controller-route-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-selinux-warning-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-selinux-warning-controller",
+      "target": "clusterrole-system-controller-selinux-warning-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-service-account-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-service-account-controller",
+      "target": "clusterrole-system-controller-service-account-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-service-cidrs-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-service-cidrs-controller",
+      "target": "clusterrole-system-controller-service-cidrs-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-service-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-controller-service-controller",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "sa-service-controller",
+      "target": "clusterrole-system-controller-service-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-statefulset-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-statefulset-controller",
+      "target": "clusterrole-system-controller-statefulset-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-ttl-after-finished-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-ttl-after-finished-controller",
+      "target": "clusterrole-system-controller-ttl-after-finished-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-ttl-controller",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "clusterrole-system-controller-ttl-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-ttl-controller",
+      "target": "clusterrole-system-controller-ttl-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-validatingadmissionpolicy-status-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-validatingadmissionpolicy-status-controller",
+      "target": "clusterrole-system-controller-validatingadmissionpolicy-status-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-controller-volumeattributesclass-protection-controller",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-volumeattributesclass-protection-controller",
+      "target": "clusterrole-system-controller-volumeattributesclass-protection-controller",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-coredns",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-kube-controller-manager",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-kube-controller-manager",
+      "target": "vulnerability-full-control-of-secrets",
+      "relationship": "can-exec",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 8.5
+    },
+    {
+      "source": "clusterrole-system-kube-controller-manager",
+      "target": "secret-vaultapikey",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-kube-controller-manager",
+      "target": "secret-webhookapikey",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-kube-controller-manager",
+      "target": "secret-goatvault",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-kube-controller-manager",
+      "target": "secret-sh-helm-release-v1-metadata-db-v1",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-kube-controller-manager",
+      "target": "vulnerability-mint-arbitrary-sa-tokens",
+      "relationship": "can-exec",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 8.5
+    },
+    {
+      "source": "clusterrole-system-kube-dns",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "sa-kube-dns",
+      "target": "clusterrole-system-kube-dns",
+      "relationship": "bound-to",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 5.0
+    },
+    {
+      "source": "clusterrole-system-kube-scheduler",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-kube-scheduler",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "clusterrole-system-monitoring",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-node",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-node",
+      "target": "vulnerability-full-node-access",
+      "relationship": "admin-over",
+      "weight": 1.5,
+      "cve": null,
+      "cvss": 9.5
+    },
+    {
+      "source": "clusterrole-system-node",
+      "target": "secret-vaultapikey",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-node",
+      "target": "secret-webhookapikey",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-node",
+      "target": "secret-goatvault",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-node",
+      "target": "secret-sh-helm-release-v1-metadata-db-v1",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "clusterrole-system-node",
+      "target": "vulnerability-mint-arbitrary-sa-tokens",
+      "relationship": "can-exec",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 8.5
+    },
+    {
+      "source": "clusterrole-system-volume-scheduler",
+      "target": "vulnerability-full-cluster-admin-wildcard",
+      "relationship": "admin-over",
+      "weight": 1.0,
+      "cve": null,
+      "cvss": 10.0
+    },
+    {
+      "source": "rogue-test-pod",
+      "target": "analytics-db",
+      "relationship": "can-read",
+      "weight": 2.0,
+      "cve": null,
+      "cvss": 0.0
     }
   ],
   "attack_paths": [
     {
-      "source": "lb-service",
-      "target": "db-analytics",
+      "source": "ext-cloud-metadata-api",
+      "target": "ext-cloud-metadata-api",
       "path": [
-        "lb-service",
-        "pod-api",
-        "configmap-dburl",
-        "db-analytics"
+        "ext-cloud-metadata-api"
       ],
-      "total_risk_score": 9.5,
+      "total_risk_score": 0,
+      "total_hops": 0,
+      "severity": "LOW"
+    },
+    {
+      "source": "internet",
+      "target": "analytics-db",
+      "path": [
+        "internet",
+        "rogue-test-pod",
+        "analytics-db"
+      ],
+      "total_risk_score": 3.0,
+      "total_hops": 2,
+      "severity": "LOW"
+    },
+    {
+      "source": "svc-internal-proxy-info-app-service",
+      "target": "ext-cloud-metadata-api",
+      "path": [
+        "svc-internal-proxy-info-app-service",
+        "pod-internal-proxy-deployment-c59c45d94-p7q59",
+        "ext-cloud-metadata-api"
+      ],
+      "total_risk_score": 3.0,
+      "total_hops": 2,
+      "severity": "LOW"
+    },
+    {
+      "source": "internet",
+      "target": "ext-cloud-metadata-api",
+      "path": [
+        "internet",
+        "svc-internal-proxy-info-app-service",
+        "pod-internal-proxy-deployment-c59c45d94-p7q59",
+        "ext-cloud-metadata-api"
+      ],
+      "total_risk_score": 4.0,
       "total_hops": 3,
-      "severity": "HIGH"
-    },
-    {
-      "source": "internet",
-      "target": "db-analytics",
-      "path": [
-        "internet",
-        "lb-service",
-        "pod-api",
-        "configmap-dburl",
-        "db-analytics"
-      ],
-      "total_risk_score": 11.5,
-      "total_hops": 4,
-      "severity": "HIGH"
-    },
-    {
-      "source": "user-cicd",
-      "target": "db-production",
-      "path": [
-        "user-cicd",
-        "sa-cicd",
-        "secret-cicd-token",
-        "db-production"
-      ],
-      "total_risk_score": 14.0,
-      "total_hops": 3,
-      "severity": "HIGH"
-    },
-    {
-      "source": "user-dev2",
-      "target": "node-worker-1",
-      "path": [
-        "user-dev2",
-        "pod-logger",
-        "sa-logger",
-        "role-node-reader",
-        "node-worker-1"
-      ],
-      "total_risk_score": 15.0,
-      "total_hops": 4,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "user-dev1",
-      "target": "db-analytics",
-      "path": [
-        "user-dev1",
-        "pod-webfront",
-        "svc-internal-api",
-        "pod-api",
-        "configmap-dburl",
-        "db-analytics"
-      ],
-      "total_risk_score": 15.5,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "user-dev1",
-      "target": "node-worker-1",
-      "path": [
-        "user-dev1",
-        "pod-worker",
-        "sa-worker",
-        "role-pod-exec",
-        "node-worker-1"
-      ],
-      "total_risk_score": 17.0,
-      "total_hops": 4,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "lb-service",
-      "target": "node-worker-1",
-      "path": [
-        "lb-service",
-        "pod-api",
-        "sa-worker",
-        "role-pod-exec",
-        "node-worker-1"
-      ],
-      "total_risk_score": 18.5,
-      "total_hops": 4,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "user-dev2",
-      "target": "pvc-data",
-      "path": [
-        "user-dev2",
-        "pod-logger",
-        "sa-logger",
-        "role-node-reader",
-        "node-worker-1",
-        "pvc-data"
-      ],
-      "total_risk_score": 20.0,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "internet",
-      "target": "node-worker-1",
-      "path": [
-        "internet",
-        "lb-service",
-        "pod-api",
-        "sa-worker",
-        "role-pod-exec",
-        "node-worker-1"
-      ],
-      "total_risk_score": 20.5,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "user-dev1",
-      "target": "pvc-data",
-      "path": [
-        "user-dev1",
-        "pod-worker",
-        "sa-worker",
-        "role-pod-exec",
-        "node-worker-1",
-        "pvc-data"
-      ],
-      "total_risk_score": 22.0,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "lb-service",
-      "target": "db-production",
-      "path": [
-        "lb-service",
-        "pod-webfront",
-        "sa-webapp",
-        "role-secret-reader",
-        "secret-db-creds",
-        "db-production"
-      ],
-      "total_risk_score": 22.1,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "internet",
-      "target": "db-production",
-      "path": [
-        "internet",
-        "pod-webfront",
-        "sa-webapp",
-        "role-secret-reader",
-        "secret-db-creds",
-        "db-production"
-      ],
-      "total_risk_score": 23.1,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "lb-service",
-      "target": "pvc-data",
-      "path": [
-        "lb-service",
-        "pod-api",
-        "sa-worker",
-        "role-pod-exec",
-        "node-worker-1",
-        "pvc-data"
-      ],
-      "total_risk_score": 23.5,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "user-dev1",
-      "target": "db-production",
-      "path": [
-        "user-dev1",
-        "pod-webfront",
-        "sa-webapp",
-        "role-secret-reader",
-        "secret-db-creds",
-        "db-production"
-      ],
-      "total_risk_score": 24.1,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "internet",
-      "target": "pvc-data",
-      "path": [
-        "internet",
-        "lb-service",
-        "pod-api",
-        "sa-worker",
-        "role-pod-exec",
-        "node-worker-1",
-        "pvc-data"
-      ],
-      "total_risk_score": 25.5,
-      "total_hops": 6,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "lb-service",
-      "target": "ns-kube-system",
-      "path": [
-        "lb-service",
-        "pod-webfront",
-        "sa-default",
-        "clusterrole-admin",
-        "secret-admin-token",
-        "ns-kube-system"
-      ],
-      "total_risk_score": 31.0,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "internet",
-      "target": "ns-kube-system",
-      "path": [
-        "internet",
-        "pod-webfront",
-        "sa-default",
-        "clusterrole-admin",
-        "secret-admin-token",
-        "ns-kube-system"
-      ],
-      "total_risk_score": 32.0,
-      "total_hops": 5,
-      "severity": "CRITICAL"
-    },
-    {
-      "source": "user-dev1",
-      "target": "ns-kube-system",
-      "path": [
-        "user-dev1",
-        "pod-webfront",
-        "sa-default",
-        "clusterrole-admin",
-        "secret-admin-token",
-        "ns-kube-system"
-      ],
-      "total_risk_score": 33.0,
-      "total_hops": 5,
-      "severity": "CRITICAL"
+      "severity": "MEDIUM"
     }
   ],
   "all_path_nodes": [
-    "sa-worker",
-    "pvc-data",
-    "sa-default",
-    "sa-logger",
-    "pod-worker",
     "internet",
-    "clusterrole-admin",
-    "lb-service",
-    "node-worker-1",
-    "pod-webfront",
-    "sa-cicd",
-    "ns-kube-system",
-    "pod-logger",
-    "secret-db-creds",
-    "svc-internal-api",
-    "role-pod-exec",
-    "user-cicd",
-    "secret-cicd-token",
-    "user-dev2",
-    "sa-webapp",
-    "db-analytics",
-    "user-dev1",
-    "pod-api",
-    "role-secret-reader",
-    "role-node-reader",
-    "secret-admin-token",
-    "db-production",
-    "configmap-dburl"
+    "svc-internal-proxy-info-app-service",
+    "rogue-test-pod",
+    "ext-cloud-metadata-api",
+    "analytics-db",
+    "pod-internal-proxy-deployment-c59c45d94-p7q59"
   ],
   "all_path_edges": [
     {
-      "source": "user-dev1",
-      "target": "pod-worker"
+      "source": "internet",
+      "target": "rogue-test-pod"
     },
     {
-      "source": "secret-admin-token",
-      "target": "ns-kube-system"
+      "source": "pod-internal-proxy-deployment-c59c45d94-p7q59",
+      "target": "ext-cloud-metadata-api"
+    },
+    {
+      "source": "rogue-test-pod",
+      "target": "analytics-db"
     },
     {
       "source": "internet",
-      "target": "pod-webfront"
+      "target": "svc-internal-proxy-info-app-service"
     },
     {
-      "source": "sa-cicd",
-      "target": "secret-cicd-token"
-    },
-    {
-      "source": "user-dev2",
-      "target": "pod-logger"
-    },
-    {
-      "source": "lb-service",
-      "target": "pod-webfront"
-    },
-    {
-      "source": "sa-default",
-      "target": "clusterrole-admin"
-    },
-    {
-      "source": "pod-webfront",
-      "target": "sa-webapp"
-    },
-    {
-      "source": "secret-db-creds",
-      "target": "db-production"
-    },
-    {
-      "source": "pod-api",
-      "target": "configmap-dburl"
-    },
-    {
-      "source": "sa-worker",
-      "target": "role-pod-exec"
-    },
-    {
-      "source": "configmap-dburl",
-      "target": "db-analytics"
-    },
-    {
-      "source": "pod-api",
-      "target": "sa-worker"
-    },
-    {
-      "source": "sa-webapp",
-      "target": "role-secret-reader"
-    },
-    {
-      "source": "svc-internal-api",
-      "target": "pod-api"
-    },
-    {
-      "source": "clusterrole-admin",
-      "target": "secret-admin-token"
-    },
-    {
-      "source": "sa-logger",
-      "target": "role-node-reader"
-    },
-    {
-      "source": "secret-cicd-token",
-      "target": "db-production"
-    },
-    {
-      "source": "pod-logger",
-      "target": "sa-logger"
-    },
-    {
-      "source": "internet",
-      "target": "lb-service"
-    },
-    {
-      "source": "pod-webfront",
-      "target": "sa-default"
-    },
-    {
-      "source": "role-node-reader",
-      "target": "node-worker-1"
-    },
-    {
-      "source": "lb-service",
-      "target": "pod-api"
-    },
-    {
-      "source": "pod-webfront",
-      "target": "svc-internal-api"
-    },
-    {
-      "source": "pod-worker",
-      "target": "sa-worker"
-    },
-    {
-      "source": "user-cicd",
-      "target": "sa-cicd"
-    },
-    {
-      "source": "node-worker-1",
-      "target": "pvc-data"
-    },
-    {
-      "source": "role-pod-exec",
-      "target": "node-worker-1"
-    },
-    {
-      "source": "role-secret-reader",
-      "target": "secret-db-creds"
-    },
-    {
-      "source": "user-dev1",
-      "target": "pod-webfront"
+      "source": "svc-internal-proxy-info-app-service",
+      "target": "pod-internal-proxy-deployment-c59c45d94-p7q59"
     }
   ],
-  "cycles": [
-    [
-      "svc-service-a",
-      "svc-service-b"
-    ]
-  ],
-  "cycle_nodes": [
-    "svc-service-a",
-    "svc-service-b"
-  ],
-  "cycle_edges": [
-    {
-      "source": "svc-service-b",
-      "target": "svc-service-a"
-    },
-    {
-      "source": "svc-service-a",
-      "target": "svc-service-b"
-    }
-  ],
-  "critical_node": "sa-worker",
+  "cycles": [],
+  "cycle_nodes": [],
+  "cycle_edges": [],
+  "critical_node": "sa-coredns",
   "top5_nodes": [
     {
-      "id": "sa-worker",
-      "reduction": 12,
-      "remaining": 21
+      "id": "sa-coredns",
+      "reduction": 2,
+      "remaining": 50
     },
     {
-      "id": "role-pod-exec",
-      "reduction": 12,
-      "remaining": 21
+      "id": "sa-kube-proxy",
+      "reduction": 2,
+      "remaining": 50
     },
     {
-      "id": "secret-db-creds",
-      "reduction": 5,
-      "remaining": 28
+      "id": "clusterrole-system-node-proxier",
+      "reduction": 2,
+      "remaining": 50
     },
     {
-      "id": "sa-logger",
-      "reduction": 4,
-      "remaining": 29
+      "id": "clusterrole-system-coredns",
+      "reduction": 2,
+      "remaining": 50
     },
     {
-      "id": "sa-default",
-      "reduction": 4,
-      "remaining": 29
+      "id": "sa-big-monolith-sa",
+      "reduction": 1,
+      "remaining": 51
     }
   ],
   "blast_radius": {
-    "lb-service": {
-      "total_reachable": 14,
-      "by_hop": {
-        "1": [
-          "pod-api",
-          "pod-webfront"
-        ],
-        "2": [
-          "sa-worker",
-          "configmap-dburl",
-          "secret-api-key",
-          "sa-webapp",
-          "sa-default",
-          "svc-internal-api"
-        ],
-        "3": [
-          "role-pod-exec",
-          "db-analytics",
-          "role-secret-reader",
-          "secret-tls",
-          "clusterrole-admin",
-          "secret-db-creds"
-        ]
-      },
+    "ext-cloud-metadata-api": {
+      "total_reachable": 0,
+      "by_hop": {},
       "max_hops_checked": 3
     },
     "internet": {
-      "total_reachable": 13,
+      "total_reachable": 6,
       "by_hop": {
         "1": [
-          "lb-service",
-          "pod-webfront"
+          "svc-internal-proxy-info-app-service",
+          "rogue-test-pod"
         ],
         "2": [
-          "pod-api",
-          "sa-webapp",
+          "pod-internal-proxy-deployment-c59c45d94-p7q59",
+          "analytics-db"
+        ],
+        "3": [
           "sa-default",
-          "svc-internal-api"
-        ],
-        "3": [
-          "sa-worker",
-          "configmap-dburl",
-          "secret-api-key",
-          "role-secret-reader",
-          "secret-tls",
-          "clusterrole-admin",
-          "secret-db-creds"
+          "ext-cloud-metadata-api"
         ]
       },
       "max_hops_checked": 3
     },
-    "user-cicd": {
-      "total_reachable": 4,
+    "svc-internal-proxy-info-app-service": {
+      "total_reachable": 3,
       "by_hop": {
         "1": [
-          "sa-cicd"
+          "pod-internal-proxy-deployment-c59c45d94-p7q59"
         ],
         "2": [
-          "clusterrole-deploy",
-          "secret-cicd-token"
-        ],
-        "3": [
-          "db-production"
-        ]
-      },
-      "max_hops_checked": 3
-    },
-    "user-dev2": {
-      "total_reachable": 4,
-      "by_hop": {
-        "1": [
-          "pod-logger"
-        ],
-        "2": [
-          "sa-logger",
-          "configmap-env"
-        ],
-        "3": [
-          "role-node-reader"
-        ]
-      },
-      "max_hops_checked": 3
-    },
-    "user-dev1": {
-      "total_reachable": 13,
-      "by_hop": {
-        "1": [
-          "pod-webfront",
-          "pod-worker"
-        ],
-        "2": [
-          "sa-webapp",
           "sa-default",
-          "svc-internal-api",
-          "sa-worker"
-        ],
-        "3": [
-          "role-secret-reader",
-          "secret-tls",
-          "secret-api-key",
-          "clusterrole-admin",
-          "secret-db-creds",
-          "pod-api",
-          "role-pod-exec"
+          "ext-cloud-metadata-api"
         ]
       },
       "max_hops_checked": 3

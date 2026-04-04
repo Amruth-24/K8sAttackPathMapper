@@ -12,6 +12,7 @@ Sections
   Section 4 — Critical Node Analysis
   Summary block
   Section 5 — Remediation Roadmap
+  BONUS — Temporal Analysis
 
 Fonts: 100% built-in PDF fonts (Helvetica family + Courier).
        No external font files required — works inside Docker.
@@ -685,11 +686,39 @@ def _section5(story, S, all_paths, graph_ref):
 
 
 # ═══════════════════════════════════════════════════════════════
+# BONUS — TEMPORAL ANALYSIS
+# ═══════════════════════════════════════════════════════════════
+
+def _section_temporal(story, S, new_paths, is_first_run, graph_ref):
+    story.append(Spacer(1, 0.18*inch))
+    story.append(_banner(
+        "[ BONUS: TEMPORAL ANALYSIS (State-Diffing Engine) ]", S))
+    story.append(Spacer(1, 0.09*inch))
+
+    if is_first_run:
+        story.append(Paragraph(
+            "<b>Result:</b> Initial baseline recorded. Future scans will detect new paths.", 
+            S['body']))
+    elif not new_paths:
+        story.append(Paragraph(
+            "<b>Result:</b> No changes detected since last scan. Cluster state is stable.", 
+            S['body']))
+    else:
+        story.append(Paragraph(
+            f"<font color='#c0392b'><b>ALERT: {len(new_paths)} NEW attack path(s) detected since last scan!</b></font>", 
+            S['body']))
+        story.append(Spacer(1, 0.09*inch))
+        
+        # Reuse your existing path card renderer for the new paths!
+        for idx, p in enumerate(new_paths, 1):
+            story.append(_path_card(idx, p, graph_ref, S))
+
+
+# ═══════════════════════════════════════════════════════════════
 # MAIN ENTRY POINT
 # ═══════════════════════════════════════════════════════════════
 
-def export_full_pdf_report(all_paths, graph_ref,
-                           filename="Full_Security_Audit.pdf"):
+def export_full_pdf_report(all_paths, graph_ref, new_paths=None, is_first_run=False, filename="Full_Security_Audit.pdf"):
     """
     Drop-in replacement — same signature as the original.
     Generates a professional, visually rich PDF that mirrors the
@@ -722,6 +751,9 @@ def export_full_pdf_report(all_paths, graph_ref,
     _section4(story, S, graph_ref, all_paths)
     _summary(story, S, all_paths, graph_ref)
     _section5(story, S, all_paths, graph_ref)
+    
+    # Inject the new temporal section at the end
+    _section_temporal(story, S, new_paths, is_first_run, graph_ref)
 
     doc.build(story, onFirstPage=_on_page, onLaterPages=_on_page)
     print(f"[+] Security Audit PDF exported to: {full_path}")

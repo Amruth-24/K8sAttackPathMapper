@@ -12,3 +12,5 @@ __pycache__/pdf_reporter.cpython-310.pyc
 __pycache__/pdf_reporter.cpython-314.pyc
 __pycache__/risk_matrix.cpython-314.pyc
 .env
+__pycache__/graph_visualizer.cpython-314.pyc
+__pycache__/temporal_engine.cpython-314.pyc
