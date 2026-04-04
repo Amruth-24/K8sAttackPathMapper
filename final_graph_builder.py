@@ -139,14 +139,20 @@ class AttackPathGraph:
             return {"message": "No sources or crown jewels.", "recommendation": "Cluster appears secure.", "top5": []}
 
         def _all_paths(G):
+            # Use Dijkstra (one path per pair) to stay consistent with
+            # find_all_attack_paths — ensures baseline count matches display
             paths = set()
+            seen = set()
             for src in sources:
                 for tgt in crown_jewels:
+                    if (src, tgt) in seen:
+                        continue
+                    seen.add((src, tgt))
                     if src not in G or tgt not in G:
                         continue
                     try:
-                        for p in nx.all_simple_paths(G, source=src, target=tgt, cutoff=cutoff):
-                            paths.add(tuple(p))
+                        p = nx.dijkstra_path(G, source=src, target=tgt, weight="weight")
+                        paths.add(tuple(p))
                     except (nx.NetworkXNoPath, nx.NodeNotFound):
                         pass
             return paths
@@ -214,22 +220,34 @@ class AttackPathGraph:
 # ══════════════════════════════════════════════════════════════════
 
 def find_all_attack_paths(graph, sources, crown_jewels, cutoff=8):
+    """
+    Returns ONE shortest (Dijkstra) path per unique (source, sink) pair.
+    Using all_simple_paths explodes to hundreds of paths because noise edges
+    create alternative routes through the graph. Dijkstra gives exactly one
+    canonical path per pair — the easiest/most dangerous route an attacker
+    would actually take.
+    """
     all_paths = []
+    seen_pairs = set()
     for src in sources:
         for tgt in crown_jewels:
+            pair = (src, tgt)
+            if pair in seen_pairs:
+                continue
+            seen_pairs.add(pair)
             try:
-                for p in nx.all_simple_paths(graph.G, source=src, target=tgt, cutoff=cutoff):
-                    risk = sum(
-                        graph.G[u][v].get("cvss") or graph.G[u][v].get("risk_score", 0)
-                        for u, v in zip(p[:-1], p[1:])
-                    )
-                    all_paths.append({
-                        "source": src,
-                        "target": tgt,
-                        "path": p,
-                        "total_risk_score": round(risk, 2),
-                        "total_hops": len(p) - 1,
-                    })
+                p = nx.dijkstra_path(graph.G, source=src, target=tgt, weight="weight")
+                risk = sum(
+                    graph.G[u][v].get("cvss") or graph.G[u][v].get("risk_score", 0)
+                    for u, v in zip(p[:-1], p[1:])
+                )
+                all_paths.append({
+                    "source": src,
+                    "target": tgt,
+                    "path": p,
+                    "total_risk_score": round(risk, 2),
+                    "total_hops": len(p) - 1,
+                })
             except (nx.NetworkXNoPath, nx.NodeNotFound):
                 continue
     return all_paths
@@ -252,10 +270,6 @@ def generate_report(graph, blast_radius_node=None):
 
     # ── Collect ALL attack paths ────────────────────────────────────
     all_paths = find_all_attack_paths(graph, entry_points, crown_jewels)
-
-    print("[*] Running 'Assumed Breach' lateral movement scan...")
-    all_pods = [n for n, d in G.nodes(data=True) if d.get("type") == "Pod"]
-    all_paths += find_all_attack_paths(graph, all_pods, crown_jewels)
 
     # Deduplicate; sort ascending by risk score (lowest risk first, as in sample)
     unique = {tuple(p["path"]): p for p in all_paths}
@@ -362,7 +376,7 @@ def generate_report(graph, blast_radius_node=None):
     print("[ SECTION 4 — CRITICAL NODE ANALYSIS ]")
     print("  Computing... (removing each node and recounting paths)\n")
 
-    all_sources = list(set(p["source"] for p in all_paths) | set(entry_points) | set(all_pods))
+    all_sources = list(set(p["source"] for p in all_paths) | set(entry_points))
     critical_res = graph.identify_critical_node(all_sources, crown_jewels)
 
     baseline_count = critical_res.get("total_paths", len(all_paths))
