@@ -1290,6 +1290,9 @@ nodeG.append('text')
   .attr('text-anchor', 'middle')
   .text(d => d.name.length > 18 ? d.name.slice(0, 17) + '…' : d.name);
 
+// ── OVERLAY LAYER (badges, blast rings, attacker labels) ──────
+const overlayG = root.append('g').attr('class', 'overlay-layer');
+
 // Edge hover tooltip
 linkSel
   .on('mouseenter', function(event, d) {{
@@ -1327,8 +1330,6 @@ simulation.on('tick', () => {{
     .attr('y2', d => d.target.y);
 
   nodeG.attr('transform', d => `translate(${{d.x}},${{d.y}})`);
-
-  applyFilter(activeFilter, false);
 }});
 
 // ── DRAG ──────────────────────────────────────────────────────
@@ -1647,20 +1648,18 @@ function applyFilter(mode, animate=true) {{
 }}
 
 // ── FILTER BUTTONS ────────────────────────────────────────────
+// btn-blast, btn-critical, btn-reset have dedicated handlers further below.
 const filterMap = {{
-  'btn-all':      'all',
-  'btn-paths':    'paths',
-  'btn-cycles':   'cycles',
-  'btn-blast':    'blast',
-  'btn-critical': 'critical',
-  'btn-reset':    'all',
+  'btn-all':    'all',
+  'btn-paths':  'paths',
+  'btn-cycles': 'cycles',
 }};
 
 Object.entries(filterMap).forEach(([btnId, mode]) => {{
   document.getElementById(btnId).onclick = function() {{
     activeFilter = mode;
     selectedPathIdx = -1;
-    // Update button states
+    overlayG.selectAll('*').remove();
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'red', 'amber', 'orange', 'purple'));
     this.classList.add('active');
     const color = this.dataset.color;
@@ -2271,32 +2270,28 @@ function storyFinish() {{
 }}
 
 // ── Hook blast panel into the blast toolbar button ─────────────
-// Override the existing blast filter button to also render the panel
 const origBlastBtn = document.getElementById('btn-blast');
 if (origBlastBtn) {{
-  const origClick = origBlastBtn.onclick;
   origBlastBtn.onclick = function() {{
     activeFilter = 'blast';
     selectedPathIdx = -1;
+    overlayG.selectAll('*').remove();
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','red','amber','orange','purple'));
     this.classList.add('active','amber');
-    // Show blast panel in the analysis tab
     switchTab('analysis');
     const ac = document.getElementById('analysis-content');
     if (ac) {{
-      const existing = document.getElementById('blast-panel');
-      if (!existing) {{
-        const div = document.createElement('div');
-        div.id = 'blast-panel';
-        ac.prepend(div);
+      let bp = document.getElementById('blast-panel');
+      if (!bp) {{
+        bp = document.createElement('div');
+        bp.id = 'blast-panel';
+        ac.prepend(bp);
       }}
       renderBlastPanel();
     }}
-    // Dim all nodes to invite clicking
     nodeG.select('circle.node-circle').transition().duration(300).style('opacity', d => d.is_source ? 0.9 : 0.08);
     nodeG.select('text').transition().duration(300).style('opacity', d => d.is_source ? 0.9 : 0.05);
     linkSel.transition().duration(300).style('opacity', 0.05);
-    overlayG.selectAll('*').remove();
   }};
 }}
 
@@ -2306,16 +2301,17 @@ if (origCritBtn) {{
   origCritBtn.onclick = function() {{
     activeFilter = 'critical';
     selectedPathIdx = -1;
+    overlayG.selectAll('*').remove();
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','red','amber','orange','purple'));
     this.classList.add('active','purple');
     switchTab('analysis');
     const ac = document.getElementById('analysis-content');
     if (ac) {{
-      const existing = document.getElementById('critical-panel');
-      if (!existing) {{
-        const div = document.createElement('div');
-        div.id = 'critical-panel';
-        ac.prepend(div);
+      let cp = document.getElementById('critical-panel');
+      if (!cp) {{
+        cp = document.createElement('div');
+        cp.id = 'critical-panel';
+        ac.prepend(cp);
       }}
       renderCriticalPanel();
       window.applyCriticalImpact();
@@ -2331,11 +2327,10 @@ if (origResetBtn) {{
     blastActive  = null;
     criticalView = 'before';
     storyPause();
+    overlayG.selectAll('*').remove();
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','red','amber','orange','purple'));
     document.getElementById('btn-all').classList.add('active');
     applyFilter('all', true);
-    overlayG.selectAll('*').remove();
-    // Remove injected panels
     ['blast-panel','critical-panel'].forEach(id => {{
       const el = document.getElementById(id); if (el) el.remove();
     }});

@@ -522,10 +522,9 @@ def _section4(story, S, graph_ref, all_paths):
 
     G            = graph_ref.G
     entry_points = graph_ref.get_entry_points()
-    all_pods     = [n for n, d in G.nodes(data=True) if d.get('type') == 'Pod']
     crown_jewels = graph_ref.get_crown_jewels()
     all_sources  = list(
-        set(p['source'] for p in all_paths) | set(entry_points) | set(all_pods))
+        set(p['source'] for p in all_paths) | set(entry_points))
 
     cr       = graph_ref.identify_critical_node(all_sources, crown_jewels)
     baseline = cr.get('total_paths', len(all_paths))

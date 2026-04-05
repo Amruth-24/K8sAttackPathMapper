@@ -416,7 +416,7 @@ def generate_report(graph, blast_radius_node=None):
     print("  Computing... (removing each node and recounting paths)\n")
 
     all_pods     = [n for n, d in G.nodes(data=True) if d.get('type') == 'Pod']
-    all_sources = list(set(p["source"] for p in all_paths) | set(entry_points) | set(all_pods))
+    all_sources = list(set(p["source"] for p in all_paths) | set(entry_points))# | set(all_pods))
     critical_res = graph.identify_critical_node(all_sources, crown_jewels)
 
     baseline_count = critical_res.get("total_paths", len(all_paths))
