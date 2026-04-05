@@ -506,6 +506,9 @@ def build_parser():
 # ═══════════════════════════════════════════════════════════════
 
 def main():
+    from .cli_dashboard import display_splash
+    print()
+    display_splash()
     parser = build_parser()
     args   = parser.parse_args()
 
