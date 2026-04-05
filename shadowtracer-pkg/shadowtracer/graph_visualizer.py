@@ -181,7 +181,8 @@ def _build_html(payload):
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Shadow Tracer — Attack Graph</title>
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script><link rel="preconnect" href="https://fonts.googleapis.com"/>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet"/>
 
 <style>
@@ -444,55 +445,6 @@ svg#graph:active {{ cursor: grabbing; }}
 }}
 .edge-tooltip.visible {{ opacity: 1; }}
 
-/* ── NODE HOVER TOOLTIP ──────────────────────────── */
-.node-tooltip {{
-  position: absolute;
-  background: var(--bg-card);
-  border: 1px solid var(--border-bright);
-  border-radius: 5px;
-  padding: 10px 13px;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  color: var(--text-primary);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.12s;
-  z-index: 200;
-  min-width: 170px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-}}
-.node-tooltip.visible {{ opacity: 1; }}
-.node-tooltip .nt-name {{
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 5px;
-  line-height: 1.2;
-}}
-.node-tooltip .nt-badge {{
-  display: inline-block;
-  font-size: 8px;
-  letter-spacing: 1px;
-  padding: 2px 6px;
-  border-radius: 2px;
-  border: 1px solid;
-  margin-bottom: 7px;
-}}
-.node-tooltip .nt-row {{
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 2px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 9px;
-}}
-.node-tooltip .nt-row:last-child {{ border-bottom: none; }}
-.node-tooltip .nt-k {{ color: var(--text-muted); }}
-.node-tooltip .nt-v {{ color: var(--text-primary); font-weight: 600; }}
-.node-tooltip .nt-cve {{ color: var(--accent-red); }}
-.node-tooltip .nt-paths {{ color: var(--accent-amber); }}
-
 /* ── SIDE PANEL ───────────────────────────────────── */
 .side-panel {{
   width: 320px;
@@ -550,10 +502,10 @@ svg#graph:active {{ cursor: grabbing; }}
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   margin-bottom: 8px;
   padding-bottom: 4px;
-  border-bottom: 1px solid var(--border-bright);
+  border-bottom: 1px solid var(--border);
 }}
 
 /* ── NODE DETAIL CARD ─────────────────────────────── */
@@ -611,7 +563,7 @@ svg#graph:active {{ cursor: grabbing; }}
   font-size: 12px;
 }}
 .detail-row .dk {{ color: var(--text-muted); font-family: 'Share Tech Mono', monospace; font-size: 10px; }}
-.detail-row .dv {{ color: var(--text-primary); font-weight: 600; font-size: 12px; }}
+.detail-row .dv {{ color: var(--text-primary); font-weight: 600; }}
 
 .cve-tag {{
   display: inline-block;
@@ -727,17 +679,15 @@ svg#graph:active {{ cursor: grabbing; }}
 }}
 .critical-card .cn-impact {{
   font-size: 11px;
-  color: var(--text-primary);
-  opacity: 0.85;
+  color: var(--text-secondary);
 }}
 .critical-card .cn-rec {{
   margin-top: 8px;
   font-size: 11px;
   color: var(--accent-amber);
-  line-height: 1.6;
-  border-top: 1px solid var(--border-bright);
+  line-height: 1.5;
+  border-top: 1px solid var(--border);
   padding-top: 8px;
-  font-weight: 500;
 }}
 
 .top5-row {{
@@ -749,10 +699,10 @@ svg#graph:active {{ cursor: grabbing; }}
   font-size: 10px;
   border-bottom: 1px solid var(--border);
 }}
-.top5-name {{ color: var(--text-primary); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }}
+.top5-name {{ color: var(--text-secondary); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }}
 .top5-bar-bg {{ width: 60px; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }}
-.top5-bar-fill {{ height: 100%; background: var(--accent-purple); border-radius: 2px; box-shadow: 0 0 4px rgba(176,96,255,0.5); }}
-.top5-count {{ color: var(--accent-red); min-width: 36px; text-align: right; font-size: 11px; font-weight: 600; }}
+.top5-bar-fill {{ height: 100%; background: var(--accent-purple); border-radius: 2px; }}
+.top5-count {{ color: var(--accent-red); min-width: 24px; text-align: right; }}
 
 /* ── CYCLE ITEM ───────────────────────────────────── */
 .cycle-item {{
@@ -900,6 +850,146 @@ svg#graph:active {{ cursor: grabbing; }}
   text-align: center;
   padding: 20px 0;
 }}
+
+/* ── BLAST RADIUS PANEL ───────────────────────────── */
+.blast-summary {{
+  background: var(--bg-card);
+  border: 1px solid var(--accent-amber);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+}}
+.blast-summary .bs-title {{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--accent-amber); margin-bottom: 8px;
+}}
+.blast-hop-row {{
+  display: flex; align-items: center; gap: 8px;
+  padding: 3px 0; border-bottom: 1px solid var(--border);
+}}
+.blast-hop-dot {{ width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }}
+.blast-hop-label {{ color: var(--text-muted); min-width: 46px; }}
+.blast-hop-count {{ color: var(--text-primary); font-weight: 600; margin-right: auto; }}
+.blast-hop-sink {{ color: var(--accent-red); font-size: 9px; }}
+.blast-toggle {{
+  display: flex; gap: 4px; margin-bottom: 10px;
+}}
+.blast-toggle-btn {{
+  flex: 1; padding: 5px 4px;
+  font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  border: 1px solid var(--border); background: none;
+  color: var(--text-muted); cursor: pointer; border-radius: 3px;
+  transition: all 0.15s;
+}}
+.blast-toggle-btn.active {{
+  border-color: var(--accent-amber); color: var(--accent-amber);
+  background: rgba(255,170,0,0.08);
+}}
+.blast-source-list {{
+  margin-bottom: 8px;
+}}
+.blast-src-btn {{
+  display: block; width: 100%;
+  text-align: left; padding: 5px 8px; margin-bottom: 4px;
+  font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); cursor: pointer; border-radius: 3px;
+  transition: all 0.15s;
+}}
+.blast-src-btn:hover {{ border-color: var(--accent-amber); color: var(--accent-amber); }}
+.blast-src-btn.active {{ border-color: var(--accent-amber); color: var(--accent-amber); background: rgba(255,170,0,0.06); }}
+.blast-animating {{ color: var(--accent-green); font-size: 9px; margin-bottom: 6px; }}
+
+/* ── CRITICAL IMPACT PANEL ────────────────────────── */
+.impact-toggle {{
+  display: flex; gap: 4px; margin-bottom: 10px;
+}}
+.impact-btn {{
+  flex: 1; padding: 6px 4px;
+  font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  border: 1px solid var(--border); background: none;
+  color: var(--text-muted); cursor: pointer; border-radius: 3px;
+  transition: all 0.15s;
+}}
+.impact-btn.before {{ border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(0,212,255,0.06); }}
+.impact-btn.after  {{ border-color: var(--accent-green); color: var(--accent-green); background: rgba(0,255,136,0.06); }}
+.impact-metric {{
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 0; border-bottom: 1px solid var(--border);
+  font-family: 'Share Tech Mono', monospace; font-size: 10px;
+}}
+.impact-metric .im-k {{ color: var(--text-muted); }}
+.impact-metric .im-v {{ font-weight: 600; font-size: 13px; }}
+.impact-pct {{
+  text-align: center; padding: 12px 0; margin: 8px 0;
+  font-family: 'Rajdhani', sans-serif; font-size: 28px; font-weight: 700;
+  color: var(--accent-green); border: 1px solid var(--accent-green-dim);
+  border-radius: 4px; background: var(--accent-green-dim);
+}}
+.impact-pct small {{ font-size: 11px; color: var(--text-secondary); display: block; margin-top: 2px; }}
+
+/* ── STORY MODE PANEL ─────────────────────────────── */
+.story-path-select {{
+  margin-bottom: 10px;
+}}
+.story-path-btn {{
+  display: block; width: 100%;
+  text-align: left; padding: 6px 8px; margin-bottom: 4px;
+  font-family: 'Share Tech Mono', monospace; font-size: 9px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); cursor: pointer; border-radius: 3px;
+  transition: all 0.15s; line-height: 1.5;
+}}
+.story-path-btn:hover {{ border-color: var(--accent-cyan); color: var(--text-primary); }}
+.story-path-btn.active {{ border-color: var(--accent-red); color: var(--accent-red); background: rgba(255,51,85,0.06); }}
+.story-controls {{
+  display: flex; gap: 4px; margin-bottom: 10px; flex-wrap: wrap;
+}}
+.story-ctrl-btn {{
+  flex: 1; min-width: 48px; padding: 6px 4px;
+  font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  border: 1px solid var(--border); background: none;
+  color: var(--text-secondary); cursor: pointer; border-radius: 3px;
+  transition: all 0.15s;
+}}
+.story-ctrl-btn:hover {{ border-color: var(--accent-cyan); color: var(--accent-cyan); }}
+.story-ctrl-btn:disabled {{ opacity: 0.3; cursor: not-allowed; }}
+.story-ctrl-btn.playing {{ border-color: var(--accent-red); color: var(--accent-red); }}
+.story-progress {{
+  height: 3px; background: var(--border); border-radius: 2px;
+  margin-bottom: 10px; overflow: hidden;
+}}
+.story-progress-fill {{
+  height: 100%; background: var(--accent-red); border-radius: 2px;
+  transition: width 0.5s ease;
+}}
+.story-narration {{
+  background: var(--bg-card); border: 1px solid var(--border-bright);
+  border-radius: 4px; padding: 10px 12px; margin-bottom: 8px;
+  font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  min-height: 80px; line-height: 1.7;
+}}
+.story-narration .sn-step {{
+  color: var(--text-muted); font-size: 9px; margin-bottom: 4px;
+  font-family: 'Rajdhani', sans-serif; letter-spacing: 1px; text-transform: uppercase;
+}}
+.story-narration .sn-from {{ color: var(--accent-cyan); }}
+.story-narration .sn-rel  {{ color: var(--accent-amber); padding: 0 4px; }}
+.story-narration .sn-to   {{ color: var(--accent-red); }}
+.story-narration .sn-idle {{ color: var(--text-muted); font-style: italic; }}
+.story-path-steps {{
+  font-family: 'Share Tech Mono', monospace; font-size: 9px;
+  color: var(--text-muted); line-height: 2;
+}}
+.story-path-steps .step-node {{ color: var(--text-secondary); }}
+.story-path-steps .step-node.active {{ color: var(--accent-red); font-weight: 700; }}
+.story-path-steps .step-node.done {{ color: var(--accent-green); }}
 </style>
 </head>
 
@@ -985,8 +1075,6 @@ svg#graph:active {{ cursor: grabbing; }}
 
     <!-- Edge tooltip -->
     <div class="edge-tooltip" id="edge-tooltip"></div>
-    <!-- Node hover tooltip -->
-    <div class="node-tooltip" id="node-tooltip"></div>
   </div>
 
   <!-- ── SIDE PANEL ── -->
@@ -995,6 +1083,7 @@ svg#graph:active {{ cursor: grabbing; }}
       <button class="panel-tab active" data-tab="node">Node Detail</button>
       <button class="panel-tab" data-tab="paths">Attack Paths</button>
       <button class="panel-tab" data-tab="analysis">Analysis</button>
+      <button class="panel-tab" data-tab="story" style="color:var(--accent-red)">▶ Story</button>
     </div>
 
     <!-- NODE DETAIL TAB -->
@@ -1014,6 +1103,11 @@ svg#graph:active {{ cursor: grabbing; }}
     <!-- ANALYSIS TAB -->
     <div class="panel-body tab-pane" id="tab-analysis">
       <div id="analysis-content"></div>
+    </div>
+
+    <!-- STORY MODE TAB -->
+    <div class="panel-body tab-pane" id="tab-story">
+      <div id="story-content"></div>
     </div>
   </div>
 </div>
@@ -1155,9 +1249,6 @@ const linkSel = root.append('g').attr('class', 'links-layer')
   }})
   .attr('data-key', d => d._source_id + '::' + d._target_id);
 
-// ── OVERLAY LAYER (blast rings, critical badge) ───────────────
-const overlayG = root.append('g').attr('class', 'overlay-layer');
-
 // ── NODES ─────────────────────────────────────────────────────
 const nodeG = root.append('g').attr('class', 'nodes-layer')
   .selectAll('g')
@@ -1237,13 +1328,6 @@ simulation.on('tick', () => {{
 
   nodeG.attr('transform', d => `translate(${{d.x}},${{d.y}})`);
 
-  // Keep blast rings in sync with node positions during simulation
-  if (activeFilter === 'blast') {{
-    overlayG.selectAll('circle.blast-ring').each(function(_, i) {{
-      // Rings are rebuilt on next applyFilter call — just trigger a redraw
-    }});
-  }}
-
   applyFilter(activeFilter, false);
 }});
 
@@ -1291,37 +1375,11 @@ function onNodeClick(event, d) {{
 }}
 
 function onNodeHover(event, d) {{
-  const tip   = document.getElementById('node-tooltip');
-  const box   = document.getElementById('graph-container').getBoundingClientRect();
-  const color = nodeColor(d);
-  const cveCnt  = d.cves ? d.cves.length : 0;
-  const pathCnt = DATA.attack_paths.filter(p => p.path.includes(d.id)).length;
-  const riskCol = d.risk_score >= 8 ? 'var(--accent-red)' : d.risk_score >= 4 ? 'var(--accent-amber)' : 'var(--accent-green)';
-  const flags   = [];
-  if (d.is_source) flags.push('ENTRY POINT');
-  if (d.is_sink)   flags.push('CROWN JEWEL');
-  if (d.id === DATA.critical_node) flags.push('⚠ CRITICAL');
-  tip.innerHTML = `
-    <div class="nt-name">${{d.name}}</div>
-    <div class="nt-badge" style="color:${{color}};border-color:${{color}}">${{d.type.toUpperCase()}}${{flags.length ? ' · '+flags.join(' · ') : ''}}</div>
-    <div class="nt-row"><span class="nt-k">Namespace</span><span class="nt-v">${{d.namespace}}</span></div>
-    <div class="nt-row"><span class="nt-k">Risk Score</span><span class="nt-v" style="color:${{riskCol}}">${{d.risk_score}}</span></div>
-    ${{cveCnt > 0 ? `<div class="nt-row"><span class="nt-k">CVEs</span><span class="nt-v nt-cve">${{cveCnt}} found</span></div>` : ''}}
-    ${{pathCnt > 0 ? `<div class="nt-row"><span class="nt-k">Attack Paths</span><span class="nt-v nt-paths">${{pathCnt}} through here</span></div>` : ''}}
-  `;
-  // Position tooltip: prefer right of cursor, flip left if near right edge
-  let x = event.clientX - box.left + 14;
-  let y = event.clientY - box.top  - 10;
-  if (x + 190 > box.width) x = event.clientX - box.left - 190;
-  tip.style.left = x + 'px';
-  tip.style.top  = y + 'px';
-  tip.classList.add('visible');
-  // Keep toolbar hint minimal
+  // Show tooltip-style info on the toolbar hint
   document.getElementById('toolbar-hint').textContent =
-    d.type + ' · ' + d.name + '  |  click to inspect';
+    d.type + ': ' + d.name + '  |  ns: ' + d.namespace + '  |  risk: ' + d.risk_score;
 }}
 function onNodeLeave() {{
-  document.getElementById('node-tooltip').classList.remove('visible');
   document.getElementById('toolbar-hint').textContent =
     'Scroll to zoom · Drag to pan · Click node to inspect';
 }}
@@ -1515,14 +1573,6 @@ function renderAnalysis() {{
     <div class="detail-row"><span class="dk">Attack Paths</span><span class="dv" style="color:var(--accent-red)">${{m.attack_path_count}}</span></div>
     <div class="detail-row"><span class="dk">Cycles Detected</span><span class="dv" style="color:var(--accent-orange)">${{m.cycle_count}}</span></div>
     <div class="detail-row"><span class="dk">Baseline Paths</span><span class="dv">${{m.total_paths}}</span></div>
-    <div class="section-label" style="margin-top:14px">Blast Radius Legend</div>
-    <div style="font-family:'Share Tech Mono',monospace;font-size:9px;line-height:2">
-      <span style="color:#ff3355">●</span> Source (Hop 0) &nbsp;
-      <span style="color:#ffaa00">●</span> Hop 1 &nbsp;
-      <span style="color:#ff6600">●</span> Hop 2 &nbsp;
-      <span style="color:#005f80;background:#00d4ff22;padding:1px 4px;border-radius:2px">●</span> Hop 3<br/>
-      <span style="color:var(--text-muted)">Click "Blast Radius" toolbar button to visualise on graph</span>
-    </div>
   `;
 }}
 
@@ -1535,9 +1585,7 @@ function applyFilter(mode, animate=true) {{
   if (mode === 'all') {{
     nodeG.select('circle.node-circle')
       .transition().duration(dur)
-      .style('opacity', 1).attr('stroke-width', 1.5)
-      .attr('fill', nodeColor)
-      .attr('stroke', d => {{ const c = d3.color(nodeColor(d)); return c ? c.darker(0.6).toString() : '#334455'; }});
+      .style('opacity', 1).attr('stroke-width', 1.5);
     nodeG.select('text').transition().duration(dur).style('opacity', 1);
     linkSel.transition().duration(dur).style('opacity', 0.6).attr('stroke-width', 1.2);
 
@@ -1567,93 +1615,35 @@ function applyFilter(mode, animate=true) {{
 
   }} else if (mode === 'critical') {{
     if (!DATA.critical_node) return;
+    // Show critical node + all its immediate neighbours
     const critEdges = DATA.edges.filter(e => e.source === DATA.critical_node || e.target === DATA.critical_node);
     const ns = new Set([DATA.critical_node, ...critEdges.map(e => e.source), ...critEdges.map(e => e.target)]);
     const es = new Set(critEdges.map(e => e.source + '::' + e.target));
     nodeG.select('circle.node-circle').transition().duration(dur)
       .style('opacity', d => ns.has(d.id) ? 1 : 0.06)
-      .attr('stroke-width', d => d.id === DATA.critical_node ? 4 : 1.5)
-      .attr('stroke', d => d.id === DATA.critical_node ? 'var(--accent-purple)' : null);
+      .attr('stroke-width', d => d.id === DATA.critical_node ? 3 : 1.5);
     nodeG.select('text').transition().duration(dur)
       .style('opacity', d => ns.has(d.id) ? 1 : 0.04);
     linkSel.transition().duration(dur)
       .style('opacity', d => es.has(d._source_id + '::' + d._target_id) ? 0.95 : 0.03)
-      .attr('stroke-width', d => es.has(d._source_id + '::' + d._target_id) ? 2.5 : 1.2);
-    // Draw a "REMOVE THIS" SVG badge above the critical node
-    const critNode = simNodes.find(n => n.id === DATA.critical_node);
-    if (critNode && critNode.x != null) {{
-      overlayG.selectAll('*').remove();
-      const badgeG = overlayG.append('g').attr('transform', `translate(${{critNode.x}},${{critNode.y - 30}})`);
-      badgeG.append('rect')
-        .attr('x', -42).attr('y', -11).attr('width', 84).attr('height', 18)
-        .attr('rx', 3).attr('fill', '#2a0060').attr('stroke', '#b060ff').attr('stroke-width', 1);
-      badgeG.append('text')
-        .attr('text-anchor', 'middle').attr('dy', '0.35em')
-        .attr('fill', '#b060ff')
-        .attr('font-family', 'Share Tech Mono, monospace')
-        .attr('font-size', '8px').attr('letter-spacing', '1px')
-        .text('⚠ REMOVE FIRST');
-      // Draw lines to each immediate neighbour with impact count label
-      const top5ids = new Set(DATA.top5_nodes.map(t => t.id));
-      critEdges.forEach(e => {{
-        const peerId = e.source === DATA.critical_node ? e.target : e.source;
-        const peer   = simNodes.find(n => n.id === peerId);
-        if (!peer || peer.x == null) return;
-        overlayG.append('line')
-          .attr('x1', critNode.x).attr('y1', critNode.y)
-          .attr('x2', peer.x).attr('y2', peer.y)
-          .attr('stroke', top5ids.has(peerId) ? '#b060ff' : '#354a60')
-          .attr('stroke-width', 1).attr('stroke-dasharray', '3 2').attr('opacity', 0.6);
-      }});
-    }}
+      .attr('stroke-width', 1.2);
 
   }} else if (mode === 'blast') {{
-    // Build hop-level sets: hop0=sources, hop1,hop2,hop3
-    const hopSets = {{ 0: new Set(), 1: new Set(), 2: new Set(), 3: new Set() }};
-    const hopColors = {{ 0:'#ff3355', 1:'#ffaa00', 2:'#ff6600', 3:'#005f80' }};
-    Object.entries(DATA.blast_radius).forEach(([srcId, br]) => {{
-      hopSets[0].add(srcId);
-      Object.entries(br.by_hop || {{}}).forEach(([hop, nodes]) => {{
-        nodes.forEach(n => hopSets[parseInt(hop)].add(n));
-      }});
+    // Highlight blast radius nodes from all sources in DATA.blast_radius
+    const ns = new Set();
+    Object.values(DATA.blast_radius).forEach(br => {{
+      Object.values(br.by_hop || {{}}).forEach(hopNodes => hopNodes.forEach(n => ns.add(n)));
     }});
-    const allBlast = new Set([...hopSets[0], ...hopSets[1], ...hopSets[2], ...hopSets[3]]);
-
-    // Draw concentric hop rings on the overlay layer
-    overlayG.selectAll('*').remove();
-    simNodes.forEach(nd => {{
-      let hop = -1;
-      for (let h = 0; h <= 3; h++) {{ if (hopSets[h].has(nd.id)) {{ hop = h; break; }} }}
-      if (hop < 0) return;
-      const ringR = (nodeRadius(nd) + 6) + hop * 7;
-      overlayG.append('circle')
-        .attr('cx', nd.x || 0).attr('cy', nd.y || 0)
-        .attr('r', ringR)
-        .attr('fill', 'none')
-        .attr('stroke', hopColors[hop])
-        .attr('stroke-width', hop === 0 ? 2.5 : 1.5)
-        .attr('stroke-dasharray', hop === 0 ? 'none' : '4 3')
-        .attr('opacity', 0.7)
-        .attr('class', 'blast-ring');
-    }});
-
+    // Also add the source nodes themselves
+    Object.keys(DATA.blast_radius).forEach(k => ns.add(k));
     nodeG.select('circle.node-circle').transition().duration(dur)
-      .style('opacity', d => allBlast.has(d.id) ? 1 : 0.06)
-      .attr('fill', d => {{
-        for (let h = 0; h <= 3; h++) {{
-          if (hopSets[h].has(d.id)) return hopColors[h];
-        }}
-        return nodeColor(d);
-      }})
-      .attr('stroke-width', d => hopSets[0].has(d.id) ? 3 : 1.5);
+      .style('opacity', d => ns.has(d.id) ? 1 : 0.08)
+      .attr('stroke-width', 1.5);
     nodeG.select('text').transition().duration(dur)
-      .style('opacity', d => allBlast.has(d.id) ? 1 : 0.04);
+      .style('opacity', d => ns.has(d.id) ? 1 : 0.05);
     linkSel.transition().duration(dur)
-      .style('opacity', 0.12).attr('stroke-width', 1.2);
-
+      .style('opacity', 0.15).attr('stroke-width', 1.2);
   }}
-  // Always clear overlay rings unless in blast mode
-  if (mode !== 'blast') overlayG.selectAll('*').remove();
 }}
 
 // ── FILTER BUTTONS ────────────────────────────────────────────
@@ -1697,9 +1687,660 @@ document.querySelectorAll('.panel-tab').forEach(tab => {{
 // ═══════════════════════════════════════════════════════════════
 renderPathsList();
 renderAnalysis();
+renderStoryPanel();
 
 // Auto-fit after simulation settles
 setTimeout(fitView, 2800);
+
+// ═══════════════════════════════════════════════════════════════
+// FEATURE 1 — ANIMATED BLAST RADIUS
+// ═══════════════════════════════════════════════════════════════
+
+let blastMode = 'sources';   // 'sources' | 'any'
+let blastActive = null;      // currently selected source id
+let blastAnimTimer = null;
+
+function renderBlastPanel() {{
+  const el = document.getElementById('blast-panel');
+  if (!el) return;
+
+  // Build source list: DATA.blast_radius keys (pre-computed BFS sources)
+  const sources   = Object.keys(DATA.blast_radius);
+  const allNodes  = blastMode === 'sources'
+    ? sources
+    : DATA.nodes.filter(n => n.is_source).map(n => n.id);
+
+  el.innerHTML = `
+    <div class="blast-toggle">
+      <button class="blast-toggle-btn ${{blastMode === 'sources' ? 'active' : ''}}"
+              onclick="setBlastMode('sources')">Entry Points</button>
+      <button class="blast-toggle-btn ${{blastMode === 'any' ? 'active' : ''}}"
+              onclick="setBlastMode('any')">All Sources</button>
+    </div>
+    <div class="blast-animating" id="blast-animating" style="display:none">▶ Simulating spread…</div>
+    <div class="section-label">Select source to animate</div>
+    <div class="blast-source-list">
+      ${{sources.map(sid => {{
+        const nd = DATA.nodes.find(n => n.id === sid);
+        const nm = nd ? nd.name : sid;
+        const br = DATA.blast_radius[sid];
+        return `<button class="blast-src-btn ${{blastActive === sid ? 'active' : ''}}"
+                        onclick="window.applyBlastRadius('${{sid}}')">${{nm}}
+                  <span style="color:var(--text-muted);float:right">${{br.total_reachable}} nodes</span>
+                </button>`;
+      }}).join('')}}
+    </div>
+    <div id="blast-summary-area"></div>
+  `;
+}}
+
+window.setBlastMode = function(m) {{
+  blastMode = m;
+  renderBlastPanel();
+}};
+
+window.applyBlastRadius = function(sourceId) {{
+  if (blastAnimTimer) {{ clearTimeout(blastAnimTimer); blastAnimTimer = null; }}
+  blastActive = sourceId;
+  renderBlastPanel();
+
+  const br = DATA.blast_radius[sourceId];
+  if (!br) return;
+
+  const hopColors = {{ 0:'#ff3355', 1:'#ffaa00', 2:'#ff6600', 3:'#4499ff' }};
+  const hopSets   = {{ 0: new Set([sourceId]) }};
+  Object.entries(br.by_hop || {{}}).forEach(([h, nodes]) => {{
+    hopSets[parseInt(h)] = new Set(nodes);
+  }});
+  const maxHop = Math.max(...Object.keys(hopSets).map(Number));
+
+  // Dim everything first
+  nodeG.select('circle.node-circle')
+    .transition().duration(200)
+    .style('opacity', 0.07)
+    .attr('fill', nodeColor);
+  nodeG.select('text').transition().duration(200).style('opacity', 0.04);
+  linkSel.transition().duration(200).style('opacity', 0.04).attr('stroke-width', 1.2);
+  overlayG.selectAll('*').remove();
+
+  const animEl = document.getElementById('blast-animating');
+  if (animEl) animEl.style.display = '';
+
+  // Animate each hop with delay
+  function animateHop(hop) {{
+    if (hop > maxHop) {{
+      if (animEl) animEl.style.display = 'none';
+      renderBlastSummary(sourceId, hopSets, hopColors);
+      return;
+    }}
+    const nodes = hopSets[hop] || new Set();
+    const prevNodes = hop > 0 ? hopSets[hop-1] : new Set();
+    const color = hopColors[hop] || '#668899';
+
+    // Light up nodes at this hop
+    nodeG.select('circle.node-circle')
+      .filter(d => nodes.has(d.id))
+      .transition().duration(350)
+      .style('opacity', 1)
+      .attr('fill', color);
+    nodeG.select('text')
+      .filter(d => nodes.has(d.id))
+      .transition().duration(350).style('opacity', 1);
+
+    // Light up edges between prev hop and this hop
+    linkSel
+      .filter(d => (prevNodes.has(d._source_id) && nodes.has(d._target_id)) ||
+                   (prevNodes.has(d._target_id) && nodes.has(d._source_id)))
+      .transition().duration(350)
+      .style('opacity', 0.9)
+      .attr('stroke', color)
+      .attr('stroke-width', 2.5);
+
+    // Draw ring on overlay
+    nodes.forEach(nid => {{
+      const nd = simNodes.find(n => n.id === nid);
+      if (!nd || nd.x == null) return;
+      const r = nodeRadius(nd) + 5 + hop * 6;
+      overlayG.append('circle')
+        .attr('cx', nd.x).attr('cy', nd.y)
+        .attr('r', 0).attr('fill', 'none')
+        .attr('stroke', color).attr('stroke-width', 1.5)
+        .attr('stroke-dasharray', hop === 0 ? 'none' : '4 3')
+        .attr('opacity', 0.8).attr('class','blast-ring')
+        .transition().duration(350).attr('r', r);
+    }});
+
+    blastAnimTimer = setTimeout(() => animateHop(hop + 1), 450);
+  }}
+
+  animateHop(0);
+}};
+
+function renderBlastSummary(sourceId, hopSets, hopColors) {{
+  const el = document.getElementById('blast-summary-area');
+  if (!el) return;
+  const hopLabels = {{ 0:'Source', 1:'Hop 1', 2:'Hop 2', 3:'Hop 3' }};
+  let totalAffected = 0;
+  let sinkReached = 0;
+
+  const rows = Object.entries(hopSets).map(([h, nodes]) => {{
+    const hi = parseInt(h);
+    totalAffected += nodes.size;
+    const sinks = [...nodes].filter(id => {{
+      const nd = DATA.nodes.find(n => n.id === id);
+      return nd && nd.is_sink;
+    }});
+    sinkReached += sinks.length;
+    return `<div class="blast-hop-row">
+      <div class="blast-hop-dot" style="background:${{hopColors[hi] || '#668899'}}"></div>
+      <span class="blast-hop-label">${{hopLabels[hi] || 'Hop '+h}}</span>
+      <span class="blast-hop-count">${{nodes.size}} node${{nodes.size !== 1 ? 's' : ''}}</span>
+      ${{sinks.length > 0 ? `<span class="blast-hop-sink">⚠ ${{sinks.length}} crown jewel${{sinks.length>1?'s':''}}</span>` : ''}}
+    </div>`;
+  }}).join('');
+
+  el.innerHTML = `
+    <div class="blast-summary">
+      <div class="bs-title">Blast Radius Report</div>
+      ${{rows}}
+      <div class="blast-hop-row" style="margin-top:4px;border-top:1px solid var(--border-bright);padding-top:6px">
+        <span style="color:var(--text-secondary);margin-right:auto">Total affected</span>
+        <span style="color:var(--text-primary);font-weight:700">${{totalAffected}}</span>
+      </div>
+      ${{sinkReached > 0 ? `<div style="color:var(--accent-red);font-size:9px;margin-top:6px;padding-top:4px;border-top:1px solid var(--border)">
+        ⚠ ${{sinkReached}} crown jewel${{sinkReached>1?'s':''}} reachable — CRITICAL EXPOSURE</div>` : ''}}
+    </div>
+  `;
+}}
+
+// ═══════════════════════════════════════════════════════════════
+// FEATURE 2 — CRITICAL NODE BEFORE/AFTER IMPACT
+// ═══════════════════════════════════════════════════════════════
+
+let criticalView = 'before';  // 'before' | 'after'
+
+function renderCriticalPanel() {{
+  const el = document.getElementById('critical-panel');
+  if (!el) return;
+
+  const cn = DATA.critical_node;
+  if (!cn) {{
+    el.innerHTML = '<div class="empty-msg">No critical node identified</div>';
+    return;
+  }}
+  const cnNode  = DATA.nodes.find(n => n.id === cn);
+  const totalBefore = DATA.attack_paths.length;
+  const pathsAfter  = DATA.attack_paths.filter(p => !p.path.includes(cn));
+  const totalAfter  = pathsAfter.length;
+  const reduction   = totalBefore - totalAfter;
+  const pct         = totalBefore > 0 ? Math.round(reduction / totalBefore * 100) : 0;
+
+  el.innerHTML = `
+    <div class="critical-card" style="margin-bottom:10px">
+      <div class="cn-label">★ Critical Node</div>
+      <div class="cn-name">${{cnNode ? cnNode.name : cn}}</div>
+      <div class="cn-impact">Type: ${{cnNode ? cnNode.type : '—'}} · ns: ${{cnNode ? cnNode.namespace : '—'}}</div>
+    </div>
+    <div class="impact-toggle">
+      <button class="impact-btn ${{criticalView === 'before' ? 'before' : ''}}"
+              onclick="window.setCriticalView('before')">Before</button>
+      <button class="impact-btn ${{criticalView === 'after'  ? 'after'  : ''}}"
+              onclick="window.setCriticalView('after')">After Removal</button>
+    </div>
+    <div class="impact-pct">
+      ${{pct}}%
+      <small>attack surface reduction</small>
+    </div>
+    <div class="impact-metric"><span class="im-k">Paths before</span><span class="im-v" style="color:var(--accent-red)">${{totalBefore}}</span></div>
+    <div class="impact-metric"><span class="im-k">Paths after</span><span class="im-v" style="color:var(--accent-green)">${{totalAfter}}</span></div>
+    <div class="impact-metric"><span class="im-k">Eliminated</span><span class="im-v" style="color:var(--accent-amber)">−${{reduction}}</span></div>
+    <div class="section-label" style="margin-top:10px">
+      ${{criticalView === 'before' ? 'All active attack paths' : 'Surviving paths after removal'}}
+    </div>
+    <div id="critical-path-list" style="font-family:'Share Tech Mono',monospace;font-size:9px;line-height:2">
+      ${{(criticalView === 'before' ? DATA.attack_paths : pathsAfter).map((p,i) => {{
+        const names = p.path.map(id => {{
+          const nd = DATA.nodes.find(n => n.id === id); return nd ? nd.name : id;
+        }});
+        return `<div style="padding:3px 0;border-bottom:1px solid var(--border);color:var(--text-secondary)">
+          <span style="color:var(--text-muted)">#${{i+1}}</span> ${{names.join(' → ')}}
+        </div>`;
+      }}).join('')}}
+    </div>
+  `;
+}}
+
+window.setCriticalView = function(view) {{
+  criticalView = view;
+  renderCriticalPanel();
+  window.applyCriticalImpact();
+}};
+
+window.applyCriticalImpact = function() {{
+  const cn = DATA.critical_node;
+  if (!cn) return;
+  overlayG.selectAll('*').remove();
+
+  if (criticalView === 'before') {{
+    // Show all attack paths highlighted
+    const ns = new Set(DATA.all_path_nodes);
+    const es = new Set(DATA.all_path_edges.map(e => e.source + '::' + e.target));
+    nodeG.select('circle.node-circle').transition().duration(300)
+      .style('opacity', d => ns.has(d.id) ? 1 : 0.08)
+      .attr('fill', nodeColor)
+      .attr('stroke-width', d => d.id === cn ? 4 : 1.5)
+      .attr('stroke', d => d.id === cn ? 'var(--accent-purple)' : null);
+    nodeG.select('text').transition().duration(300)
+      .style('opacity', d => ns.has(d.id) ? 1 : 0.05);
+    linkSel.transition().duration(300)
+      .style('opacity', d => es.has(d._source_id+'::'+d._target_id) ? 0.9 : 0.05)
+      .attr('stroke-width', d => es.has(d._source_id+'::'+d._target_id) ? 2.2 : 1.2)
+      .attr('stroke', null);
+
+    // Badge on critical node
+    const critNd = simNodes.find(n => n.id === cn);
+    if (critNd && critNd.x != null) {{
+      const bg = overlayG.append('g').attr('transform', `translate(${{critNd.x}},${{critNd.y - 28}})`);
+      bg.append('rect').attr('x',-40).attr('y',-10).attr('width',80).attr('height',16)
+        .attr('rx',3).attr('fill','#2a0060').attr('stroke','#b060ff').attr('stroke-width',1);
+      bg.append('text').attr('text-anchor','middle').attr('dy','0.35em')
+        .attr('fill','#b060ff').attr('font-family','Share Tech Mono,monospace')
+        .attr('font-size','8px').attr('letter-spacing','1px').text('⚠ REMOVE THIS');
+    }}
+
+  }} else {{
+    // After: fade critical node + its edges, highlight surviving paths
+    const pathsAfter = DATA.attack_paths.filter(p => !p.path.includes(cn));
+    const survivingNodes = new Set(pathsAfter.flatMap(p => p.path));
+    const survivingEdges = new Set(pathsAfter.flatMap(p =>
+      p.path.slice(0,-1).map((id,i) => id+'::'+p.path[i+1])
+    ));
+    const cnEdges = new Set(
+      DATA.edges.filter(e => e.source === cn || e.target === cn)
+                .map(e => e.source+'::'+e.target)
+    );
+
+    // Flash + fade the critical node
+    nodeG.select('circle.node-circle')
+      .filter(d => d.id === cn)
+      .transition().duration(150).attr('r', nodeRadius(DATA.nodes.find(n=>n.id===cn) || {{}})*1.8)
+      .transition().duration(400)
+      .attr('r', d => nodeRadius(d))
+      .style('opacity', 0.12)
+      .attr('fill', '#b060ff');
+
+    nodeG.select('circle.node-circle')
+      .filter(d => d.id !== cn)
+      .transition().duration(400)
+      .style('opacity', d => survivingNodes.has(d.id) ? 1 : 0.06)
+      .attr('fill', nodeColor);
+    nodeG.select('text').transition().duration(400)
+      .style('opacity', d => d.id === cn ? 0.1 : survivingNodes.has(d.id) ? 1 : 0.04);
+
+    linkSel.transition().duration(400)
+      .style('opacity', d => {{
+        const k = d._source_id+'::'+d._target_id;
+        if (cnEdges.has(k)) return 0.06;
+        return survivingEdges.has(k) ? 0.9 : 0.04;
+      }})
+      .attr('stroke-width', d => {{
+        const k = d._source_id+'::'+d._target_id;
+        return survivingEdges.has(k) ? 2.2 : 1.2;
+      }})
+      .attr('stroke', d => {{
+        const k = d._source_id+'::'+d._target_id;
+        return cnEdges.has(k) ? '#440044' : null;
+      }});
+
+    // "REMOVED" badge on critical node  
+    const critNd = simNodes.find(n => n.id === cn);
+    if (critNd && critNd.x != null) {{
+      const bg = overlayG.append('g').attr('transform', `translate(${{critNd.x}},${{critNd.y - 28}})`);
+      bg.append('rect').attr('x',-34).attr('y',-10).attr('width',68).attr('height',16)
+        .attr('rx',3).attr('fill','#1a001a').attr('stroke','#440044').attr('stroke-width',1);
+      bg.append('text').attr('text-anchor','middle').attr('dy','0.35em')
+        .attr('fill','#664466').attr('font-family','Share Tech Mono,monospace')
+        .attr('font-size','8px').attr('letter-spacing','1px').text('✗ REMOVED');
+    }}
+  }}
+}};
+
+// ═══════════════════════════════════════════════════════════════
+// FEATURE 3 — ATTACK STORY MODE (step-by-step simulation)
+// ═══════════════════════════════════════════════════════════════
+
+let storyState = {{
+  pathIdx:   -1,     // selected path index
+  step:      -1,     // current step (-1 = not started)
+  playing:   false,
+  timer:     null,
+}};
+
+function renderStoryPanel() {{
+  const el = document.getElementById('story-content');
+  if (!el) return;
+
+  el.innerHTML = `
+    <div class="section-label">Select attack path to simulate</div>
+    <div class="story-path-select">
+      ${{DATA.attack_paths.map((p, i) => {{
+        const src = DATA.nodes.find(n => n.id === p.source);
+        const tgt = DATA.nodes.find(n => n.id === p.target);
+        return `<button class="story-path-btn ${{storyState.pathIdx === i ? 'active' : ''}}"
+                        onclick="window.storySelectPath(${{i}})">
+          <span style="color:var(--text-muted)">#${{i+1}}</span>
+          <span class="path-sev sev-${{p.severity}}" style="font-size:8px;padding:1px 4px">${{p.severity}}</span>
+          ${{src ? src.name : p.source}} → ${{tgt ? tgt.name : p.target}}
+          <br/><span style="color:var(--text-muted)">${{p.total_hops}} hops · score ${{p.total_risk_score}}</span>
+        </button>`;
+      }}).join('')}}
+    </div>
+    <div id="story-active" style="display:${{storyState.pathIdx >= 0 ? '' : 'none'}}">
+      <div class="story-controls">
+        <button class="story-ctrl-btn" id="btn-play"  onclick="window.storyPlay()">▶ Play</button>
+        <button class="story-ctrl-btn" id="btn-pause" onclick="window.storyPause()" disabled>⏸ Pause</button>
+        <button class="story-ctrl-btn" id="btn-next"  onclick="window.storyNext()">⏭ Next</button>
+        <button class="story-ctrl-btn" id="btn-replay" onclick="window.storyReplay()">↺ Replay</button>
+      </div>
+      <div class="story-progress"><div class="story-progress-fill" id="story-prog" style="width:0%"></div></div>
+      <div class="story-narration" id="story-narration">
+        <div class="sn-idle">Select a path above, then press Play</div>
+      </div>
+      <div class="section-label">Path Steps</div>
+      <div class="story-path-steps" id="story-steps"></div>
+    </div>
+  `;
+  if (storyState.pathIdx >= 0) renderStorySteps();
+}}
+
+function renderStorySteps() {{
+  const el = document.getElementById('story-steps');
+  if (!el || storyState.pathIdx < 0) return;
+  const p = DATA.attack_paths[storyState.pathIdx];
+  el.innerHTML = p.path.map((nid, i) => {{
+    const nd   = DATA.nodes.find(n => n.id === nid);
+    const nm   = nd ? nd.name : nid;
+    const done = i < storyState.step;
+    const act  = i === storyState.step;
+    const cls  = done ? 'done' : act ? 'active' : '';
+    const icon = nd && nd.is_sink ? ' 🎯' : nd && nd.is_source ? ' ⚡' : '';
+    let arrow = '';
+    if (i < p.path.length - 1) {{
+      const edge = DATA.edges.find(e => e.source === p.path[i] && e.target === p.path[i+1]);
+      const rel  = edge ? edge.relationship : '→';
+      arrow = `<span style="color:var(--text-muted);font-size:8px;display:block;padding-left:12px">└─[${{rel}}]</span>`;
+    }}
+    return `<span class="step-node ${{cls}}">${{nm}}${{icon}}</span>${{arrow}}`;
+  }}).join('');
+}}
+
+window.storySelectPath = function(idx) {{
+  storyPause();
+  storyState.pathIdx = idx;
+  storyState.step    = -1;
+  storyState.playing = false;
+  // Reset graph to neutral
+  applyFilter('all', true);
+  overlayG.selectAll('*').remove();
+  renderStoryPanel();
+  switchTab('story');
+}};
+
+window.storyPlay = function() {{
+  if (storyState.pathIdx < 0) return;
+  if (storyState.step >= DATA.attack_paths[storyState.pathIdx].path.length - 1) {{
+    storyReplay(); return;
+  }}
+  storyState.playing = true;
+  const playBtn  = document.getElementById('btn-play');
+  const pauseBtn = document.getElementById('btn-pause');
+  if (playBtn)  {{ playBtn.disabled = true;  playBtn.classList.add('playing'); }}
+  if (pauseBtn) {{ pauseBtn.disabled = false; }}
+  storyAdvance();
+}};
+
+window.storyPause = function() {{
+  storyState.playing = false;
+  if (storyState.timer) {{ clearTimeout(storyState.timer); storyState.timer = null; }}
+  const playBtn  = document.getElementById('btn-play');
+  const pauseBtn = document.getElementById('btn-pause');
+  if (playBtn)  {{ playBtn.disabled = false; playBtn.classList.remove('playing'); }}
+  if (pauseBtn) {{ pauseBtn.disabled = true; }}
+}};
+
+window.storyNext = function() {{
+  storyPause();
+  const p = DATA.attack_paths[storyState.pathIdx];
+  if (!p || storyState.step >= p.path.length - 1) return;
+  storyState.step++;
+  storyRenderStep();
+}};
+
+window.storyReplay = function() {{
+  storyPause();
+  storyState.step = -1;
+  applyFilter('all', false);
+  overlayG.selectAll('*').remove();
+  renderStorySteps();
+  updateStoryProgress();
+  const narr = document.getElementById('story-narration');
+  if (narr) narr.innerHTML = '<div class="sn-idle">Ready — press Play to begin</div>';
+  storyPlay();
+}};
+
+function storyAdvance() {{
+  if (!storyState.playing) return;
+  const p = DATA.attack_paths[storyState.pathIdx];
+  if (!p || storyState.step >= p.path.length - 1) {{
+    storyPause();
+    storyFinish();
+    return;
+  }}
+  storyState.step++;
+  storyRenderStep();
+  storyState.timer = setTimeout(storyAdvance, 650);
+}}
+
+function storyRenderStep() {{
+  const p    = DATA.attack_paths[storyState.pathIdx];
+  const step = storyState.step;
+  const nid  = p.path[step];
+  const nd   = DATA.nodes.find(n => n.id === nid);
+
+  // Dim everything
+  nodeG.select('circle.node-circle')
+    .transition().duration(200)
+    .style('opacity', d => p.path.includes(d.id) ? 0.25 : 0.05)
+    .attr('fill', nodeColor)
+    .attr('stroke-width', 1.5);
+  linkSel.transition().duration(200).style('opacity', 0.05).attr('stroke-width', 1.2).attr('stroke', null);
+
+  // Highlight completed nodes
+  p.path.slice(0, step).forEach(id => {{
+    nodeG.select('circle.node-circle').filter(d => d.id === id)
+      .transition().duration(200).style('opacity', 0.6).attr('fill', '#00ff88').attr('stroke-width', 1.5);
+  }});
+
+  // Highlight completed edges
+  p.path.slice(0, step).forEach((id, i) => {{
+    if (i >= step - 1) return;
+    const key = p.path[i]+'::'+p.path[i+1];
+    linkSel.filter(d => d._source_id+'::'+d._target_id === key)
+      .transition().duration(200).style('opacity', 0.5).attr('stroke','#00ff88').attr('stroke-width', 1.8);
+  }});
+
+  // Animate current edge traversal
+  if (step > 0) {{
+    const prevId = p.path[step - 1];
+    const eKey   = prevId + '::' + nid;
+    linkSel.filter(d => d._source_id+'::'+d._target_id === eKey)
+      .transition().duration(400)
+      .style('opacity', 1).attr('stroke','#ff3355').attr('stroke-width', 3.5);
+  }}
+
+  // Pulse current node
+  nodeG.select('circle.node-circle').filter(d => d.id === nid)
+    .transition().duration(150).attr('r', d => nodeRadius(d) * 1.8).attr('fill','#ff3355')
+    .transition().duration(300).attr('r', d => nodeRadius(d)).style('opacity', 1);
+
+  // Overlay badge on current node
+  overlayG.selectAll('*').remove();
+  const curNd = simNodes.find(n => n.id === nid);
+  if (curNd && curNd.x != null) {{
+    const bg = overlayG.append('g').attr('transform', `translate(${{curNd.x}},${{curNd.y - 26}})`);
+    bg.append('rect').attr('x',-30).attr('y',-9).attr('width',60).attr('height',14)
+      .attr('rx',2).attr('fill','#3a0010').attr('stroke','#ff3355').attr('stroke-width',1);
+    bg.append('text').attr('text-anchor','middle').attr('dy','0.35em')
+      .attr('fill','#ff3355').attr('font-family','Share Tech Mono,monospace')
+      .attr('font-size','8px').text('ATTACKER');
+  }}
+
+  // Narration
+  updateStoryNarration(p, step, nd);
+  renderStorySteps();
+  updateStoryProgress();
+}}
+
+function updateStoryNarration(p, step, nd) {{
+  const narr = document.getElementById('story-narration');
+  if (!narr) return;
+  const total = p.path.length;
+  const prevNd = step > 0 ? DATA.nodes.find(n => n.id === p.path[step-1]) : null;
+  const edge   = step > 0 ? DATA.edges.find(e => e.source === p.path[step-1] && e.target === p.path[step]) : null;
+  const rel    = edge ? edge.relationship : null;
+
+  let html = `<div class="sn-step">Step ${{step + 1}} of ${{total}} · Risk Score: ${{p.total_risk_score}}</div>`;
+  if (step === 0) {{
+    html += `Attacker gains access via <span class="sn-from">${{nd ? nd.name : p.path[0]}}</span>
+             ${{nd && nd.is_source ? ' <span style="color:var(--accent-amber)">(entry point)</span>' : ''}}`;
+  }} else if (nd && nd.is_sink) {{
+    html += `<span class="sn-from">${{prevNd ? prevNd.name : ''}}</span>
+             ${{rel ? `<span class="sn-rel">─[${{rel}}]→</span>` : '→'}}
+             <span class="sn-to">${{nd.name}}</span>
+             <br/><span style="color:var(--accent-red);font-size:9px">🎯 CROWN JEWEL COMPROMISED</span>`;
+  }} else {{
+    const cvs = edge && edge.cvss ? ` · CVSS ${{edge.cvss}}` : '';
+    const cve = edge && edge.cve  ? ` · <span style="color:var(--accent-red)">${{edge.cve}}</span>` : '';
+    html += `<span class="sn-from">${{prevNd ? prevNd.name : ''}}</span>
+             ${{rel ? `<span class="sn-rel">─[${{rel}}]→</span>` : '→'}}
+             <span class="sn-to">${{nd ? nd.name : ''}}</span>
+             ${{cvs || cve ? `<br/><span style="color:var(--text-muted);font-size:9px">${{cvs}}${{cve}}</span>` : ''}}`;
+  }}
+  narr.innerHTML = html;
+}}
+
+function updateStoryProgress() {{
+  const el = document.getElementById('story-prog');
+  if (!el || storyState.pathIdx < 0) return;
+  const total = DATA.attack_paths[storyState.pathIdx].path.length;
+  const pct   = storyState.step < 0 ? 0 : Math.round((storyState.step + 1) / total * 100);
+  el.style.width = pct + '%';
+}}
+
+function storyFinish() {{
+  const p = DATA.attack_paths[storyState.pathIdx];
+  // Highlight the full path in final state
+  const ns = new Set(p.path);
+  const es = new Set(p.path.slice(0,-1).map((id,i) => id+'::'+p.path[i+1]));
+  nodeG.select('circle.node-circle').transition().duration(400)
+    .style('opacity', d => ns.has(d.id) ? 1 : 0.06)
+    .attr('fill', d => {{
+      if (!ns.has(d.id)) return nodeColor(d);
+      return d.is_sink ? '#ffcc00' : d.is_source ? '#ff3355' : '#00ff88';
+    }});
+  linkSel.transition().duration(400)
+    .style('opacity', d => es.has(d._source_id+'::'+d._target_id) ? 1 : 0.05)
+    .attr('stroke', d => es.has(d._source_id+'::'+d._target_id) ? '#ff3355' : null)
+    .attr('stroke-width', d => es.has(d._source_id+'::'+d._target_id) ? 3 : 1.2);
+
+  // Final narration
+  const sink = DATA.nodes.find(n => n.id === p.path[p.path.length-1]);
+  const narr = document.getElementById('story-narration');
+  if (narr) {{
+    narr.innerHTML = `<span style="color:var(--accent-red);font-weight:700">Kill Chain Complete</span><br/>
+      <span style="color:var(--text-secondary)">
+        Attack reached <span style="color:var(--accent-amber)">${{sink ? sink.name : 'target'}}</span>
+        in ${{p.total_hops}} hops with total risk score
+        <span style="color:var(--accent-red)">${{p.total_risk_score}}</span>
+      </span>`;
+  }}
+  overlayG.selectAll('*').remove();
+  updateStoryProgress();
+  const playBtn = document.getElementById('btn-play');
+  if (playBtn) {{ playBtn.disabled = false; playBtn.classList.remove('playing'); }}
+}}
+
+// ── Hook blast panel into the blast toolbar button ─────────────
+// Override the existing blast filter button to also render the panel
+const origBlastBtn = document.getElementById('btn-blast');
+if (origBlastBtn) {{
+  const origClick = origBlastBtn.onclick;
+  origBlastBtn.onclick = function() {{
+    activeFilter = 'blast';
+    selectedPathIdx = -1;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','red','amber','orange','purple'));
+    this.classList.add('active','amber');
+    // Show blast panel in the analysis tab
+    switchTab('analysis');
+    const ac = document.getElementById('analysis-content');
+    if (ac) {{
+      const existing = document.getElementById('blast-panel');
+      if (!existing) {{
+        const div = document.createElement('div');
+        div.id = 'blast-panel';
+        ac.prepend(div);
+      }}
+      renderBlastPanel();
+    }}
+    // Dim all nodes to invite clicking
+    nodeG.select('circle.node-circle').transition().duration(300).style('opacity', d => d.is_source ? 0.9 : 0.08);
+    nodeG.select('text').transition().duration(300).style('opacity', d => d.is_source ? 0.9 : 0.05);
+    linkSel.transition().duration(300).style('opacity', 0.05);
+    overlayG.selectAll('*').remove();
+  }};
+}}
+
+// Hook critical button
+const origCritBtn = document.getElementById('btn-critical');
+if (origCritBtn) {{
+  origCritBtn.onclick = function() {{
+    activeFilter = 'critical';
+    selectedPathIdx = -1;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','red','amber','orange','purple'));
+    this.classList.add('active','purple');
+    switchTab('analysis');
+    const ac = document.getElementById('analysis-content');
+    if (ac) {{
+      const existing = document.getElementById('critical-panel');
+      if (!existing) {{
+        const div = document.createElement('div');
+        div.id = 'critical-panel';
+        ac.prepend(div);
+      }}
+      renderCriticalPanel();
+      window.applyCriticalImpact();
+    }}
+  }};
+}}
+
+// Hook reset to also clear story/blast state
+const origResetBtn = document.getElementById('btn-reset');
+if (origResetBtn) {{
+  origResetBtn.onclick = function() {{
+    activeFilter = 'all';
+    blastActive  = null;
+    criticalView = 'before';
+    storyPause();
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active','red','amber','orange','purple'));
+    document.getElementById('btn-all').classList.add('active');
+    applyFilter('all', true);
+    overlayG.selectAll('*').remove();
+    // Remove injected panels
+    ['blast-panel','critical-panel'].forEach(id => {{
+      const el = document.getElementById(id); if (el) el.remove();
+    }});
+  }};
+}}
 </script>
 </body>
 </html>"""

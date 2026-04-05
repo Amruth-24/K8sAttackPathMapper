@@ -34,7 +34,7 @@ from reportlab.platypus import (
 )
 from reportlab.platypus.flowables import Flowable
 
-from config import REMEDIATION_MAP
+from .config import REMEDIATION_MAP
 
 # ═══════════════════════════════════════════════════════════════
 # PALETTE  — high contrast, modern professional

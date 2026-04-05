@@ -19,7 +19,7 @@ from datetime import datetime
 # ── lazy imports so --help works even without networkx installed ───────────
 def _load_graph(path):
     """Load the JSON graph file and return an AttackPathGraph instance."""
-    from graph_builder import AttackPathGraph
+    from .graph_builder import AttackPathGraph
     ag = AttackPathGraph()
     if not ag.load_from_json(path):
         _die(f"Failed to load graph from '{path}'.")
@@ -261,7 +261,7 @@ def cmd_critical_node(ag):
 
 def cmd_full_report(ag):
     """Delegates to the existing generate_report() — identical to normal run."""
-    from graph_builder import generate_report
+    from .graph_builder import generate_report
     generate_report(ag)
 
 
@@ -576,7 +576,7 @@ def main():
 
 def _run_full_report_with_ingestion():
     """Run live kubectl ingestion then full report (original cli_dashboard flow)."""
-    from cli_dashboard import run_analysis_dashboard
+    from .cli_dashboard import run_analysis_dashboard
     run_analysis_dashboard()
 
 

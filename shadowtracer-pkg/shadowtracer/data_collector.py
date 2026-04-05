@@ -7,8 +7,8 @@ import shlex
 from datetime import date
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from config import RESOURCE_TYPES, CROWN_JEWEL_KEYWORDS, evaluate_permission
-from cve_scorer import fetch_live_cves
+from .config import RESOURCE_TYPES, CROWN_JEWEL_KEYWORDS, evaluate_permission
+from .cve_scorer import fetch_live_cves
 
 
 # ---------------------------------------------------------------------------
