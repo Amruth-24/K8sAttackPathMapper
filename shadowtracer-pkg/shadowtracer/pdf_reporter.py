@@ -265,7 +265,7 @@ def _cover(story, S, stats):
         [Spacer(1, 4)],
         [Paragraph(
             f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-            f"  &nbsp;|&nbsp;  Cluster: live-cluster",
+            ,
             S['c_meta'])],
     ], colWidths=[BODY_W])
     hero.setStyle(TableStyle([
@@ -596,13 +596,14 @@ def _section4(story, S, graph_ref, all_paths):
 
 def _summary(story, S, all_paths, graph_ref):
     story.append(Spacer(1, 0.20*inch))
+    story.append(_banner(
+        "[ SUMMARY ]", S))
     G          = graph_ref.G
     cycles     = [c for c in nx.simple_cycles(G) if len(c) > 1]
     entry_pts  = graph_ref.get_entry_points()
-    all_pods   = [n for n, d in G.nodes(data=True) if d.get('type') == 'Pod']
     crown_jwls = graph_ref.get_crown_jewels()
     all_srcs   = list(
-        set(p['source'] for p in all_paths) | set(entry_pts) | set(all_pods))
+        set(p['source'] for p in all_paths) | set(entry_pts))
     cr         = graph_ref.identify_critical_node(all_srcs, crown_jwls)
 
     blast_nodes = set()
@@ -695,7 +696,7 @@ def _section5(story, S, all_paths, graph_ref):
 def _section_temporal(story, S, new_paths, is_first_run, graph_ref):
     story.append(Spacer(1, 0.18*inch))
     story.append(_banner(
-        "[ BONUS: TEMPORAL ANALYSIS (State-Diffing Engine) ]", S))
+        "[ TEMPORAL ANALYSIS (State-Diffing Engine) ]", S))
     story.append(Spacer(1, 0.09*inch))
 
     if is_first_run:
